@@ -1,3 +1,4 @@
+" removes annoying error sound
 set belloff=all
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
@@ -50,6 +51,15 @@ set nu
 set wrap
 set smartcase
 set incsearch
+set hlsearch
+" case insensitive search
+set ic
+" change to below to not ignore case 
+" :set noic
+" Press Space to turn off highlighting and clear any message already displayed.
+noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+
 
 " https://stackoverflow.com/questions/6488683/how-do-i-change-the-cursor-between-normal-and-insert-modes-in-vim
 " change cursor in insert mode 
