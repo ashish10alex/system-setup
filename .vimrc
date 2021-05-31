@@ -21,6 +21,9 @@ Plug 'junegunn/fzf.vim'
 "current theme of vim editor
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
+"commenting 
+Plug 'tpope/vim-commentary'
+
 " Initialize plugin system
 call plug#end()
 
