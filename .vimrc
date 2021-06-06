@@ -5,7 +5,6 @@ set belloff=all
 " - Avoid using standard Vim directory names like 'plugin'
 
 
-
 " Install VimPlug from - https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 
@@ -15,7 +14,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
 "shows files, git-file in the current directory 
 "Also support recurssive grep (Note install rg first -> https://github.com/BurntSushi/ripgrep#installation)
-"
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' 
 
@@ -40,8 +39,7 @@ colorscheme onehalfdark
 let g:airline_theme='onehalfdark'
 " lightline
 " let g:lightline = { 'colorscheme': 'onehalfdark' }
-"
-"
+
 set noerrorbells
 set tabstop=4 softtabstop=4
 set shiftwidth=4
@@ -58,8 +56,6 @@ set ic
 " :set noic
 " Press Space to turn off highlighting and clear any message already displayed.
 noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
-
 
 " https://stackoverflow.com/questions/6488683/how-do-i-change-the-cursor-between-normal-and-insert-modes-in-vim
 " change cursor in insert mode 
@@ -91,6 +87,9 @@ noremap <leader>b :Buffers<CR>
 " Linux - sudo apt-get install ripgrep
 noremap <leader>grep :Rg! 
 
+" This seems to mess up code
+" Autoformat document                                                                                                                     
+" nnoremap F gg=G''
 
 " tv will bring a pane that shows the current directory tree - which is
 " verically resized to to 30 units 
@@ -100,3 +99,12 @@ noremap <leader>grep :Rg!
 "reduce and increase the side of vertical split
 noremap <leader>+ :vertical resize +5<CR>
 noremap <leader>- :vertical resize -5<CR>
+
+" Autocomple paranthesis vim
+inoremap ( ()<Esc>i
+inoremap { {}<Esc>i
+inoremap {<CR> {<CR>}<Esc>O
+inoremap [ []<Esc>i
+inoremap < <><Esc>i
+inoremap ' ''<Esc>i
+inoremap " ""<Esc>i
