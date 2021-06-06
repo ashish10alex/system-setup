@@ -24,6 +24,11 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 "commenting 
 Plug 'tpope/vim-commentary'
 
+" Replace words with copied word
+" Copy the words using - "yiw" (yank inner word)
+" Go to the the word which you want replaced and type "griw" (go replace inner word)
+" Action as usual is repeatable using "."
+Plug 'inkarkat/vim-ReplaceWithRegister'
 " Initialize plugin system
 call plug#end()
 
@@ -108,3 +113,4 @@ inoremap [ []<Esc>i
 inoremap < <><Esc>i
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
+
