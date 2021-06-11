@@ -79,7 +79,7 @@ let g:airline_theme='onehalfdark'
 command! MakeTags !ctags -R .
 set tags=./tags;/
 
-
+set termguicolors
 set noerrorbells
 set tabstop=4 softtabstop=4
 set shiftwidth=4
@@ -111,6 +111,9 @@ set ttimeoutlen=1
 set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
 set ttyfast
 
+"Shows an exhaustive list during tab completion
+set wildmode=longest,list,full
+
 " map the leader key to space bar
 let mapleader = " "
 
@@ -138,14 +141,15 @@ noremap <leader>tv :vsp<bar> :Ex <bar> : vertical resize 30<CR>
 "
 "
 "reduce and increase the side of vertical split
-noremap <leader>l :vertical resize +5 <CR>
-noremap <leader>h :vertical resize -5 <CR>
+noremap <leader>h :vertical resize +5 <CR>
+noremap <leader>l :vertical resize -5 <CR>
 
 " Easy naviation btw vertical splits by CTRL + <h, l, j, k>
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
+" Not so easy after all maybe
+" nmap <silent> <c-k> :wincmd k<CR>
+" nmap <silent> <c-j> :wincmd j<CR>
+" nmap <silent> <c-h> :wincmd h<CR>
+" nmap <silent> <c-l> :wincmd l<CR>
 
 " Autocomple paranthesis vim
 inoremap ( ()<Esc>i
@@ -156,3 +160,5 @@ inoremap < <><Esc>i
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
 
+" S in normal mode to seach and replace 
+noremap S :%s//gI<Left><Left><Left>
