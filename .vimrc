@@ -34,6 +34,9 @@ Plug 'vim-airline/vim-airline'
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
 
+"nerd tree - shows files in folder in a vertical split
+Plug 'preservim/nerdtree'
+
 " Replace words with copied word
 " Copy the words using - "yiw" (yank inner word)
 " Go to the the word which you want replaced and type "griw" (go replace inner word)
@@ -68,6 +71,8 @@ endif
 " For One half theme
 syntax on 
 set t_Co=256
+" enable 256 colors
+set t_ut=
 set cursorline
 colorscheme onehalfdark
 let g:airline_theme='onehalfdark'
@@ -106,6 +111,11 @@ set ic
 " Press Space to turn off highlighting and clear any message already displayed.
 noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+" code folding
+set foldmethod=indent
+set foldlevel=99
+
+
 " https://stackoverflow.com/questions/6488683/how-do-i-change-the-cursor-between-normal-and-insert-modes-in-vim
 " change cursor in insert mode 
 " Regular mode - block
@@ -125,6 +135,16 @@ set wildmode=longest,list,full
 
 " map the leader key to space bar
 let mapleader = " "
+
+" move through buffers - Leader key is currently mapped to space bar
+nmap <leader>[ :bp!<CR>
+nmap <leader>] :bn!<CR>
+nmap <leader>x :bd<CR>
+
+" file browser
+" Start NERDTree when opring any folder and put the cursor back in the other window.
+" autocmd VimEnter * NERDTree | wincmd p
+
 
 
 "shows all files in the current directory 
@@ -146,7 +166,8 @@ noremap <leader>grep :Rg!
 " tv will bring a pane that shows the current directory tree - which is
 " verically resized to to 30 units 
 let g:netrw_banner = 0
-noremap <leader>tv :vsp<bar> :Ex <bar> : vertical resize 30<CR>
+noremap <leader>nt :NERDTree<CR>
+" noremap <leader>tv :vsp<bar> :Ex <bar> : vertical resize 30<CR>
 "
 "
 "reduce and increase the side of vertical split
