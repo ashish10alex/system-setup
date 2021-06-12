@@ -1,3 +1,6 @@
+" New vim not old vi ?
+set nocompatible
+
 " removes annoying error sound
 set belloff=all
 " Specify a directory for plugins
@@ -10,11 +13,11 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
+
 "shows files, git-file in the current directory 
 "Also support recurssive grep (Note install rg first -> https://github.com/BurntSushi/ripgrep#installation)
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' 
 
@@ -198,3 +201,8 @@ inoremap " ""<Esc>i
  " S in normal mode to seach and replace -> %s/<targetWord><replaceWith>/gI
 " S in normal mode to seach and replace 
 noremap S :%s//gI<Left><Left><Left>
+
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
