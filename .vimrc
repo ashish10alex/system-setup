@@ -37,6 +37,12 @@ Plug 'sheerun/vim-polyglot'
 "nerd tree - shows files in folder in a vertical split
 Plug 'preservim/nerdtree'
 
+" New nerd tree ?
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+"Git gutter
+Plug 'airblade/vim-gitgutter'
+
 " Replace words with copied word
 " Copy the words using - "yiw" (yank inner word)
 " Go to the the word which you want replaced and type "griw" (go replace inner word)
