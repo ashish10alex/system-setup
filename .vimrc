@@ -25,6 +25,12 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 "commenting 
 Plug 'tpope/vim-commentary'
 
+"Git "
+Plug 'tpope/vim-fugitive'
+
+"Shows status line - Futuve status line depends on airline"
+Plug 'vim-airline/vim-airline'
+
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
 
@@ -34,6 +40,9 @@ Plug 'sheerun/vim-polyglot'
 " Action as usual is repeatable using "."
 Plug 'inkarkat/vim-ReplaceWithRegister'
 call plug#end()
+
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -159,6 +168,6 @@ inoremap [ []<Esc>i
 inoremap < <><Esc>i
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
-
+ " S in normal mode to seach and replace -> %s/<targetWord><replaceWith>/gI
 " S in normal mode to seach and replace 
 noremap S :%s//gI<Left><Left><Left>
