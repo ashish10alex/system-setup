@@ -54,6 +54,7 @@ Plug 'inkarkat/vim-ReplaceWithRegister'
 call plug#end()
 
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+:set relativenumber
 
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -198,9 +199,8 @@ inoremap [ []<Esc>i
 inoremap < <><Esc>i
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
- " S in normal mode to seach and replace -> %s/<targetWord><replaceWith>/gI
-" S in normal mode to seach and replace 
-noremap S :%s//gI<Left><Left><Left>
+ "Search and replace -> %s/<targetWord><replaceWith>/gI
+noremap <leader>sr :%s//gI<Left><Left><Left>
 
 " Disable arrow keys - hard mode
 noremap <Up> <Nop>
