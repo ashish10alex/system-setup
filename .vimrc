@@ -202,7 +202,11 @@ inoremap " ""<Esc>i
 " S in normal mode to seach and replace 
 noremap S :%s//gI<Left><Left><Left>
 
+" Disable arrow keys - hard mode
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+
+" Tab completion of paths in vim
+imap <Tab> <C-X><C-F>
