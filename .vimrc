@@ -2,6 +2,7 @@
 set nocompatible
 
 " removes annoying error sound
+set noerrorbells
 set belloff=all
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
@@ -46,6 +47,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 "Git gutter
 Plug 'airblade/vim-gitgutter'
 
+" Manage git branches with fzf
+" Plug 'stsewd/fzf-checkout.vim'
+
+
 " Replace words with copied word
 " Copy the words using - "yiw" (yank inner word)
 " Go to the the word which you want replaced and type "griw" (go replace inner word)
@@ -56,6 +61,9 @@ call plug#end()
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 :set relativenumber
 
+" Pasting with indent
+nnoremap p p=`]
+nnoremap <c-p> p
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -208,5 +216,11 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
+" Show git logs using git fugitive plugin 
+" Ypu can go see the diff in the commit by pressing enter on the git commit id 
+" Shown in the log
+noremap <leader>gl :G log<CR>
+noremap <leader>gd :G diff<CR>
+
 " Tab completion of paths in vim
-imap <Tab> <C-X><C-F>
+" imap <Tab> <C-X><C-F>
