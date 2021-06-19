@@ -14,7 +14,7 @@ sudo apt-get install libsndfile1
 
 ```
 ssh-keygen
-#copy contents of /home/ubuntu/.ssh/id_rsa.pub #to github -> settings -> SSH and GPG keys
+#copy contents of /home/<user-name>/.ssh/id_rsa.pub #to github -> settings -> SSH and GPG keys
 
 ```
 
@@ -71,10 +71,10 @@ systemctl restart nginx
 ```
 pip3 install gunicorn
 #To run the app
-gunicorn -w 2 <file-name-wo-py-extension>:<name-of-app-obj-in-code>
+gunicorn -w 2 <file-name-w/o-.py-extension>:<name-of-app-object-in-code>
 ```
 
-* Make website run as a systemd service
+* Make website run as a systemd service - Runs the web app in the background
 ```
 Add your systemd file in 
 /lib/systemd/system/
@@ -95,3 +95,14 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
+  
+  ```
+ systemctl start <service-name>
+ #check status of the service 
+ systemctl status  <service-name>
+ systemctl enable  <service-name>
+ 
+  systemctl stop  <service-name>
+  ```
+  
+ 

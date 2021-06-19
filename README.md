@@ -1,6 +1,7 @@
 # system-setup
 
-Guide to setup custom  vim editor with key bindings and plugins to make it productive and pretier :)
+* Guide to setup custom vim editor with key bindings and plugins to make it productive and pretier :)
+* Deploying flask based web application on an ubuntu machine (tested on an aws instance)
 
 https://www.youtube.com/watch?v=Cs4MBcEUrMk
 
