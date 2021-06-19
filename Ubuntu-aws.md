@@ -1,4 +1,4 @@
-#Setting up Ubuntu server for Flask web deployment
+# Setting up Ubuntu server for Flask web deployment
 
 ```
 sudo apt-get update
@@ -21,13 +21,15 @@ ssh-keygen
 * Firewall
 
 View status of the firewall
-<b>Note<b>: on AWS you have to add rules in the security group to allow particular trafic and ports. So the below commands to not needed in AWS
-check open ports
+<b>Note<b>: on AWS you have to add rules in the security group option of the instance to allow particular trafic to and from the ports. 
+Following commands only if you have your own sever where firewall option needs to be managed via terminal 
+
+#to check open ports
 sudo apt install net-tools
 netstat -nlp
 
 
-Uncomplicated firewall
+Uncomplicated firewall (ufw)
 ```
 sudo apt install ufw
 sudo ufw default allow outgoing
@@ -36,9 +38,8 @@ sudo ufw allow ssh
 sudo ufw allow 5000
 sudo ufw enable
 
-#If using UFW to manage firewall
-sudo ufw status
 
+sudo ufw status
 E.g. output ->
 
 To                         Action      From
@@ -70,17 +71,17 @@ systemctl restart nginx
 * Gunicorn
 ```
 pip3 install gunicorn
-#To run the app
+#To run the app go to the root directory of your flask project and 
 gunicorn -w 2 <file-name-w/o-.py-extension>:<name-of-app-object-in-code>
 ```
 
-* Make website run as a systemd service - Runs the web app in the background
+* Make website run as a systemd service (runs the web app in the background)
 ```
 Add your systemd file in 
 /lib/systemd/system/
 ```
 
-Sample systemd file
+An example systemd file -
 ```
 [Unit]
 Description=Flask app to show audio augmentations
