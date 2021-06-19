@@ -221,6 +221,9 @@ noremap <Right> <Nop>
 " Shown in the log
 noremap <leader>gl :G log<CR>
 noremap <leader>gd :G diff<CR>
+noremap <leader>gc :G commit<CR>
+noremap <leader>gp :G push<CR>
+noremap <leader>gs :G <CR>
 
 " Tab completion of paths in vim
 " imap <Tab> <C-X><C-F>
