@@ -10,6 +10,7 @@ set belloff=all
 
 
 " Install VimPlug from - https://github.com/junegunn/vim-plug
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
