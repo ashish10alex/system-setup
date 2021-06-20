@@ -33,6 +33,9 @@ Plug 'tpope/vim-commentary'
 "Git "
 Plug 'tpope/vim-fugitive'
 
+"Git - to go to github link in the browser"
+Plug 'tpope/vim-rhubarb'
+
 "Shows status line - Futuve status line depends on airline"
 Plug 'vim-airline/vim-airline'
 
@@ -224,7 +227,10 @@ noremap <leader>gl :G log<CR>
 noremap <leader>gd :G diff<CR>
 noremap <leader>gc :G commit<CR>
 noremap <leader>gp :G push<CR>
+" Equivalent to git status
 noremap <leader>gs :G <CR>
+"open github url on web browser
+noremap <leader>gb :GBrowse <CR> 
 
 " Tab completion of paths in vim
 " imap <Tab> <C-X><C-F>
