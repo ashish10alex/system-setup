@@ -8,9 +8,7 @@ sudo apt-get install python3-venv
 sudo apt-get install libsndfile1
 ```
 
-* SSH
-
-- For github
+* SSH - For github
 
 ```
 ssh-keygen
@@ -24,10 +22,11 @@ View status of the firewall
 <b>Note<b>: on AWS you have to add rules in the security group option of the instance to allow particular trafic to and from the ports. 
 Following commands only if you have your own sever where firewall option needs to be managed via terminal 
 
+```
 #to check open ports
 sudo apt install net-tools
 netstat -nlp
-
+```
 
 Uncomplicated firewall (ufw)
 ```
