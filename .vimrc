@@ -92,8 +92,12 @@ endif
 
 " For One half theme
 syntax on 
-set t_Co=256
+" Change the value of cterm in `~/.vim/plugged/onehalf/vim/colors/onehalfdark.vim` if your backgound in mac iterm is brownish 
+" let s:black       = { "gui": "#282c34", "cterm": "236" }
+" Find the appropraite value for cterm from - https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+
 " enable 256 colors
+set t_Co=256
 set t_ut=
 set cursorline
 colorscheme onehalfdark
