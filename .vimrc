@@ -1,6 +1,6 @@
 " New vim not old vi ?
 set nocompatible
-
+"
 " removes annoying error sound
 set noerrorbells
 set belloff=all
@@ -60,6 +60,10 @@ Plug 'airblade/vim-gitgutter'
 " Go to the the word which you want replaced and type "griw" (go replace inner word)
 " Action as usual is repeatable using "."
 Plug 'inkarkat/vim-ReplaceWithRegister'
+
+" Autocomplete and very quick navigation between functions
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
@@ -233,7 +237,6 @@ map <C-u> 5k
 " Ypu can go see the diff in the commit by pressing enter on the git commit id 
 " Shown in the log
 noremap <leader>gl :G log<CR>
-noremap <leader>gd :G diff<CR>
 noremap <leader>gc :G commit<CR>
 noremap <leader>gp :G push<CR>
 " Equivalent to git status
@@ -243,3 +246,30 @@ noremap <leader>gb :GBrowse <CR>
 
 " Tab completion of paths in vim
 " imap <Tab> <C-X><C-F>
+
+" Show documentation when you press K
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+" Use K to show documentation in preview window.
+noremap <silent> K :call <SID>show_documentation()<CR>
+
+
+" GoTo code navigation using coc
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+
+" Disable autocomplete
+autocmd FileType python let b:coc_suggest_disable = 1
+autocmd FileType Markdown let b:coc_suggest_disable = 1
+autocmd FileType vim let b:coc_suggest_disable = 1
+
