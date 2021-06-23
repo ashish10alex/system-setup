@@ -65,3 +65,12 @@ And path of nmp to your `coc-settings.json`
 `"npm.binPath": "$HOME/node-from-source/bin/npm",`
 
 Here `$HOME` should automagically add full path to your home directory. If it gives an error please add full path manually. 
+
+
+In case you can not use `sudo` use can install packages such as `fzf` (fuzzy file search) and `bat` (syntax highlighting) by adding binaries as follows - 
+```
+mkdir ~/my-bin
+ln -s ~/<path-to-executable>/<executable> ~/my-bin
+#Add this line to .bashrc
+PATH=$PATH:~/my-bin
+```
