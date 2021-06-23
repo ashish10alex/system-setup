@@ -14,6 +14,7 @@ Note - Current version has arrow keys disabled in the normal mode for me to get 
 ## Vimrc
 
 * [Coc plugin](https://github.com/neoclide/coc.nvim) Notes 
+
 Coc plugin allows easy navigation: find and jump to function definition.
 However I have disabled python autocomplete and have only retained autocomplete for other files like *.js
 
@@ -30,9 +31,39 @@ Following is my Coc-config file.
 "python.linting.lintOnSave": true,
 "python.linting.flake8Enabled": true
 }
-~
 ```
 You would very likely need to do - `pip3 install jedi` to enable navigation between python functions.
 Documentation on how to do this navigation is covered in `.vimrc` file.
 
 Additionally you can set your python interpreter by - `:CocCommand python.setInterpreter`.
+
+* Installing coc plugin on ubunutu systems with no `sudo` access
+
+Coc plugin requires you to have node and npm installed. However if you are unable to install these the standard way you can manually donwload node and npm [binaries](https://nodejs.org/dist/) and add path of `node` and `npm` to your `.vimrc` and `coc-settings.json` files respectively. Note - Latest version of `node` binary `*.gz` file also ships with `nmp` and `yarn` binaries; which are used to install language servers e.g. `:CocInstall coc-python`.
+
+Commands to download node binaries
+```
+cd ~
+mkdir node-from-source
+cd node-from-source
+wget -c https://nodejs.org/dist/v12.18.0/node-v12.18.0-linux-x64.tar.gz
+tar xzf node-v12.18.0-linux-x64.tar.gz
+rm -rf node-v12.18.0-linux-x64.tar.gz
+mv node-v12.18.0-linux-x64/* .
+rm -rf node-v12.18.0-linux-x64
+
+#node binary path
+~/node-from-source/bin/node
+
+#npm binary path
+~/node-from-source/bin/npm
+```
+If you run `~/node-from-source/bin/node --version` and get `v12.18.0` as response you are all set for the next steps
+
+Now add following line to your ~/.vimrc file
+`let g:coc_node_path = '$HOME/node-from-source/bin/node'`
+
+And path of nmp to your `coc-settings.json`
+`"npm.binPath": "$HOME/node-from-source/bin/npm",`
+
+Here `$HOME` should automagically add full path to your home directory. If it gives an error please add full path manually. 

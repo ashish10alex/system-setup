@@ -265,7 +265,7 @@ noremap <silent> K :call <SID>show_documentation()<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent><leader>gr <Plug>(coc-references)
 
 
 " Disable autocomplete
@@ -273,3 +273,11 @@ autocmd FileType python let b:coc_suggest_disable = 1
 autocmd FileType Markdown let b:coc_suggest_disable = 1
 autocmd FileType vim let b:coc_suggest_disable = 1
 
+" Add  path to your node binary here - requirement for coc plugin
+" Coc plugin also requires nmp for installing extension please refere to README
+" on how to configure that 
+" let g:coc_node_path = '$HOME/node-from-source/bin/node'
+
+" Copy vim clipboard to system clipboard 
+" Kind of buggy - works from PC to sever but not from sever to PC
+noremap <silent>Y "*y
