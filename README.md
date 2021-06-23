@@ -13,9 +13,7 @@ Note - Current version has arrow keys disabled in the normal mode for me to get 
 
 ## Vimrc
 
-* [Coc plugin](https://github.com/neoclide/coc.nvim) Notes 
-
-Coc plugin allows easy navigation: find and jump to function definition.
+* [Coc plugin](https://github.com/neoclide/coc.nvim) allows easy navigation: find and jump to function definition.
 However I have disabled python autocomplete and have only retained autocomplete for other files like *.js
 
 I have also disabled python linting in the Coc-config file located at `/Users/<username>/.vim/coc-settings.json`
