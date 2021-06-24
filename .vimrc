@@ -128,7 +128,7 @@ let g:mkdp_highlight_css = ''
 let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
 
-set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%F\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 set relativenumber
 set textwidth=80
 
@@ -152,7 +152,7 @@ if (empty($TMUX))
   endif
 endif
 
-
+set cursorline
 if system('uname -s') == "Darwin\n"
   "OSX
   colorscheme one
@@ -168,7 +168,6 @@ else
   " enable 256 colors
   set t_Co=256
   set t_ut=
-  set cursorline
   colorscheme onehalfdark
   let g:airline_theme='onehalfdark'
   " lightline
