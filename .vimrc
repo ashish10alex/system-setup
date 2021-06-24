@@ -1,12 +1,38 @@
-" New vim not old vi ?
-set nocompatible
-"
 " removes annoying error sound
 set noerrorbells
 set belloff=all
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
+
+" Set internal encoding of vim
+set encoding=utf-8
+
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 
 " Install VimPlug from - https://github.com/junegunn/vim-plug
@@ -103,7 +129,8 @@ let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
 
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
-:set relativenumber
+set relativenumber
+set textwidth=80
 
 " Pasting with indent
 nnoremap p p=`]
@@ -227,9 +254,6 @@ noremap <leader>b :Buffers<CR>
 " Linux - sudo apt-get install ripgrep
 noremap <leader>grep :Rg! 
 
-" This seems to mess up code
-" Autoformat document                                                                                                                     
-" nnoremap F gg=G''
 
 " tv will bring a pane that shows the current directory tree - which is
 " verically resized to to 30 units 
@@ -295,6 +319,16 @@ function! s:show_documentation()
 endfunction
 " Use K to show documentation in preview window.
 noremap <silent> K :call <SID>show_documentation()<CR>
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Formatting selected code.
+xmap <leader>F  <Plug>(coc-format-selected)
+nmap <leader>F  <Plug>(coc-format-selected)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
 
 " GoTo code navigation using coc
