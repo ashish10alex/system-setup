@@ -53,7 +53,7 @@ Plug 'yuttie/comfortable-motion.vim' " scrolling 'C-d' or 'C-u'
 
 "Themes for vim editor
 "preferred on the server
-" Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 " For mac
 " Plug 'morhetz/gruvbox'
@@ -152,8 +152,28 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme one
-set termguicolors
+
+if system('uname -s') == "Darwin\n"
+  "OSX
+  colorscheme one
+  set termguicolors
+else
+  "Linux
+  " For One half theme
+  " Change the value of cterm in `~/.vim/plugged/onehalf/vim/colors/onehalfdark.vim` if your backgound in mac iterm is brownish 
+  " let s:black       = { "gui": "#282c34", "cterm": "236" }
+  " Find the appropraite value for cterm from - https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+
+
+  " enable 256 colors
+  set t_Co=256
+  set t_ut=
+  set cursorline
+  colorscheme onehalfdark
+  let g:airline_theme='onehalfdark'
+  " lightline
+  " let g:lightline = { 'colorscheme': 'onehalfdark' }
+endif
 
 " colorscheme gruvbox
 
@@ -162,20 +182,6 @@ set termguicolors
 " colorscheme onedark
 " set cursorline
 
-" For One half theme
-" Change the value of cterm in `~/.vim/plugged/onehalf/vim/colors/onehalfdark.vim` if your backgound in mac iterm is brownish 
-" let s:black       = { "gui": "#282c34", "cterm": "236" }
-" Find the appropraite value for cterm from - https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
-
-
-" enable 256 colors
-set t_Co=256
-set t_ut=
-set cursorline
-" colorscheme onehalfdark
-" let g:airline_theme='onehalfdark'
-" lightline
-" let g:lightline = { 'colorscheme': 'onehalfdark' }
 
 " to get fzf preview syntax highlighting with bat
 " First install bat - (https://github.com/sharkdp/bat#installation) - Mac OS  brew install bat
