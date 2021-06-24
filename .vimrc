@@ -208,8 +208,10 @@ noremap <leader>nt :NERDTree<CR>
 "
 "
 "reduce and increase the side of vertical split
-noremap <leader>h :vertical resize +5 <CR>
-noremap <leader>l :vertical resize -5 <CR>
+noremap <leader><Left> :vertical resize +5<CR>
+noremap <leader><Right> :vertical resize -5<CR>
+noremap <leader><Down>  : resize +5<CR>
+noremap <leader><Up> : resize -5<CR>
 "Change split windows from vertical to horizonal
 map <leader>tv <C-w>t<C-w>H
 map <leader>th <C-w>t<C-w>K
