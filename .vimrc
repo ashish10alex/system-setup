@@ -72,8 +72,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
 call plug#end()
+
+"Comfortable motion scrollig parmas
+let g:comfortable_motion_friction = 80.0
+let g:comfortable_motion_air_drag = 12.0
 
 " markdown-preview.nvim
 let g:mkdp_auto_start = 0
@@ -166,7 +169,6 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set nu
-set wrap
 set smartcase
 set incsearch
 set hlsearch
