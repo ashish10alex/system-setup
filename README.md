@@ -20,7 +20,7 @@ Coc plugin allows easy navigation to function definition along with autocomplete
 I have also disabled python linting in the Coc-config file located at `/Users/<username>/.vim/coc-settings.json`
 Coc-config file can optionally be opned from anywhere by `:CocConfig`
 
-Following is my Coc-config file. 
+Following is my Coc-config file.
 ```
 {
 "coc.preferences.useQuickfixForLocations": true,
