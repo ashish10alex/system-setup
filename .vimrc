@@ -23,6 +23,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' 
 
+Plug 'yuttie/comfortable-motion.vim' " scrolling 'C-d' or 'C-u'
 
 "Themes for vim editor
 "preferred on the server
@@ -263,8 +264,8 @@ noremap <Right> <Nop>
 
 " Scrolling with keyboard
 " Move up/down lines with [CTRL + u][CTRL + d]
-map <C-d> 5j
-map <C-u> 5k
+" map <C-d> 5j
+" map <C-u> 5k
 
 " Show git logs using git fugitive plugin 
 " Ypu can go see the diff in the commit by pressing enter on the git commit id 
