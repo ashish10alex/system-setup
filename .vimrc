@@ -95,7 +95,6 @@ if (empty($TMUX))
 endif
 
 colorscheme one
-set background dark
 set termguicolors
 
 " colorscheme gruvbox
@@ -206,19 +205,15 @@ noremap <leader>grep :Rg!
 " verically resized to to 30 units 
 let g:netrw_banner = 0
 noremap <leader>nt :NERDTree<CR>
-" noremap <leader>tv :vsp<bar> :Ex <bar> : vertical resize 30<CR>
 "
 "
 "reduce and increase the side of vertical split
 noremap <leader>h :vertical resize +5 <CR>
 noremap <leader>l :vertical resize -5 <CR>
+"Change split windows from vertical to horizonal
+map <leader>tv <C-w>t<C-w>H
+map <leader>th <C-w>t<C-w>K
 
-" Easy naviation btw vertical splits by CTRL + <h, l, j, k>
-" Not so easy after all maybe
-" nmap <silent> <c-k> :wincmd k<CR>
-" nmap <silent> <c-j> :wincmd j<CR>
-" nmap <silent> <c-h> :wincmd h<CR>
-" nmap <silent> <c-l> :wincmd l<CR>
 
 " Autocomple paranthesis vim
 inoremap ( ()<Esc>i
