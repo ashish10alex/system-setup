@@ -23,9 +23,13 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' 
 
-"themes for vim editor
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-" Plug 'joshdick/onedark.vim'
+
+"Themes for vim editor
+"preferred on the server
+" Plug 'sonph/onehalf', { 'rtp': 'vim' }
+
+" For mac
+Plug 'morhetz/gruvbox'
 
 "commenting 
 Plug 'tpope/vim-commentary'
@@ -89,23 +93,24 @@ if (empty($TMUX))
   endif
 endif
 
+colorscheme gruvbox
 " For one dark theme
 " syntax on
 " colorscheme onedark
 " set cursorline
 
 " For One half theme
-syntax on 
 " Change the value of cterm in `~/.vim/plugged/onehalf/vim/colors/onehalfdark.vim` if your backgound in mac iterm is brownish 
 " let s:black       = { "gui": "#282c34", "cterm": "236" }
 " Find the appropraite value for cterm from - https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+
 
 " enable 256 colors
 set t_Co=256
 set t_ut=
 set cursorline
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
+" colorscheme onehalfdark
+" let g:airline_theme='onehalfdark'
 " lightline
 " let g:lightline = { 'colorscheme': 'onehalfdark' }
 
@@ -113,9 +118,9 @@ let g:airline_theme='onehalfdark'
 " First install bat - (https://github.com/sharkdp/bat#installation) - Mac OS  brew install bat
 "add this to your ~/.zhrc or ~/.bashrc
 " export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
-"
-"Lets to find files in the directory and subdirectory by using find:<filename>
-" set path+=**
+
+" Syntax highlighted grep
+" brew install eth-p/software/bat-extras-batgrep
 
 " Makes tags recurssively in the directory and can navigate between functions using CTRL + ]
 " Go back to the last navigation using CTRL + T
@@ -124,7 +129,6 @@ command! MakeTags !ctags -R .
 set tags=./tags;/
 
 set termguicolors
-set noerrorbells
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
