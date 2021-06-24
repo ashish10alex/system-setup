@@ -29,7 +29,8 @@ Plug 'junegunn/fzf.vim'
 " Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 " For mac
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
 
 "commenting 
 Plug 'tpope/vim-commentary'
@@ -93,7 +94,12 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme gruvbox
+colorscheme one
+set background dark
+set termguicolors
+
+" colorscheme gruvbox
+
 " For one dark theme
 " syntax on
 " colorscheme onedark
@@ -128,7 +134,6 @@ set cursorline
 command! MakeTags !ctags -R .
 set tags=./tags;/
 
-set termguicolors
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
