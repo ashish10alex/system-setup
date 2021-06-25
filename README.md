@@ -1,13 +1,16 @@
 # System-setup
 
+* `Ubuntu-aws.md` - Deploying flask based web application on an ubuntu machine (tested on an aws instance)
+
+## Vimrc
+
 * `.vimrc` - Guide to setup custom vim editor with key bindings and plugins to make it productive and pretier :)
 
-<img width="549" alt="Screenshot 2021-06-20 at 12 22 34" src="https://user-images.githubusercontent.com/34306898/122672203-3b149f80-d1c2-11eb-8570-fc41a319fa39.png">
 
+https://user-images.githubusercontent.com/34306898/123353903-731d3900-d55a-11eb-99a9-126fbbcb6716.mov
 
 Run the following commands to setup your develpment environment similar to the
-one shown in the screenshot
-
+one shown in the video
 ```
 git clone https://github.com/ashish10alex/system-setup.git
 cd system-setup
@@ -17,11 +20,6 @@ source ~/.vimrc
 Now open `~/.vimrc` and run `:PlugInstall`. Watch my [youtube video](https://www.youtube.com/watch?v=Cs4MBcEUrMk) on how to get started with setting up this theme
 <b>Note</b> - Current version has arrow keys disabled in the `normal mode `for me to get used to `j, k, h, l` navigation.
 
-
-
-* `Ubuntu-aws.md` - Deploying flask based web application on an ubuntu machine (tested on an aws instance)
-
-## Vimrc
 
 * ### [Coc plugin](https://github.com/neoclide/coc.nvim)
 
