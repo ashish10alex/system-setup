@@ -21,12 +21,12 @@ Now open `~/.vimrc` and run `:PlugInstall`. Watch my [youtube video](https://www
 
 * #### [Coc plugin](https://github.com/neoclide/coc.nvim)
 
-Coc plugin allows easy navigation to function definition along with autocomplete feature for which it is primarily known for. However I have disabled python autocomplete and have only retained autocomplete for other files like `*.js`
+Coc plugin allows easy navigation to function definition along with autocomplete feature for which it is primarily known for. However I have disabled python autocomplete and have only retained autocomplete for other files extensions like `*.js`.
 
 I have also disabled python linting in the Coc-config file located at `/Users/<username>/.vim/coc-settings.json`
 Coc-config file can optionally be opened from anywhere by `:CocConfig`
 
-Following is my Coc-config file.
+Following is my Coc-config file - 
 ```
 {
 "coc.preferences.useQuickfixForLocations": true,
@@ -43,9 +43,9 @@ Additionally you can set your python interpreter by - `:CocCommand python.setInt
 
 * <b> Installing coc plugin on ubuntu systems without `sudo` access </b>
 
-Coc plugin requires you to have node and npm installed. However if you are unable to install these the standard ways (`brew`, `apt` etc..) you can manually donwload [node and npm binaries](https://nodejs.org/dist/) and add path of `node` and `npm` to your `.vimrc` and `coc-settings.json` files respectively. <b>Note</b> - Latest version of `node` binary `*.gz` file also ships with `nmp` and `yarn` binaries; which are used to install language servers e.g. `:CocInstall coc-python, coc-json, coc-tssever`. <b>Note</b> If `:CocInstall` command fails make sure that you have `node` and `npm` in your system path. To see how to add binaries to system path follow the documentation in the sub-section [Add binaries to path](#Add-binaries-to-path)
+Coc plugin requires you to have node and npm installed. However if you are unable to install these the standard ways (`brew`, `apt` etc..) you can manually download [node and npm binaries](https://nodejs.org/dist/) and add path of `node` and `npm` to your `.vimrc` and `coc-settings.json` files respectively. <b>Note</b> - Latest version of `node` binary `*.gz` file also ships with `nmp` and `yarn` binaries which are used to install language servers e.g. `:CocInstall coc-python, coc-json, coc-tssever`. <b>Note</b> If `:CocInstall` command fails make sure that you have `node` and `npm` in your system path. To see how to add binaries to system path follow the documentation in the sub-section [Add binaries to path](#Add-binaries-to-path).
 
-Commands to download node binaries
+Commands to download node binaries -  
 ```
 cd ~
 mkdir node-from-source
@@ -73,8 +73,8 @@ And path of nmp to your `coc-settings.json`
 Here `$HOME` should automagically add full path to your home directory. If it gives an error please add full path manually. 
 
 <h4 id="Add-binaries-to-path">Add binaries to path</h4> 
-Installing other packages ([fzf](https://github.com/junegunn/fzf) (file navigation) and [bat](https://github.com/sharkdp/bat) (syntax highlighting)) with binaries in  Ubuntu based linux distros in case you can not `sudo`.
 
+Installing other packages such as [fzf](https://github.com/junegunn/fzf) (file navigation) and [bat](https://github.com/sharkdp/bat) (syntax highlighting) with binaries in  Ubuntu based Linux distributions in case you can not `sudo`.
 
 ```
 mkdir ~/my-bin
