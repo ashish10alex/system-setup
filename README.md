@@ -13,6 +13,8 @@ one shown in the video
 git clone https://github.com/ashish10alex/system-setup.git
 cd system-setup
 cp .vimrc ~/
+#install plugin manager 
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 source ~/.vimrc
 ```
 Now open `~/.vimrc` and run `:PlugInstall`. Watch my [youtube video](https://www.youtube.com/watch?v=Cs4MBcEUrMk) on how to get started with setting up this theme
