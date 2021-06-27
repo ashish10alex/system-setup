@@ -1,11 +1,11 @@
 # System-setup
 
-* `.vimrc` - Guide to setup custom vim editor with key bindings and plugins to make it productive and pretier :)
+* `.vimrc` - Guide to setup custom vim editor with key bindings and plugins to make it productive and prettier :)
 
 <img width="549" alt="Screenshot 2021-06-20 at 12 22 34" src="https://user-images.githubusercontent.com/34306898/122672203-3b149f80-d1c2-11eb-8570-fc41a319fa39.png">
 
 
-Run the following commands to setup your develpment environment similar to the
+Run the following commands to setup your development environment similar to the
 one shown in the screenshot
 
 ```
@@ -28,7 +28,7 @@ Now open `~/.vimrc` and run `:PlugInstall`. Watch my [youtube video](https://www
 Coc plugin allows easy navigation to function definition along with autocomplete feature for which it is primarily known for. However I have disabled python autocomplete and have only retained autocomplete for other files like `*.js`
 
 I have also disabled python linting in the Coc-config file located at `/Users/<username>/.vim/coc-settings.json`
-Coc-config file can optionally be opned from anywhere by `:CocConfig`
+Coc-config file can optionally be opened from anywhere by `:CocConfig`
 
 Following is my Coc-config file.
 ```
@@ -45,7 +45,7 @@ You would very likely need to do - `pip3 install jedi` to enable navigation betw
 
 Additionally you can set your python interpreter by - `:CocCommand python.setInterpreter`.
 
-#### Installing coc plugin on ubunutu systems without `sudo` access
+#### Installing coc plugin on ubuntu systems without `sudo` access
 
 Coc plugin requires you to have node and npm installed. However if you are unable to install these the standard ways (`brew`, `apt` etc..) you can manually donwload [node and npm binaries](https://nodejs.org/dist/) and add path of `node` and `npm` to your `.vimrc` and `coc-settings.json` files respectively. <b>Note</b> - Latest version of `node` binary `*.gz` file also ships with `nmp` and `yarn` binaries; which are used to install language servers e.g. `:CocInstall coc-python, coc-json, coc-tssever`. <b>Note</b> If `:CocInstall` command fails make sure that you have `node` and `npm` in your system path. To see how to add binaries to system path follow the documentation in the section <b>Add binaries to path</b>
 

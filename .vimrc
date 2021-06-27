@@ -1,22 +1,23 @@
 " removes annoying error sound
 set noerrorbells
 set belloff=all
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
+
+" While over the incorrect work in normal mode :z=1 to see suggestions
+"[s and ]s to go navigate through misspelled word
+set spell spelllang=en_us
 
 " Set internal encoding of vim
 set encoding=utf-8
 
 " TextEdit might fail if hidden is not set.
 set hidden
-
+"Smme  
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -25,6 +26,9 @@ set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
 " Install VimPlug from - https://github.com/junegunn/vim-plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
@@ -58,7 +62,7 @@ Plug 'tpope/vim-fugitive'
 "Git - to go to github link in the browser"
 Plug 'tpope/vim-rhubarb'
 
-"Shows status line - Futuve status line depends on airline"
+"Shows status line - Fugitive status line depends on airline"
 Plug 'vim-airline/vim-airline'
 
 " Syntax highlighting
@@ -79,7 +83,7 @@ Plug 'airblade/vim-gitgutter'
 
 " Replace words with copied word
 " Copy the words using - "yiw" (yank inner word)
-" Go to the the word which you want replaced and type "griw" (go replace inner word)
+" Go to the word which you want replaced and type "griw" (go replace inner word)
 " Action as usual is repeatable using "."
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
@@ -88,9 +92,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 call plug#end()
 
-"Comfortable motion scrollig parmas
+"Comfortable motion scrolling params
 let g:comfortable_motion_friction = 80.0
 let g:comfortable_motion_air_drag = 12.0
 
@@ -120,11 +125,8 @@ let g:mkdp_page_title = '「${name}」'
 
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 set relativenumber
-set textwidth=80
+set textwidth=120
 
-" Pasting with indent
-nnoremap p p=`]
-nnoremap <c-p> p
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -152,9 +154,8 @@ if system('uname -s') == "Darwin\n"
 else
   "Linux
   " For One half theme
-  " Change the value of cterm in `~/.vim/plugged/onehalf/vim/colors/onehalfdark.vim` if your backgound in mac iterm is brownish 
-  " let s:black       = { "gui": "#282c34", "cterm": "236" }
-  " Find the appropraite value for cterm from - https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+ " Change the value of cterm in `~/.vim/plugged/onehalf/vim/colors/onehalfdark.vim` if your background in mac iterm is brownish let s:black       = { "gui": "#282c34", "cterm": "236" }
+  " Find the appropriate value for cterm from - https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 
 
   " enable 256 colors
@@ -233,11 +234,6 @@ nmap <leader>[ :bp!<CR>
 nmap <leader>] :bn!<CR>
 nmap <leader>x :bd<CR>
 
-" file browser
-" Start NERDTree when opring any folder and put the cursor back in the other window.
-" autocmd VimEnter * NERDTree | wincmd p
-
-
 
 "shows all files in the current directory 
 noremap <leader>f :Files<CR> 
@@ -253,7 +249,7 @@ noremap <leader>grep :Rg!
 
 
 " tv will bring a pane that shows the current directory tree - which is
-" verically resized to to 30 units 
+" vertically resized to to 30 units 
 let g:netrw_banner = 0
 noremap <leader>nt :NERDTree<CR>
 "
@@ -268,7 +264,7 @@ map <leader>tv <C-w>t<C-w>H
 map <leader>th <C-w>t<C-w>K
 
 
-" Autocomple paranthesis vim
+" Auto complete parenthesis vim
 inoremap ( ()<Esc>i
 inoremap { {}<Esc>i
 inoremap {<CR> {<CR>}<Esc>O
@@ -276,7 +272,9 @@ inoremap [ []<Esc>i
 inoremap < <><Esc>i
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
+
  "Search and replace -> %s/<targetWord><replaceWith>/gI
+ "To replace visual block do [Shift][:]s/<targetWord>/<replaceWith><CR>
 noremap <leader>sr :%s//gI<Left><Left><Left>
 
 " Disable arrow keys - hard mode
@@ -291,7 +289,7 @@ noremap <Right> <Nop>
 " map <C-u> 5k
 
 " Show git logs using git fugitive plugin 
-" Ypu can go see the diff in the commit by pressing enter on the git commit id 
+" You can go see the diff in the commit by pressing enter on the git commit id 
 " Shown in the log
 noremap <leader>gl :G log<CR>
 noremap <leader>gc :G commit<CR>
@@ -335,7 +333,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent><leader>gr <Plug>(coc-references)
 
 
-" Disable autocomplete
+" Disable autocomplete for specific file types
 autocmd FileType python let b:coc_suggest_disable = 1
 autocmd FileType Markdown let b:coc_suggest_disable = 1
 autocmd FileType vim let b:coc_suggest_disable = 1
