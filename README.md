@@ -1,26 +1,16 @@
 # System-setup
 
-<<<<<<< HEAD
-* `.vimrc` - Guide to setup custom vim editor with key bindings and plugins to make it productive and prettier :)
-=======
 * `Ubuntu-aws.md` - Deploying flask based web application on an ubuntu machine (tested on an aws instance)
 
 ## Vimrc
 
 * `.vimrc` - Guide to setup custom vim editor with key bindings and plugins to make it productive and pretier :)
->>>>>>> d3386f2191c473bf8f104d1129c1d920d2b59bf6
 
 
 https://user-images.githubusercontent.com/34306898/123353903-731d3900-d55a-11eb-99a9-126fbbcb6716.mov
 
-<<<<<<< HEAD
 Run the following commands to setup your development environment similar to the
-one shown in the screenshot
-
-=======
-Run the following commands to setup your develpment environment similar to the
 one shown in the video
->>>>>>> d3386f2191c473bf8f104d1129c1d920d2b59bf6
 ```
 git clone https://github.com/ashish10alex/system-setup.git
 cd system-setup
