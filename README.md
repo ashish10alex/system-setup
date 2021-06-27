@@ -1,11 +1,9 @@
-# System-setup
+## Table of contents
+* [Vim development environment](#header-1)
 
-* `Ubuntu-aws.md` - Deploying flask based web application on an ubuntu machine (tested on an aws instance)
+* [Guide to deploy Flask web app on AWS instance](https://github.com/ashish10alex/system-setup/blob/main/Ubuntu-aws.md)
 
-## Vimrc
-
-* `.vimrc` - Guide to setup custom vim editor with key bindings and plugins to make it productive and pretier :)
-
+<h3 id="header-1">Vim development environment</h3> 
 
 https://user-images.githubusercontent.com/34306898/123353903-731d3900-d55a-11eb-99a9-126fbbcb6716.mov
 
@@ -21,7 +19,7 @@ Now open `~/.vimrc` and run `:PlugInstall`. Watch my [youtube video](https://www
 <b>Note</b> - Current version has arrow keys disabled in the `normal mode `for me to get used to `j, k, h, l` navigation.
 
 
-* ### [Coc plugin](https://github.com/neoclide/coc.nvim)
+* #### [Coc plugin](https://github.com/neoclide/coc.nvim)
 
 Coc plugin allows easy navigation to function definition along with autocomplete feature for which it is primarily known for. However I have disabled python autocomplete and have only retained autocomplete for other files like `*.js`
 
@@ -43,9 +41,9 @@ You would very likely need to do - `pip3 install jedi` to enable navigation betw
 
 Additionally you can set your python interpreter by - `:CocCommand python.setInterpreter`.
 
-#### Installing coc plugin on ubuntu systems without `sudo` access
+* <b> Installing coc plugin on ubuntu systems without `sudo` access </b>
 
-Coc plugin requires you to have node and npm installed. However if you are unable to install these the standard ways (`brew`, `apt` etc..) you can manually donwload [node and npm binaries](https://nodejs.org/dist/) and add path of `node` and `npm` to your `.vimrc` and `coc-settings.json` files respectively. <b>Note</b> - Latest version of `node` binary `*.gz` file also ships with `nmp` and `yarn` binaries; which are used to install language servers e.g. `:CocInstall coc-python, coc-json, coc-tssever`. <b>Note</b> If `:CocInstall` command fails make sure that you have `node` and `npm` in your system path. To see how to add binaries to system path follow the documentation in the section <b>Add binaries to path</b>
+Coc plugin requires you to have node and npm installed. However if you are unable to install these the standard ways (`brew`, `apt` etc..) you can manually donwload [node and npm binaries](https://nodejs.org/dist/) and add path of `node` and `npm` to your `.vimrc` and `coc-settings.json` files respectively. <b>Note</b> - Latest version of `node` binary `*.gz` file also ships with `nmp` and `yarn` binaries; which are used to install language servers e.g. `:CocInstall coc-python, coc-json, coc-tssever`. <b>Note</b> If `:CocInstall` command fails make sure that you have `node` and `npm` in your system path. To see how to add binaries to system path follow the documentation in the sub-section [Add binaries to path](#Add-binaries-to-path)
 
 Commands to download node binaries
 ```
@@ -74,7 +72,7 @@ And path of nmp to your `coc-settings.json`
 
 Here `$HOME` should automagically add full path to your home directory. If it gives an error please add full path manually. 
 
-#### Add binaries to path
+<h4 id="Add-binaries-to-path">Add binaries to path</h4> 
 Installing other packages ([fzf](https://github.com/junegunn/fzf) (file navigation) and [bat](https://github.com/sharkdp/bat) (syntax highlighting)) with binaries in  Ubuntu based linux distros in case you can not `sudo`.
 
 
