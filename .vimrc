@@ -272,6 +272,7 @@ inoremap [ []<Esc>i
 inoremap < <><Esc>i
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
+inoremap ` ``<Esc>i
 
  "Search and replace -> %s/<targetWord><replaceWith>/gI
  "To replace visual block do [Shift][:]s/<targetWord>/<replaceWith><CR>
@@ -331,7 +332,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent><leader>gr <Plug>(coc-references)
-
+nmap <silent> sgd :call CocAction('jumpDefinition', 'split')<CR>
 
 " Disable autocomplete for specific file types
 autocmd FileType python let b:coc_suggest_disable = 1
@@ -344,5 +345,16 @@ autocmd FileType vim let b:coc_suggest_disable = 1
 " let g:coc_node_path = '$HOME/node-from-source/bin/node'
 
 " Copy vim clipboard to system clipboard 
-" Kind of buggy - works from PC to sever but not from sever to PC
-noremap <silent>Y "*y
+"https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim
+if system('uname -s') == "Darwin\n"
+    "OSX
+    noremap <silent>Y "*y
+else
+    "Linux
+    noremap <silent>Y "+y
+endif
+
+
+
+
+
