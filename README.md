@@ -18,8 +18,23 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.
 source ~/.vimrc
 ```
 Now open `~/.vimrc` and run `:PlugInstall`. Watch my [youtube video](https://www.youtube.com/watch?v=Cs4MBcEUrMk) on how to get started with setting up this theme
-<b>Note</b> - Current version has arrow keys disabled in the `normal mode `for me to get used to `j, k, h, l` navigation.
+<b>Note</b> - Current version has arrow keys disabled in the `normal mode `for me to get used to `j, k, h, l` navigation. 
 
+I personally use [vim-one](https://github.com/rakr/vim-one) color scheme on my MAC OS with some [changes](https://github.com/ashish10alex/system-setup/blob/main/one.vim) to the deafult color scheme file. I use the default [one-half](https://github.com/sonph/onehalf) color scheme for Ubuntu. To make changes in the colorscheme use [this reference](https://jonasjacek.github.io/colors/) which has the list of 256 Xterm colors and make changes to colorscheme files which should be located in the following directories after you have ran the initial installation commands.
+
+[vim-one](https://github.com/rakr/vim-one) color scheme file (Mac OS)
+```
+vi ~/.vim/plugged/vim-one/colors/one.vim
+
+#to get exactly the color scheme that Iam using -
+git clone https://github.com/ashish10alex/system-setup
+cd system-setup
+cp one.vim ~/.vim/plugged/vim-one/colors/one.vim
+```
+[one-half](https://github.com/sonph/onehalf) color scheme file (Ubuntu)
+```
+vi ~/.vim/plugged/onehalf/vim/colors/onehalfdark.vim
+```
 
 * #### [Coc plugin](https://github.com/neoclide/coc.nvim)
 
