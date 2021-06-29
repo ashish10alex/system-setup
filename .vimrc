@@ -340,8 +340,8 @@ autocmd FileType Markdown let b:coc_suggest_disable = 1
 autocmd FileType vim let b:coc_suggest_disable = 1
 
 " For easy vertical navigation in markdown files
-autocmd FileType Markdown map j gj
-autocmd FileType Markdown map k gk
+autocmd FileType markdown map j gj
+autocmd FileType markdown map k gk
 
 " Add  path to your node binary here - requirement for coc plugin
 " Coc plugin also requires nmp for installing extension please refere to README
