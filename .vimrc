@@ -25,6 +25,9 @@ set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
+" To stop comments from continuing 
+set formatoptions-=c formatoptions-=r formatoptions-=o
+
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
@@ -214,7 +217,7 @@ noremap <leader>grep :Rg!
 let g:netrw_banner = 0
 noremap <leader>nt :NERDTree<CR>
 "
-"
+
 "reduce and increase the side of vertical split
 noremap <leader><Left> :vertical resize +5<CR>
 noremap <leader><Right> :vertical resize -5<CR>
@@ -324,10 +327,12 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
-let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+"
 " Move 1 more lines up or down in normal and visual selection modes.
 nnoremap <C-k> :m .-2<CR>==
 nnoremap <C-j> :m .+1<CR>==
 vnoremap <C-k> :m '<-2<CR>gv=gv
 vnoremap <C-j>  :m '>+1<CR>gv=gv
+
