@@ -35,7 +35,6 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-" fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
 "shows files, git-file in the current directory 
@@ -94,6 +93,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 call plug#end()
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 "Comfortable motion scrolling params
 let g:comfortable_motion_friction = 80.0
