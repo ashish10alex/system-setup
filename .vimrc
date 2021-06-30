@@ -324,5 +324,10 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
-
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+
+" Move 1 more lines up or down in normal and visual selection modes.
+nnoremap <C-k> :m .-2<CR>==
+nnoremap <C-j> :m .+1<CR>==
+vnoremap <C-k> :m '<-2<CR>gv=gv
+vnoremap <C-j>  :m '>+1<CR>gv=gv
