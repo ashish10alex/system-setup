@@ -151,6 +151,7 @@ else
   " enable 256 colors
   set t_ut=
   colorscheme onehalfdark
+  highlight Comment gui=none cterm=none
   let g:airline_theme='onehalfdark'
   " lightline
   " let g:lightline = { 'colorscheme': 'onehalfdark' }
