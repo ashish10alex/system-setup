@@ -351,6 +351,10 @@ else
     "Linux
     noremap <silent>Y "+y
 endif
+set clipboard=unnamed " Does the something, might remove the one above
+
+" Show hidden files in fzf
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 "CTRL-A CTRL-Q to select all and build quickfix list
 ":cexpr [] to delete all items from the quick fix list
