@@ -39,6 +39,7 @@ Plug 'junegunn/vim-easy-align'
 
 "shows files, git-file in the current directory 
 "Also support recurssive grep (Note install rg first -> https://github.com/BurntSushi/ripgrep#installation)
+"Install bat for syntax highlighting 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim' 
 
@@ -76,10 +77,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 "Git gutter
 Plug 'airblade/vim-gitgutter'
 
-" Manage git branches with fzf
-" Plug 'stsewd/fzf-checkout.vim'
-
-
 " Replace words with copied word
 " Copy the words using - "yiw" (yank inner word)
 " Go to the word which you want replaced and type "griw" (go replace inner word)
@@ -91,6 +88,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+" Insert or delete brackets, parens, quotes in pair.
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -132,52 +132,20 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 set relativenumber
 set textwidth=120
 
-
 let g:gitgutter_async=0
+  " set termguicolors
 
 set cursorline
 set t_Co=256
 if system('uname -s') == "Darwin\n"
-  "OSX
   colorscheme one
-  " set termguicolors
 else
-  "Linux
-  " For One half theme
- " Change the value of cterm in `~/.vim/plugged/onehalf/vim/colors/onehalfdark.vim` if your background in mac iterm is brownish let s:black       = { "gui": "#282c34", "cterm": "236" }
-  " Find the appropriate value for cterm from - https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
-
-
-  " enable 256 colors
   set t_ut=
   colorscheme onehalfdark
   highlight Comment gui=none cterm=none
   let g:airline_theme='onehalfdark'
-  " lightline
-  " let g:lightline = { 'colorscheme': 'onehalfdark' }
 endif
 
-" colorscheme gruvbox
-
-" For one dark theme
-" syntax on
-" colorscheme onedark
-" set cursorline
-
-
-" to get fzf preview syntax highlighting with bat
-" First install bat - (https://github.com/sharkdp/bat#installation) - Mac OS  brew install bat
-"add this to your ~/.zhrc or ~/.bashrc
-" export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
-
-" Syntax highlighted grep
-" brew install eth-p/software/bat-extras-batgrep
-
-" Makes tags recurssively in the directory and can navigate between functions using CTRL + ]
-" Go back to the last navigation using CTRL + T
-" CTRL + W CTRL = ] opens the definition in a new tab
-command! MakeTags !ctags -R .
-set tags=./tags;/
 
 set tabstop=4 softtabstop=4
 set shiftwidth=4
@@ -216,6 +184,7 @@ set ttimeout
 set ttimeoutlen=1
 set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
 set ttyfast
+
 
 "Shows an exhaustive list during tab completion
 set wildmode=longest,list,full
@@ -256,17 +225,6 @@ noremap <leader><Up> : resize -5<CR>
 "Change split windows from vertical to horizonal
 map <leader>tv <C-w>t<C-w>H
 map <leader>th <C-w>t<C-w>K
-
-
-" Auto complete parenthesis vim
-inoremap ( ()<Esc>i
-inoremap { {}<Esc>i
-inoremap {<CR> {<CR>}<Esc>O
-inoremap [ []<Esc>i
-inoremap < <><Esc>i
-inoremap ' ''<Esc>i
-inoremap " ""<Esc>i
-inoremap ` ``<Esc>i
 
  "Search and replace -> %s/<targetWord><replaceWith>/gI
  "To replace visual block do [Shift][:]s/<targetWord>/<replaceWith><CR>
@@ -370,3 +328,4 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+
