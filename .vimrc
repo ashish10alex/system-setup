@@ -11,7 +11,6 @@ set encoding=utf-8
 
 " TextEdit might fail if hidden is not set.
 set hidden
-"Smme  
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
@@ -32,9 +31,6 @@ set shortmess+=c
 " Install VimPlug from - https://github.com/junegunn/vim-plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
-
-" Make sure you use single quotes
-
 Plug 'junegunn/vim-easy-align'
 
 "shows files, git-file in the current directory 
@@ -174,9 +170,11 @@ set foldlevel=99
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
   else
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    let &t_SR =  "\<Esc>]50;CursorShape=2\x7"
 endif
 
 " make the switch between insert and normal mode faster 
@@ -328,4 +326,3 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
-
