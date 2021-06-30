@@ -22,3 +22,9 @@ alias tls='tmux ls'
 alias tat='tmux attach -t'
 alias tns='tmux new-session -s'
 
+# alias to make life easier 
+alias lg="ls | grep"
+alias ctags="`brew --prefix`/bin/ctags"
+alias lpath='echo $PATH | tr ":" "\n"' # list the PATH separated by new lines
+alias cat='bat --paging=never'
+alias grep='batgrep'
