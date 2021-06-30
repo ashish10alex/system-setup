@@ -1,11 +1,24 @@
+# Might be ~/.zshrc for MAC 
+
+# GIT
+
 #show git diff in fzf
 gdiff() {
 git status -s | fzf --no-sort --reverse --preview 'git diff --color=always {+2} '
 }
 
-# git diff pretier but less info
+# git diff prettier but less info
 batdiff() {
     git diff --name-only --diff-filter=d | xargs bat --diff
 }
 export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+
+
+export TERM=screen-256color #to enable vim syntax highlighting in tmux sessions
+
+# tmux aliases
+alias ta='tmux attach'
+alias tls='tmux ls'
+alias tat='tmux attach -t'
+alias tns='tmux new-session -s'
 

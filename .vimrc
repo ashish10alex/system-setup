@@ -140,7 +140,7 @@ set t_Co=256
 if system('uname -s') == "Darwin\n"
   "OSX
   colorscheme one
-  set termguicolors
+  " set termguicolors
 else
   "Linux
   " For One half theme
@@ -201,12 +201,16 @@ set foldlevel=99
 " https://stackoverflow.com/questions/6488683/how-do-i-change-the-cursor-between-normal-and-insert-modes-in-vim
 " change cursor in insert mode 
 " Regular mode - block
-" Inster mode - line
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+" Insert mode - line
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
 
-" make the switch between insert and normal mode fater 
+" make the switch between insert and normal mode faster 
 set ttimeout
 set ttimeoutlen=1
 set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
