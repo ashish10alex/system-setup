@@ -329,13 +329,6 @@ else
 endif
 set clipboard=unnamed " Does the something, might remove the one above
 
-if system('uname -s') == "Darwin\n"
-    "OSX
-    " Show hidden files in fzf
-    let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-else
-endif
-
 
 "CTRL-A CTRL-Q to select all and build quickfix list
 ":cexpr [] to delete all items from the quick fix list
@@ -350,7 +343,14 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+
+" Show hidden files in fzf
+if system('uname -s') == "Darwin\n"
+    "OSX
+    " Show hidden files in fzf
+    let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+else
+endif
 "
 " Move 1 more lines up or down in normal and visual selection modes.
 nnoremap <C-k> :m .-2<CR>==
@@ -373,4 +373,7 @@ function! s:check_back_space() abort
 "Tab to navigate completion list
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+"Correct colors for Coc Pmenus
+hi Pmenu ctermbg=234 ctermfg=145
 
