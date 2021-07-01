@@ -11,7 +11,6 @@ set encoding=utf-8
 
 " TextEdit might fail if hidden is not set.
 set hidden
-"Smme  
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
@@ -26,15 +25,15 @@ set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
+" To stop comments from continuing 
+set formatoptions-=c formatoptions-=r formatoptions-=o
+
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
 " Install VimPlug from - https://github.com/junegunn/vim-plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
-
-" Make sure you use single quotes
-
 Plug 'junegunn/vim-easy-align'
 
 "shows files, git-file in the current directory 
@@ -174,9 +173,11 @@ set foldlevel=99
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
   else
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    let &t_SR =  "\<Esc>]50;CursorShape=2\x7"
 endif
 
 " make the switch between insert and normal mode faster 
@@ -216,7 +217,7 @@ noremap <leader>grep :Rg!
 let g:netrw_banner = 0
 noremap <leader>nt :NERDTree<CR>
 "
-"
+
 "reduce and increase the side of vertical split
 noremap <leader><Left> :vertical resize +5<CR>
 noremap <leader><Right> :vertical resize -5<CR>
@@ -254,6 +255,15 @@ noremap <leader>gb :GBrowse <CR>
 
 " Tab completion of paths in vim
 " imap <Tab> <C-X><C-F>
+
+
+if system('uname -s') == "Darwin\n"
+else
+    "Linux
+    let python_highlight_all = 1
+    let python_highlight_space_errors = 0
+endif
+
 
 " Show documentation when you press K
 function! s:show_documentation()
@@ -328,4 +338,10 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+"
+" Move 1 more lines up or down in normal and visual selection modes.
+nnoremap <C-k> :m .-2<CR>==
+nnoremap <C-j> :m .+1<CR>==
+vnoremap <C-k> :m '<-2<CR>gv=gv
+vnoremap <C-j>  :m '>+1<CR>gv=gv
 
