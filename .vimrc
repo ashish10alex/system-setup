@@ -321,8 +321,13 @@ else
 endif
 set clipboard=unnamed " Does the something, might remove the one above
 
-" Show hidden files in fzf
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+if system('uname -s') == "Darwin\n"
+    "OSX
+    " Show hidden files in fzf
+    let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+else
+endif
+
 
 "CTRL-A CTRL-Q to select all and build quickfix list
 ":cexpr [] to delete all items from the quick fix list
