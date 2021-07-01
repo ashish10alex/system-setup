@@ -1,5 +1,6 @@
 ## Table of contents
 * [Vim development environment](#header-1)
+    - [Tmux](https://github.com/ashish10alex/system-setup/blob/main/tmux.md)
 
 * [Guide to deploy Flask web app on AWS instance](https://github.com/ashish10alex/system-setup/blob/main/Ubuntu-aws.md)
 
