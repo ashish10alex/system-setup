@@ -34,7 +34,14 @@ set formatoptions-=c formatoptions-=r formatoptions-=o
 " Install VimPlug from - https://github.com/junegunn/vim-plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
+
+Plug 'honza/vim-snippets'
+
+
 Plug 'junegunn/vim-easy-align'
+
+" Latex plugins
+Plug 'lervag/vimtex'
 
 "shows files, git-file in the current directory 
 "Also support recurssive grep (Note install rg first -> https://github.com/BurntSushi/ripgrep#installation)
@@ -54,6 +61,7 @@ Plug 'rakr/vim-one'
 
 "commenting 
 Plug 'tpope/vim-commentary'
+
 
 "Git "
 Plug 'tpope/vim-fugitive'
@@ -344,4 +352,20 @@ nnoremap <C-k> :m .-2<CR>==
 nnoremap <C-j> :m .+1<CR>==
 vnoremap <C-k> :m '<-2<CR>gv=gv
 vnoremap <C-j>  :m '>+1<CR>gv=gv
+
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+      let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction
+
+    inoremap <silent><expr> <Tab>
+          \ pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<Tab>" :
+          \ coc#refresh()
+
+"Tab to navigate completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
