@@ -19,9 +19,35 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.
 source ~/.vimrc
 ```
 Now open `~/.vimrc` and run `:PlugInstall`. Watch my [youtube video](https://www.youtube.com/watch?v=Cs4MBcEUrMk) on how to get started with setting up this theme
+
+[Vim profiler](https://github.com/bchretien/vim-profiler) -  `python3 vim-profiler.py` to identify the top 10 Plugins that might be slowing down your vim
+startup time. Example output of my `.vimrc` (all times are in milli seconds) 
+
+```
+Running vim to generate startup logs... done.
+Loading and processing logs... done.
+Plugin directory: /Users/ashishalex/.vim/plugged
+====================================
+Top 10 plugins slowing vim's startup
+====================================
+1  43.032   vim-polyglot
+2  19.896   vim-one
+3  11.140   nerdtree
+4   7.465   vim-airline
+5   5.714   coc.nvim
+6   2.764   vim-gitgutter
+7   2.264   nerdtree-git-plugin
+8   1.934   vimtex
+9   1.782   vim-fugitive
+10    1.009   fzf
+====================================
+```
+
 <b>Note</b> - Current version has arrow keys disabled in the `normal mode `for me to get used to `j, k, h, l` navigation. 
 
 I personally use [vim-one](https://github.com/rakr/vim-one) color scheme on my MAC OS with some [changes](https://github.com/ashish10alex/system-setup/blob/main/one.vim) to the default color scheme file. I use the default [one-half](https://github.com/sonph/onehalf) color scheme for Ubuntu. To make changes in the colorscheme use [this reference](https://jonasjacek.github.io/colors/) which has the list of 256 Xterm colors and make changes to colorscheme files which should be located in the following directories after you have ran the initial installation commands.
+
+
 
 [vim-one](https://github.com/rakr/vim-one) color scheme file (Mac OS)
 ```
