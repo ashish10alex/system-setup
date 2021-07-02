@@ -163,11 +163,11 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 let g:gitgutter_async=0
 
-set termguicolors
 set cursorline
 set t_Co=256
 if system('uname -s') == "Darwin\n"
   colorscheme one
+  set termguicolors
 else
   set t_ut=
   colorscheme onehalfdark
