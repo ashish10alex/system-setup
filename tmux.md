@@ -16,6 +16,9 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 
+# Fzf integration to manage tmux sessions
+set -g @plugin 'sainnhe/tmux-fzf'
+
 run -b '~/.tmux/plugins/tpm/tpm'
 ```
 

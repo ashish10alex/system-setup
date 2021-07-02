@@ -63,9 +63,9 @@ cp one.vim ~/.vim/plugged/vim-one/colors/one.vim
 vi ~/.vim/plugged/onehalf/vim/colors/onehalfdark.vim
 ```
 
-* #### [Coc plugin](https://github.com/neoclide/coc.nvim)
 
-Coc plugin allows easy navigation to function definition along with autocomplete feature for which it is primarily known for. However I have disabled python autocomplete and have only retained autocomplete for other files extensions like `*.js`.
+
+[Coc plugin](https://github.com/neoclide/coc.nvim) allows easy navigation to function definition along with autocomplete feature for which it is primarily known for. However I have disabled python autocomplete and have only retained autocomplete for other files extensions like `*.js`.
 
 I have also disabled python linting in the Coc-config file located at `/Users/<username>/.vim/coc-settings.json`
 Coc-config file can optionally be opened from anywhere by `:CocConfig`
