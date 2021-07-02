@@ -264,14 +264,11 @@ noremap <leader>gb :GBrowse <CR>
 " Tab completion of paths in vim
 " imap <Tab> <C-X><C-F>
 
-
-if system('uname -s') == "Darwin\n"
-else
-    "Linux
-    let python_highlight_all = 1
-    let python_highlight_space_errors = 0
+let ostype = substitute(system('uname'), "\n", "", "")
+if ostype == "Linux"
+   let python_highlight_all = 1
+   let python_highlight_space_errors = 0
 endif
-
 
 " Show documentation when you press K
 function! s:show_documentation()
@@ -331,6 +328,7 @@ set clipboard=unnamed " Does the something, might remove the one above
 
 
 "CTRL-A CTRL-Q to select all and build quickfix list
+"https://github.com/junegunn/fzf.vim/issues/185
 ":cexpr [] to delete all items from the quick fix list
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
