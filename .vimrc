@@ -59,6 +59,8 @@ set foldlevel=99
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-surround'
+
 Plug 'honza/vim-snippets'
 
 Plug 'junegunn/vim-easy-align'
