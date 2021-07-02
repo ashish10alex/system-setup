@@ -61,52 +61,35 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'honza/vim-snippets'
 
-
 Plug 'junegunn/vim-easy-align'
 
-" Latex plugins
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex' " Latex plugins
 
-"shows files, git-file in the current directory 
-"Also support recurssive grep (Note install rg first -> https://github.com/BurntSushi/ripgrep#installation)
-"Install bat for syntax highlighting 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  "shows files, git-file in the current directory, Install bat for syntax highlighting 
 Plug 'junegunn/fzf.vim' 
 
-Plug 'yuttie/comfortable-motion.vim' " scrolling 'C-d' or 'C-u'
+Plug 'yuttie/comfortable-motion.vim' " smooth scrolling 'C-d' or 'C-u'
 
 "Themes for vim editor
-"preferred on the server
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'sonph/onehalf', { 'rtp': 'vim' } "preferred on linux server
+Plug 'rakr/vim-one' " For mac
 
-" For mac
-" Plug 'morhetz/gruvbox'
-Plug 'rakr/vim-one'
+Plug 'tpope/vim-commentary' "commenting - `gcc` for commenting and un-commenting 
 
-"commenting 
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive' "Git workflows
 
+Plug 'tpope/vim-rhubarb' "Git - to go to github link in the browser
 
-"Git "
-Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline' "Shows status line - Fugitive status line depends on airline
 
-"Git - to go to github link in the browser"
-Plug 'tpope/vim-rhubarb'
+Plug 'sheerun/vim-polyglot' " Syntax highlighting
 
-"Shows status line - Fugitive status line depends on airline"
-Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree' "nerd tree - shows files in folder in a vertical split
 
-" Syntax highlighting
-Plug 'sheerun/vim-polyglot'
+Plug 'Xuyuanp/nerdtree-git-plugin' " New nerd tree ?
 
-"nerd tree - shows files in folder in a vertical split
-Plug 'preservim/nerdtree'
-
-" New nerd tree ?
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-"Git gutter
-Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter' "Git gutter
 
 " Replace words with copied word
 " Copy the words using - "yiw" (yank inner word)
@@ -114,15 +97,11 @@ Plug 'airblade/vim-gitgutter'
 " Action as usual is repeatable using "."
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
-" Autocomplete and very quick navigation between functions
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Auto complete and very quick navigation between functions
 
-" Markdown preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview
 
-" Insert or delete brackets, parens, quotes in pair.
-Plug 'jiangmiao/auto-pairs'
-
+Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
 call plug#end()
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -135,7 +114,7 @@ nmap ga <Plug>(EasyAlign)
 let g:comfortable_motion_friction = 80.0
 let g:comfortable_motion_air_drag = 12.0
 
-" markdown-preview.nvim
+" MarkdownPreview settings
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 0
@@ -160,12 +139,13 @@ let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
 
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
-
 let g:gitgutter_async=0
+
+let ostype = substitute(system('uname'), "\n", "", "")
 
 set cursorline
 set t_Co=256
-if system('uname -s') == "Darwin\n"
+if ostype == "Darwin"
   colorscheme one
   set termguicolors
 else
@@ -175,16 +155,11 @@ else
   let g:airline_theme='onehalfdark'
 endif
 
-
 " Press Space to turn off highlighting and clear any message already displayed.
 noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-
-
 " https://stackoverflow.com/questions/6488683/how-do-i-change-the-cursor-between-normal-and-insert-modes-in-vim
-" change cursor in insert mode 
-" Regular mode - block
-" Insert mode - line
+" Regular mode - block,  Insert mode - vertical line, Replace mode - _
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -201,8 +176,6 @@ set ttimeoutlen=1
 set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
 set ttyfast
 
-
-
 " map the leader key to space bar
 let mapleader = " "
 
@@ -211,25 +184,19 @@ nmap <leader>[ :bp!<CR>
 nmap <leader>] :bn!<CR>
 nmap <leader>x :bd<CR>
 
-
 "shows all files in the current directory 
 noremap <leader>f :Files<CR> 
 "shows all git files in the current directory 
 noremap <leader>gf :GFiles<CR> 
 "shows all files store in buffer 
 noremap <leader>b :Buffers<CR> 
-" Recurrsive grep
-" Must need to install rg 
+" Recurrsive grep, must need to install rg 
 " Mac - brew install ripgrep 
 " Linux - sudo apt-get install ripgrep
 noremap <leader>grep :Rg! 
 
-
-" tv will bring a pane that shows the current directory tree - which is
-" vertically resized to to 30 units 
 let g:netrw_banner = 0
 noremap <leader>nt :NERDTree<CR>
-"
 
 "reduce and increase the side of vertical split
 noremap <leader><Left> :vertical resize +5<CR>
@@ -256,9 +223,7 @@ noremap <Right> <Nop>
 " map <C-d> 5j
 " map <C-u> 5k
 
-" Show git logs using git fugitive plugin 
-" You can go see the diff in the commit by pressing enter on the git commit id 
-" Shown in the log
+" Git fugitive mappings
 noremap <leader>gl :G log<CR>
 noremap <leader>gc :G commit<CR>
 noremap <leader>gp :G push<CR>
@@ -267,10 +232,6 @@ noremap <leader>gs :G <CR>
 "open github url on web browser
 noremap <leader>gb :GBrowse <CR> 
 
-" Tab completion of paths in vim
-" imap <Tab> <C-X><C-F>
-
-let ostype = substitute(system('uname'), "\n", "", "")
 if ostype == "Linux"
    let python_highlight_all = 1
    let python_highlight_space_errors = 0
@@ -286,6 +247,7 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
 " Use K to show documentation in preview window.
 noremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -298,7 +260,6 @@ nmap <leader>F  <Plug>(coc-format-selected)
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-
 
 " GoTo code navigation using coc
 nmap <silent> gd <Plug>(coc-definition)
@@ -317,24 +278,19 @@ autocmd FileType markdown map j gj
 autocmd FileType markdown map k gk
 
 " Add  path to your node binary here - requirement for coc plugin
-" Coc plugin also requires nmp for installing extension please refere to README
-" on how to configure that 
+" Coc plugin also requires nmp for installing extension please refere to README on how to configure that 
 " let g:coc_node_path = '$HOME/node-from-source/bin/node'
 
-" Copy vim clipboard to system clipboard 
-"https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim
-if system('uname -s') == "Darwin\n"
-    "OSX
+" Copy vim clipboard to system clipboard - https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim
+if ostype== "Darwin"
     noremap <silent>Y "*y
 else
-    "Linux
     noremap <silent>Y "+y
 endif
 set clipboard=unnamed " Does the something, might remove the one above
 
 
-"CTRL-A CTRL-Q to select all and build quickfix list
-"https://github.com/junegunn/fzf.vim/issues/185
+"CTRL-A CTRL-Q to select all and build quickfix list -  https://github.com/junegunn/fzf.vim/issues/185
 ":cexpr [] to delete all items from the quick fix list
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
@@ -350,8 +306,7 @@ let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 
 
 " Show hidden files in fzf
-if system('uname -s') == "Darwin\n"
-    "OSX
+if ostype == "Darwin"
     " Show hidden files in fzf
     let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 else
@@ -362,7 +317,6 @@ nnoremap <C-k> :m .-2<CR>==
 nnoremap <C-j> :m .+1<CR>==
 vnoremap <C-k> :m '<-2<CR>gv=gv
 vnoremap <C-j>  :m '>+1<CR>gv=gv
-
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
