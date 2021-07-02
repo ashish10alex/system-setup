@@ -309,7 +309,6 @@ let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 if ostype == "Darwin"
     " Show hidden files in fzf
     let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-else
 endif
 "
 " Move 1 more lines up or down in normal and visual selection modes.
