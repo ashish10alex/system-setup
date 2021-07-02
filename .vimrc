@@ -1,6 +1,20 @@
+set nocompatible
+"Shows an exhaustive list during tab completion
+set wildmode=longest,list,full
+set wildmenu
+" Ignore files
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/android/*
+set wildignore+=**/ios/*
+set wildignore+=**/.git/*
+
 " removes annoying error sound
 set noerrorbells
-set belloff=all
+
+set scrolloff=10 "Smooth scrolling at the bottom
 
 " While over the incorrect work in normal mode :z=1 to see suggestions
 "[s and ]s to go navigate through misspelled word
@@ -11,26 +25,36 @@ set encoding=utf-8
 
 " TextEdit might fail if hidden is not set.
 set hidden
-" Some servers have issues with backup files, see #649.
+" Some servers have issues with backup files
 set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
 set cmdheight=1
 
+set relativenumber
+set textwidth=120
+
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+set updatetime=50
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" To stop comments from continuing 
-set formatoptions-=c formatoptions-=r formatoptions-=o
+set formatoptions-=c formatoptions-=r formatoptions-=o " To stop comments from continuing 
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set nu
+set smartcase
+set incsearch
+set hlsearch
+set ic " case insensitive search
+set foldmethod=indent
+set foldlevel=99
 
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
 " Install VimPlug from - https://github.com/junegunn/vim-plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
@@ -136,12 +160,10 @@ let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
 
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
-set relativenumber
-set textwidth=120
 
 let g:gitgutter_async=0
-  " set termguicolors
 
+set termguicolors
 set cursorline
 set t_Co=256
 if system('uname -s') == "Darwin\n"
@@ -154,24 +176,9 @@ else
 endif
 
 
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-set nu
-set smartcase
-set incsearch
-set hlsearch
-" case insensitive search
-set ic
-" change to below to not ignore case 
-" :set noic
 " Press Space to turn off highlighting and clear any message already displayed.
 noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-" code folding
-set foldmethod=indent
-set foldlevel=99
 
 
 " https://stackoverflow.com/questions/6488683/how-do-i-change-the-cursor-between-normal-and-insert-modes-in-vim
@@ -195,8 +202,6 @@ set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
 set ttyfast
 
 
-"Shows an exhaustive list during tab completion
-set wildmode=longest,list,full
 
 " map the leader key to space bar
 let mapleader = " "
@@ -231,7 +236,8 @@ noremap <leader><Left> :vertical resize +5<CR>
 noremap <leader><Right> :vertical resize -5<CR>
 noremap <leader><Down>  : resize +5<CR>
 noremap <leader><Up> : resize -5<CR>
-"Change split windows from vertical to horizonal
+
+"Change split windows from vertical to horizontally
 map <leader>tv <C-w>t<C-w>H
 map <leader>th <C-w>t<C-w>K
 
