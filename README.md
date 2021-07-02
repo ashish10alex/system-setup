@@ -47,12 +47,17 @@ Coc-config file can optionally be opened from anywhere by `:CocConfig`
 Following is my Coc-config file - 
 ```
 {
-"coc.preferences.useQuickfixForLocations": true,
-"python.linting.enabled": false,
-"python.linting.pylintEnabled": true,
-"python.jediEnabled": true,
-"python.linting.lintOnSave": true,
-"python.linting.flake8Enabled": true
+  /*"npm.binPath": "/jmain01/home/JAD007/txk02/aaa18-txk02/node-from-source/bin/npm",*/
+
+  "coc.preferences.useQuickfixForLocations": true, 
+  /* "coc.preferences.formatOnSaveFiletypes": ["python"], */
+  "python.linting.enabled": false,
+  "python.linting.pylintEnabled": true,
+  "python.jediEnabled": true,
+  "python.linting.lintOnSave": true,
+  "python.linting.flake8Enabled": true,
+
+  "snippets.userSnippetsDirectory": "~/.vim/snips"
 }
 ```
 You would very likely need to do - `pip3 install jedi` to enable navigation between python functions. In tests so far `jedi` works fine with `python 3.7` but some features such as `coc-references` failed with `python 3.9`. Documentation on how to do this navigation is covered in `.vimrc` file.
