@@ -1,9 +1,9 @@
-# Tmux setup 
+# tmux setup 
 
-Tmux is an open-source terminal multiplexer for Unix-like operating systems. It allows multiple terminal sessions to be
+tmux is an open-source terminal multiplexer for Unix-like operating systems. It allows multiple terminal sessions to be
 accessed simultaneously in a single window(<i>wiki</i>).
 
-To setup tmux with my config file- 
+To setup tmux with my [config file](https://github.com/ashish10alex/system-setup/blob/main/.tmux.conf) 
 
 ```
 git clone https://github.com/ashish10alex/system-setup
@@ -21,11 +21,11 @@ From the terminal source the tmux configuration by running
 $ tmux source ~/.tmux.conf
 ```
 
-Refer to [Tmux cheat sheet](https://tmuxcheatsheet.com) to get upto speed with Tmux
+Refer to [tmux cheat sheet](https://tmuxcheatsheet.com) to get upto speed with Tmux
 
 ## Plugins
 
-#### [Tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) 
+#### [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) 
 
 Preserves tmux sessions over reboots.
 
@@ -44,7 +44,7 @@ Now you can -
  - restore sessions using `prefix` + <kbd>CTLR</kbd> + r
 
 
-#### [Fzf integration with Tmux](https://github.com/sainnhe/tmux-fzf)
+#### [Fzf integration with tmux](https://github.com/sainnhe/tmux-fzf)
 
 Easy management of windows, sessions, invoked by - `prefix` + <kbd>SHIFT</kbd> + f
 
