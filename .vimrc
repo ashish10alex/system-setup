@@ -338,4 +338,5 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "Correct colors for Coc Pmenus
 hi Pmenu ctermbg=234 ctermfg=145
+hi PmenuSel ctermbg=237  ctermfg=145
 
