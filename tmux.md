@@ -21,7 +21,7 @@ From the terminal source the tmux configuration by running
 $ tmux source ~/.tmux.conf
 ```
 
-You can make changes and reload tmux config using - `prefix` + <kbd>SHIFT</kbd> + r 
+You can make changes and reload tmux config using - `prefix` + <kbd>SHIFT</kbd> + r.  Currently my `prefix` is the same as default <kbd>CTLR</kbd> + b
 
 Refer to [tmux cheat sheet](https://tmuxcheatsheet.com) to get started with tmux
 
@@ -39,7 +39,7 @@ $ tmux source ~/.tmux.conf
 ```
 
 Go inside any of your your `tmux` sessions and Press `prefix` + <kbd>I</kbd> (capital i, as in **I**nstall) to fetch
-the plugin. Currently my `prefix` is the same as default <kbd>CTLR</kbd> + b
+the plugin. 
 
 Now you can - 
  - save sessions using `prefix` + <kbd>CTLR</kbd> + s
