@@ -314,11 +314,12 @@ endif
 
 " Grep the current file with fzf with preview
 " To get preview with BLines - https://github.com/junegunn/fzf.vim/issues/374
-command! -bang -nargs=* BLines
-    \ call fzf#vim#grep(
+command! -bang -nargs=* CustomBLines
+      \ call fzf#vim#grep(
     \   'rg --with-filename --column --line-number --no-heading --smart-case . '.fnameescape(expand('%:p')), 1,
-    \   fzf#vim#with_preview({'options': '--layout reverse --query '.shellescape(<q-args>).' --with-nth=4.. --delimiter=":"'}, 'right:50%'))
-nnoremap <silent> <Leader>/ :BLines<CR>
+    \   fzf#vim#with_preview({'options': '--keep-right --delimiter : --nth 4.. --preview "bat -p --color always {}"'}, 'right:60%' ))
+nnoremap <leader>/ :CustomBLines<Cr>
+
 
 " Move 1 more lines up or down in normal and visual selection modes.
 nnoremap <C-k> :m .-2<CR>==
