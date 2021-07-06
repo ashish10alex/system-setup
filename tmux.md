@@ -21,7 +21,9 @@ From the terminal source the tmux configuration by running
 $ tmux source ~/.tmux.conf
 ```
 
-Refer to [tmux cheat sheet](https://tmuxcheatsheet.com) to get upto speed with Tmux
+You can make changes and reload tmux config using - `prefix` + <kbd>SHIFT</kbd> + r 
+
+Refer to [tmux cheat sheet](https://tmuxcheatsheet.com) to get started with tmux
 
 ## Plugins
 
