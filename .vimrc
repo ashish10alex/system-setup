@@ -1,4 +1,3 @@
-set nocompatible
 "Shows an exhaustive list during tab completion
 set wildmode=longest,list,full
 set wildmenu
@@ -65,7 +64,7 @@ Plug 'honza/vim-snippets'
 
 Plug 'junegunn/vim-easy-align'
 
-Plug 'lervag/vimtex' " Latex plugins
+" Plug 'lervag/vimtex' " Latex plugins
 
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  "shows files, git-file in the current directory, Install bat for syntax highlighting 
@@ -333,6 +332,9 @@ function! s:check_back_space() abort
 "Tab to navigate completion list
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Trigger coc-autocomplete on pressing Enter
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "Correct colors for Coc Pmenus
 hi Pmenu ctermbg=234 ctermfg=145
