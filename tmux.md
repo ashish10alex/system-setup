@@ -21,9 +21,10 @@ From the terminal source the tmux configuration by running
 $ tmux source ~/.tmux.conf
 ```
 
-You can make changes and reload tmux config using - `prefix` + <kbd>SHIFT</kbd> + r.  Currently my `prefix` is the same as default <kbd>CTLR</kbd> + b
+You can make changes and reload tmux config using - `prefix` + <kbd>SHIFT</kbd> + <kbd>r</kbd>. Currently my `prefix` is the same as default <kbd>CTLR</kbd> + <kbd>b</kbd>
 
 Refer to [tmux cheat sheet](https://tmuxcheatsheet.com) to get started with tmux
+
 
 ## Plugins
 
@@ -42,11 +43,11 @@ Go inside any of your your `tmux` sessions and Press `prefix` + <kbd>I</kbd> (ca
 the plugin. 
 
 Now you can - 
- - save sessions using `prefix` + <kbd>CTLR</kbd> + s
- - restore sessions using `prefix` + <kbd>CTLR</kbd> + r
+ - save sessions using `prefix` + <kbd>CTLR</kbd> + <kbd>s</kbd>
+ - restore sessions using `prefix` + <kbd>CTLR</kbd> + <kbd>r</kbd>
 
 
 #### [Fzf integration with tmux](https://github.com/sainnhe/tmux-fzf)
 
-Easy management of windows, sessions, invoked by - `prefix` + <kbd>SHIFT</kbd> + f
+Easy management of windows, sessions, invoked by - `prefix` + <kbd>SHIFT</kbd> + <kbd>f</kbd>
 
