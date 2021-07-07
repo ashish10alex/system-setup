@@ -157,7 +157,7 @@ else
 endif
 
 " Press Space to turn off highlighting and clear any message already displayed.
-noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+noremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
 " https://stackoverflow.com/questions/6488683/how-do-i-change-the-cursor-between-normal-and-insert-modes-in-vim
 " Regular mode - block,  Insert mode - vertical line, Replace mode - _
@@ -319,6 +319,7 @@ command! -bang -nargs=* BLines
     \   'rg --with-filename --column --line-number --no-heading --smart-case . '.fnameescape(expand('%:p')), 1,
     \   fzf#vim#with_preview({'options': '--layout reverse --query '.shellescape(<q-args>).' --with-nth=4.. --delimiter=":"'}, 'right:50%'))
 nnoremap <silent> <Leader>/ :BLines<CR>
+
 
 " Move 1 more lines up or down in normal and visual selection modes.
 nnoremap <C-k> :m .-2<CR>==
