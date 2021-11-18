@@ -13,7 +13,10 @@ Install necessary packages using brew
 
 ```
 brew install wget
+
 brew install fzf
+/usr/local/opt/fzf/install
+
 brew install bat
 brew install tmux
 ```
@@ -57,7 +60,6 @@ plugins=(
   ruby
   zsh-autosuggestions
 )
-
 ```
 
 
