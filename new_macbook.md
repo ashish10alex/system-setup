@@ -34,6 +34,11 @@ Configure auto-suggestions for ohmyzsh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
+Configure syntax highlighting in zsh; aka correct shell commands show in green
+```
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+```
+
 Setup vim development environment
 ```
 git clone https://github.com/ashish10alex/system-setup.git
