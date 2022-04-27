@@ -133,6 +133,7 @@ alias qmul_env='source /Users/ashishalex/Documents/QMUL/qmul_virtual_env/bin/act
 alias jupy='jupyter notebook --NotebookApp.kernel_manager_class=notebook.services.kernels.kernelmanager.AsyncMappingKernelManager'
 alias lg='ls | grep'
 alias alexmac='ssh alexmac.local -L 8800:127.0.0.1:8800'
+alias jade="ssh -t alexmac.local -L 8800:127.0.0.1:8800 'ssh -l aaa18-txk47 jade2.hartree.stfc.ac.uk'"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
