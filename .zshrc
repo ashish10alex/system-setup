@@ -94,6 +94,10 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+gdiff() {
+git status -s | fzf --no-sort --reverse --preview 'git diff --color=always {+2} '
+}
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -125,14 +129,17 @@ alias lg="ls | grep"
 alias grep='batgrep'
 alias ta='tmux attach'
 alias tls='tmux ls'
+alias vi='nvim'
 alias tattach='tmux attach -t'
 alias tnew='tmux new-session -s'
 alias pwd=' pwd | pbcopy'
-alias rotageek_env='source /Users/ashishalex/Documents/virtual_envs/rotageek_env/bin/activate'
-alias qmul_env='source /Users/ashishalex/Documents/QMUL/qmul_virtual_env/bin/activate'
+alias rotageek_env='source $HOME/Documents/virtual_envs/rotageek_env/bin/activate'
+alias airflow_env='source $HOME/Documents/virtual_envs/airflow_env/bin/activate'
+alias qmul_env='source $HOME/Documents/QMUL/qmul_virtual_env/bin/activate'
 alias jupy='jupyter notebook --NotebookApp.kernel_manager_class=notebook.services.kernels.kernelmanager.AsyncMappingKernelManager'
 alias lg='ls | grep'
 alias alexmac='ssh alexmac.local -L 8800:127.0.0.1:8800'
+alias alextensorboard='ssh alexmac.local -L 8443:127.0.0.1:8443'
 alias jade="ssh -t alexmac.local -L 8800:127.0.0.1:8800 'ssh -l aaa18-txk47 jade2.hartree.stfc.ac.uk'"
 
 
