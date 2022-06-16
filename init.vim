@@ -283,10 +283,10 @@ noremap <leader>sql :CocCommand sql.Format <CR>
 nmap <leader>rn <Plug>(coc-rename)
 
 " GoTo code navigation using coc
-nmap <silent> gd :Telescope lsp_definitions <CR>
-nmap <silent> gl :Telescope lsp_references <CR>
-nmap <silent> td :Telescope lsp_type_definitions <CR>
-nmap <silent> sgd :call CocAction('jumpDefinition', 'split')<CR>
+nmap <silent> gd <cmd>Telescope lsp_definitions <CR>
+nmap <silent> gl <cmd>Telescope lsp_references <CR>
+nmap <silent> td <cmd>Telescope lsp_type_definitions <CR>
+nmap <silent> sgd <cmd>call CocAction('jumpDefinition', 'split')<CR>
 
 " Disable autocomplete for specific file types
 autocmd FileType python let b:coc_suggest_disable = 1
