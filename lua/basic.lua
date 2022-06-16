@@ -3,7 +3,8 @@ require("nvim-lsp-installer").setup {}
 require 'lspconfig'.pyright.setup{}
 require 'lspconfig'.bashls.setup{}
 require 'lspconfig'.sumneko_lua.setup{}
-require 'lspconfig'.csharp_ls.setup{}
+require 'lspconfig'.sqlls.setup{}
+-- require 'lspconfig'.csharp_ls.setup{}
 
 
 

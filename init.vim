@@ -211,7 +211,8 @@ nnoremap <leader>b <cmd>Telescope buffers<cr>
 " Recurrsive grep, must need to install ripgrep
 " Mac - brew install ripgrep 
 " Linux - sudo apt-get install ripgrep
-nnoremap <leader>gr :lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>
+" nnoremap <leader>gr :lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>
+nnoremap <leader>grep :lua require('telescope.builtin').live_grep()<CR>
 
 let g:netrw_banner = 0
 noremap <leader>nt :NERDTree<CR>
@@ -283,7 +284,7 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " GoTo code navigation using coc
 nmap <silent> gd :Telescope lsp_definitions <CR>
-nmap <silent> gr :Telescope lsp_references <CR>
+nmap <silent> gl :Telescope lsp_references <CR>
 nmap <silent> sgd :call CocAction('jumpDefinition', 'split')<CR>
 
 " Disable autocomplete for specific file types
