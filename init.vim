@@ -34,7 +34,7 @@ set nowritebackup
 " set cmdheight=2
 
 
-vnoremap <C-c><C-c> :<c-u>silent '<,'>write !xsel -b<cr>
+" vnoremap <C-c><C-c> :<c-u>silent '<,'>write !xsel -b<cr>
 
 
 set relativenumber
@@ -119,6 +119,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
 call plug#end()
 
+" lua requires should be after plug#end to avoid errors
+lua require('basic')
+
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
@@ -200,21 +203,15 @@ nmap <leader>] :bn!<CR>
 nmap <leader>x :bd<CR>
 
 "shows all files in the current directory 
-" noremap <leader>f :Files<CR> 
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 
-"shows all git files in the current directory 
-" noremap <leader>gf :GFiles<CR> 
 "shows all files store in buffer 
-" noremap <leader>b :Buffers<CR> 
 nnoremap <leader>b <cmd>Telescope buffers<cr>
-" Recurrsive grep, must need to install rg 
+"
+" Recurrsive grep, must need to install ripgrep
 " Mac - brew install ripgrep 
 " Linux - sudo apt-get install ripgrep
-" noremap <leader>grep :Rg! 
-" nnoremap <leader>gr <cmd>Telescope live_grep<cr>
 nnoremap <leader>gr :lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>
-lua require'lspconfig'.pyright.setup{}
 
 let g:netrw_banner = 0
 noremap <leader>nt :NERDTree<CR>
