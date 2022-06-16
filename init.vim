@@ -76,6 +76,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" LSP 
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'neovim/nvim-lspconfig'
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  "shows files, git-file in the current directory, Install bat for syntax highlighting 
 Plug 'junegunn/fzf.vim' 
 
@@ -210,6 +214,7 @@ nnoremap <leader>b <cmd>Telescope buffers<cr>
 " noremap <leader>grep :Rg! 
 " nnoremap <leader>gr <cmd>Telescope live_grep<cr>
 nnoremap <leader>gr :lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>
+lua require'lspconfig'.pyright.setup{}
 
 let g:netrw_banner = 0
 noremap <leader>nt :NERDTree<CR>
