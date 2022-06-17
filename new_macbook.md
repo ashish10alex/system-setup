@@ -19,6 +19,7 @@ brew install fzf
 
 brew install bat
 brew install tmux
+brew install neovim
 ```
 
 Configure `ohmyzsh` shell 
