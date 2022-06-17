@@ -242,8 +242,9 @@ noremap <Right> <Nop>
 " map <C-d> 5j
 " map <C-u> 5k
 
-" Git fugitive mappings
-noremap <leader>gl :G log<CR>
+" Git  mappings (fugitive and Telescope)
+noremap <leader>gl <cmd>Telescope git_commits<CR>
+noremap <leader>gd <cmd>Telescope git_status<CR>
 noremap <leader>gc :G commit<CR>
 noremap <leader>gp :G push<CR>
 " Equivalent to git status
