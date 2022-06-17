@@ -72,9 +72,12 @@ Plug 'junegunn/vim-easy-align'
 
 " Plug 'lervag/vimtex' " Latex plugins
 
+Telescope stuff
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" native telescope sorter to significantly improve sorting performance
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " LSP 
 Plug 'williamboman/nvim-lsp-installer'
