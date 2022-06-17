@@ -72,7 +72,7 @@ Plug 'junegunn/vim-easy-align'
 
 " Plug 'lervag/vimtex' " Latex plugins
 
-Telescope stuff
+" Telescope stuff
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -204,6 +204,10 @@ let mapleader = " "
 nmap <leader>[ :bp!<CR>
 nmap <leader>] :bn!<CR>
 nmap <leader>x :bd<CR>
+
+
+" open terminal in split window and go to insert mode
+nnoremap <leader>te <cmd> split term://zsh<cr>i 
 
 "shows all files in the current directory 
 nnoremap <leader>f <cmd>Telescope find_files<cr>
