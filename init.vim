@@ -127,12 +127,6 @@ call plug#end()
 " lua requires should be after plug#end to avoid errors
 lua require('basic')
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
 "Comfortable motion scrolling params
 let g:comfortable_motion_friction = 80.0
 let g:comfortable_motion_air_drag = 12.0
