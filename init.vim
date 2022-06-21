@@ -246,12 +246,8 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
-" Scrolling with keyboard
-" Move up/down lines with [CTRL + u][CTRL + d]
-" map <C-d> 5j
-" map <C-u> 5k
 
-" Git  mappings (fugitive and Telescope)
+" Git mappings (fugitive and Telescope)
 noremap <leader>gl <cmd>Telescope git_commits<CR>
 noremap <leader>gd <cmd>Telescope git_status<CR>
 noremap <leader>gc :G commit<CR>
@@ -285,7 +281,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Formatting selected code.
 xmap <leader>F  <Plug>(coc-format-selected)
-nmap <leader>F  <Plug>(coc-format-selected)
 " format sql code
 noremap <leader>sql :CocCommand sql.Format <CR>
 
@@ -333,25 +328,6 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
-
-
-" Show hidden files in fzf
-if ostype == "Darwin"
-    " Different options for searching folder 
-    " You can optionally exclude folders from being searched in case they contain way too many files 
-    "
-    " let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --exclude .git --exclude exclude_me '
-    " let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git --ignore-dir={exclude_me,} -l -g ""'
-    let $FZF_DEFAULT_COMMAND = 'rg --files --follow --hidden -g "!.git" -g "!exclude_me"'
-endif
-
-" Grep the current file with fzf with preview
-" To get preview with BLines - https://github.com/junegunn/fzf.vim/issues/374
-command! -bang -nargs=* BLines
-    \ call fzf#vim#grep(
-    \   'rg --with-filename --column --line-number --no-heading --smart-case . '.fnameescape(expand('%:p')), 1,
-    \   fzf#vim#with_preview({'options': '--layout reverse --query '.shellescape(<q-args>).' --with-nth=4.. --delimiter=":"'}, 'right:50%'))
-nnoremap <silent> <Leader>/ :BLines<CR>
 
 
 " Move 1 more lines up or down in normal and visual selection modes.
