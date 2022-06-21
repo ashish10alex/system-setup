@@ -210,6 +210,12 @@ nnoremap <leader>f <cmd>Telescope find_files<cr>
 
 "shows all files store in buffer 
 nnoremap <leader>b <cmd>Telescope buffers<cr>
+
+"list all tmux sessions
+nnoremap <leader>ts <cmd>Telescope tmux sessions<cr>
+"list all tmux windows
+nnoremap <leader>tw <cmd>Telescope tmux windows<cr>
+
 "
 " Recurrsive grep, must need to install ripgrep
 " Mac - brew install ripgrep 
