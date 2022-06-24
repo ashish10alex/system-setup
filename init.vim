@@ -201,6 +201,9 @@ nmap <leader>[ :bp!<CR>
 nmap <leader>] :bn!<CR>
 nmap <leader>x :bd<CR>
 
+" Move through quickfix list
+nmap ]q <cmd>cnext<CR>
+nmap [q <cmd>cprev<CR>
 
 " open terminal in split window and go to insert mode
 nnoremap <leader>te <cmd> split term://zsh<cr>i 
@@ -318,21 +321,6 @@ else
     noremap <silent>Y "+y
 endif
 set clipboard=unnamed " Does the something, might remove the one above
-
-
-"CTRL-A CTRL-Q to select all and build quickfix list -  https://github.com/junegunn/fzf.vim/issues/185
-":cexpr [] to delete all items from the quick fix list
-function! s:build_quickfix_list(lines)
-  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-  copen
-  cc
-endfunction
-let g:fzf_action = {
-  \ 'ctrl-q': function('s:build_quickfix_list'),
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 
 
 " Show hidden files in fzf
