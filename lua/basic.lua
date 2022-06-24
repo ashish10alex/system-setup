@@ -6,5 +6,13 @@ require 'lspconfig'.sumneko_lua.setup{}
 require 'lspconfig'.sqlls.setup{}
 -- require 'lspconfig'.csharp_ls.setup{}
 
+--
+-- Add here to change telescope settings
+require('telescope').setup{
+    defaults = {
+        prompt_prefix = "> "
+    }
+}
+require('telescope').load_extension('fzf')
 
 

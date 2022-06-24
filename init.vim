@@ -249,12 +249,8 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
-" Scrolling with keyboard
-" Move up/down lines with [CTRL + u][CTRL + d]
-" map <C-d> 5j
-" map <C-u> 5k
 
-" Git  mappings (fugitive and Telescope)
+" Git mappings (fugitive and Telescope)
 noremap <leader>gl <cmd>Telescope git_commits<CR>
 noremap <leader>gd <cmd>Telescope git_status<CR>
 noremap <leader>gc :G commit<CR>
@@ -288,7 +284,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Formatting selected code.
 xmap <leader>F  <Plug>(coc-format-selected)
-nmap <leader>F  <Plug>(coc-format-selected)
 " format sql code
 noremap <leader>sql :CocCommand sql.Format <CR>
 
@@ -323,6 +318,7 @@ endif
 set clipboard=unnamed " Does the something, might remove the one above
 
 
+<<<<<<< HEAD
 " Show hidden files in fzf
 if ostype == "Darwin"
     " Different options for searching folder 
@@ -340,6 +336,21 @@ command! -bang -nargs=* BLines
     \   'rg --with-filename --column --line-number --no-heading --smart-case . '.fnameescape(expand('%:p')), 1,
     \   fzf#vim#with_preview({'options': '--layout reverse --query '.shellescape(<q-args>).' --with-nth=4.. --delimiter=":"'}, 'right:50%'))
 nnoremap <silent> <Leader>/ :BLines<CR>
+=======
+"CTRL-A CTRL-Q to select all and build quickfix list -  https://github.com/junegunn/fzf.vim/issues/185
+":cexpr [] to delete all items from the quick fix list
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+>>>>>>> ee6cd269b3402d9118d609169b4049a2708f38b0
 
 
 " Move 1 more lines up or down in normal and visual selection modes.
