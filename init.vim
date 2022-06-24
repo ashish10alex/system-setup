@@ -317,42 +317,6 @@ else
 endif
 set clipboard=unnamed " Does the something, might remove the one above
 
-
-<<<<<<< HEAD
-" Show hidden files in fzf
-if ostype == "Darwin"
-    " Different options for searching folder 
-    " You can optionally exclude folders from being searched in case they contain way too many files 
-    "
-    " let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --exclude .git --exclude exclude_me '
-    " let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git --ignore-dir={exclude_me,} -l -g ""'
-    let $FZF_DEFAULT_COMMAND = 'rg --files --follow --hidden -g "!.git" -g "!exclude_me"'
-endif
-
-" Grep the current file with fzf with preview
-" To get preview with BLines - https://github.com/junegunn/fzf.vim/issues/374
-command! -bang -nargs=* BLines
-    \ call fzf#vim#grep(
-    \   'rg --with-filename --column --line-number --no-heading --smart-case . '.fnameescape(expand('%:p')), 1,
-    \   fzf#vim#with_preview({'options': '--layout reverse --query '.shellescape(<q-args>).' --with-nth=4.. --delimiter=":"'}, 'right:50%'))
-nnoremap <silent> <Leader>/ :BLines<CR>
-=======
-"CTRL-A CTRL-Q to select all and build quickfix list -  https://github.com/junegunn/fzf.vim/issues/185
-":cexpr [] to delete all items from the quick fix list
-function! s:build_quickfix_list(lines)
-  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-  copen
-  cc
-endfunction
-let g:fzf_action = {
-  \ 'ctrl-q': function('s:build_quickfix_list'),
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
->>>>>>> ee6cd269b3402d9118d609169b4049a2708f38b0
-
-
 " Move 1 more lines up or down in normal and visual selection modes.
 nnoremap <C-k> :m .-2<CR>==
 nnoremap <C-j> :m .+1<CR>==
