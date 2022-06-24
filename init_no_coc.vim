@@ -215,7 +215,7 @@ nnoremap <leader>b <cmd>Telescope buffers<cr>
 " Recurrsive grep, must need to install ripgrep
 " Mac - brew install ripgrep 
 " Linux - sudo apt-get install ripgrep
-" nnoremap <leader>gr :lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>
+nnoremap <leader>bgrep :lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>
 nnoremap <leader>grep :lua require('telescope.builtin').live_grep()<CR>
 
 let g:netrw_banner = 0
