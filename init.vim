@@ -33,10 +33,6 @@ set nowritebackup
 " set shortmess=a
 " set cmdheight=2
 
-
-" vnoremap <C-c><C-c> :<c-u>silent '<,'>write !xsel -b<cr>
-
-
 set relativenumber
 set textwidth=120
 
