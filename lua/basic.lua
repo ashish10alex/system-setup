@@ -6,6 +6,7 @@ require 'lspconfig'.sumneko_lua.setup{}
 require 'lspconfig'.sqlls.setup{}
 -- require 'lspconfig'.csharp_ls.setup{}
 
+require('telescope').load_extension('env')
 --
 -- Add here to change telescope settings
 require('telescope').setup{
@@ -15,4 +16,14 @@ require('telescope').setup{
 }
 require('telescope').load_extension('fzf')
 
+require'lspconfig'.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+    },
+  },
+}
 

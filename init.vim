@@ -75,6 +75,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " native telescope sorter to significantly improve sorting performance
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'camgraff/telescope-tmux.nvim'
+Plug 'LinArcX/telescope-env.nvim'
 
 
 " LSP 
