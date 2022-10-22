@@ -84,35 +84,33 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  "shows files, git-file in t
 Plug 'junegunn/fzf.vim' 
 
 
-Plug 'yuttie/comfortable-motion.vim' " smooth scrolling 'C-d' or 'C-u'
 
+Plug 'yuttie/comfortable-motion.vim' " smooth scrolling 'C-d' or 'C-u'
 "Themes for vim editor
 Plug 'sonph/onehalf', { 'rtp': 'vim' } "preferred on linux server
 Plug 'rakr/vim-one' " For mac
-
 Plug 'tpope/vim-commentary' "commenting - `gcc` for commenting and un-commenting 
 
-Plug 'tpope/vim-fugitive' "Git workflows
 
+Plug 'tpope/vim-fugitive' "Git workflows
 Plug 'tpope/vim-rhubarb' "Git - to go to github link in the browser
 
-Plug 'vim-airline/vim-airline' "Shows status line - Fugitive status line depends on airline
 
+Plug 'vim-airline/vim-airline' "Shows status line - Fugitive status line depends on airline
 Plug 'sheerun/vim-polyglot' " Syntax highlighting
 
 Plug 'preservim/nerdtree' "nerd tree - shows files in folder in a vertical split
 
 Plug 'Xuyuanp/nerdtree-git-plugin' " New nerd tree ?
 
-Plug 'airblade/vim-gitgutter' "Git gutter
 
+Plug 'airblade/vim-gitgutter' "Git gutter
 " Replace words with copied word
 " Copy the words using - "yiw" (yank inner word)
 " Go to the word which you want replaced and type "griw" (go replace inner word)
 " Action as usual is repeatable using "."
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
-" Plug 'neoclide/coc.nvim', {'branch': 'release'} " Auto complete and very quick navigation between functions
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview
 
@@ -172,6 +170,7 @@ else
   highlight Comment gui=none cterm=none
   let g:airline_theme='onehalfdark'
 endif
+
 
 " Press Space to turn off highlighting and clear any message already displayed.
 noremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
