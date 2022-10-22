@@ -66,9 +66,11 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-surround'
 
+Plug 'ThePrimeagen/git-worktree.nvim'
+
 " Plug 'honza/vim-snippets'
 
-Plug 'junegunn/vim-easy-align'
+" Plug 'junegunn/vim-easy-align'
 
 " Plug 'lervag/vimtex' " Latex plugins
 
@@ -119,6 +121,10 @@ call plug#end()
 
 " lua requires should be after plug#end to avoid errors
 lua require('basic')
+
+#Change git worktrees using Telescope
+lua require("telescope").load_extension("git_worktree")
+nnoremap <leader>wt :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
