@@ -187,10 +187,19 @@ if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-  else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-    let &t_SR =  "\<Esc>]50;CursorShape=2\x7"
+else
+    "this works for Centos
+    if $TERM == 'xterm-256color'
+        "echo "For Centos"
+        let &t_SI = "\<Esc>[6 q"
+        let &t_SR = "\<Esc>[4 q"
+        let &t_EI = "\<Esc>[2 q"
+    else
+        "echo "For other Linux distros"
+        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+        let &t_SR =  "\<Esc>]50;CursorShape=2\x7"
+    endif
 endif
 
 " make the switch between insert and normal mode faster 
@@ -211,17 +220,6 @@ nmap <leader>x :bd<CR>
 nmap ]q <cmd>cnext<CR>
 nmap [q <cmd>cprev<CR>
 
-"shows all files in the current directory 
-nnoremap <leader>f <cmd>Telescope find_files<cr>
-
-"shows all files store in buffer 
-nnoremap <leader>b <cmd>Telescope buffers<cr>
-"
-" Recurrsive grep, must need to install ripgrep
-" Mac - brew install ripgrep 
-" Linux - sudo apt-get install ripgrep
-nnoremap <leader>greb :lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>
-nnoremap <leader>grep :lua require('telescope.builtin').live_grep()<CR>
 
 let g:netrw_banner = 0
 noremap <leader>nt :NERDTree<CR>
@@ -251,6 +249,20 @@ noremap <Right> <Nop>
 " map <C-d> 5j
 " map <C-u> 5k
 
+"Telescope stuff
+"shows all files in the current directory 
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+
+"shows all files store in buffer 
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+"
+" Recurrsive grep, must need to install ripgrep
+" Mac - brew install ripgrep 
+" Linux - sudo apt-get install ripgrep
+nnoremap <leader>greb :lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>
+"greps the whole directory
+nnoremap <leader>grep :lua require('telescope.builtin').live_grep()<CR>
+
 " Git  mappings (fugitive and Telescope)
 noremap <leader>gl <cmd>Telescope git_commits<CR>
 noremap <leader>gd <cmd>Telescope git_status<CR>
@@ -260,6 +272,12 @@ noremap <leader>gp :G push<CR>
 noremap <leader>gs :G <CR>
 "open github url on web browser
 noremap <leader>gb :GBrowse <CR> 
+
+" GoTo code navigation using coc
+nmap <silent> gd <cmd>Telescope lsp_definitions <CR>
+nmap <silent> gl <cmd>Telescope lsp_references <CR>
+nmap <silent> td <cmd>Telescope lsp_type_definitions <CR>
+" nmap <silent> sgd <cmd>call CocAction('jumpDefinition', 'split')<CR>
 
 if ostype == "Linux"
    let python_highlight_all = 1
@@ -292,11 +310,6 @@ endif
 " Symbol renaming.
 " nmap <leader>rn <Plug>(coc-rename)
 
-" GoTo code navigation using coc
-nmap <silent> gd <cmd>Telescope lsp_definitions <CR>
-nmap <silent> gl <cmd>Telescope lsp_references <CR>
-nmap <silent> td <cmd>Telescope lsp_type_definitions <CR>
-" nmap <silent> sgd <cmd>call CocAction('jumpDefinition', 'split')<CR>
 
 " Disable autocomplete for specific file types
 " autocmd FileType python let b:coc_suggest_disable = 1
