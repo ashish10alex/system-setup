@@ -150,7 +150,7 @@ require("catppuccin").setup {
 }
 EOF
 
-" Change git worktrees using Telescope
+" Change and create git worktrees using Telescope
 lua require("telescope").load_extension("git_worktree")
 nnoremap <leader>wt :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
 nnoremap <leader>cwt :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
