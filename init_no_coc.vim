@@ -126,12 +126,6 @@ lua require('basic')
 lua require("telescope").load_extension("git_worktree")
 nnoremap <leader>wt :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-" xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-" nmap ga <Plug>(EasyAlign)
-
 "Comfortable motion scrolling params
 let g:comfortable_motion_friction = 80.0
 let g:comfortable_motion_air_drag = 12.0
