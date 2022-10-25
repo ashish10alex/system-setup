@@ -271,7 +271,8 @@ noremap <leader>gb :GBrowse <CR>
 " GoTo code navigation using coc
 nmap <silent> gd <cmd>Telescope lsp_definitions <CR>
 nmap <silent> gl <cmd>Telescope lsp_references <CR>
-nmap <silent> td <cmd>Telescope lsp_type_definitions <CR>
+nmap <silent> gt <cmd>Telescope lsp_type_definitions <CR>
+nmap <silent> dl <cmd>Telescope diagnostics <CR>
 " nmap <silent> sgd <cmd>call CocAction('jumpDefinition', 'split')<CR>
 
 if ostype == "Linux"
