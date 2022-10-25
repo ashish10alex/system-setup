@@ -16,7 +16,7 @@ Install [Tmux plugin manager](https://github.com/tmux-plugins/tpm)
 $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-From the terminal source the tmux configuration by running 
+From the terminal source the tmux configuration by running, make sure atleast one tmux session is running
 ```
 $ tmux source ~/.tmux.conf
 ```
