@@ -117,6 +117,8 @@ Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview
 
 Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
+
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 
 " lua requires should be after plug#end to avoid errors
@@ -125,6 +127,21 @@ lua require('basic')
 " Change git worktrees using Telescope
 lua require("telescope").load_extension("git_worktree")
 nnoremap <leader>wt :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
+
+let g:firenvim_config = { 
+    \ 'globalSettings': {
+        \ 'alt': 'all',
+    \  },
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'cmdline': 'neovim',
+            \ 'content': 'text',
+            \ 'priority': 0,
+            \ 'selector': 'textarea',
+            \ 'takeover': 'never',
+        \ },
+    \ }
+\ }
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
