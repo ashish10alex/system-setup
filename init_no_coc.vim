@@ -129,6 +129,8 @@ Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview
 
 Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
+
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 
 " lua requires should be after plug#end to avoid errors
@@ -138,6 +140,28 @@ lua require('basic')
 lua require("telescope").load_extension("git_worktree")
 nnoremap <leader>wt :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
 nnoremap <leader>cwt :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
+
+let g:firenvim_config = { 
+    \ 'globalSettings': {
+        \ 'alt': 'all',
+    \  },
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'cmdline': 'neovim',
+            \ 'content': 'text',
+            \ 'priority': 0,
+            \ 'selector': 'textarea',
+            \ 'takeover': 'never',
+        \ },
+    \ }
+\ }
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+>>>>>>> 3020e01 (add firenvim to access nvim in chrome)
 
 "Comfortable motion scrolling params
 let g:comfortable_motion_friction = 80.0
