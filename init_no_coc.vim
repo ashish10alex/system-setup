@@ -64,6 +64,9 @@ set foldlevel=99
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
 
+" Colorscheme
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+
 Plug 'tpope/vim-surround'
 
 Plug 'ThePrimeagen/git-worktree.nvim'
@@ -136,6 +139,12 @@ call plug#end()
 " lua requires should be after plug#end to avoid errors
 lua require('basic')
 
+lua << EOF
+require("catppuccin").setup {
+    flavour = "macchiato" -- mocha, macchiato, frappe, latte
+}
+EOF
+
 " Change git worktrees using Telescope
 lua require("telescope").load_extension("git_worktree")
 nnoremap <leader>wt :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
@@ -197,7 +206,8 @@ let ostype = substitute(system('uname'), "\n", "", "")
 set cursorline
 set t_Co=256
 if ostype == "Darwin"
-  colorscheme one
+  " colorscheme one
+  colorscheme catppuccin
   set termguicolors
 else
   set t_ut=
