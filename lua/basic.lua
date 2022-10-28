@@ -19,7 +19,22 @@ require 'lspconfig'.pyright.setup{
 }
 
 require 'lspconfig'.bashls.setup{}
-require 'lspconfig'.sumneko_lua.setup{}
+require 'lspconfig'.sumneko_lua.setup{
+    capabilities = capabilities,
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { 'vim' }
+        },
+        workspace = {
+          library = {
+            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+          }
+        }
+      }
+    }
+}
 require 'lspconfig'.sqlls.setup{}
 -- require 'lspconfig'.csharp_ls.setup{}
 
@@ -29,17 +44,6 @@ require('telescope').setup{
     defaults = {
         prompt_prefix = "> "
     }
-}
-
-require'lspconfig'.sumneko_lua.setup {
-  settings = {
-    Lua = {
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-    },
-  },
 }
 
 
