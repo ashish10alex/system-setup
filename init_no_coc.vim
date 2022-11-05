@@ -99,6 +99,8 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
+Plug 'nanotee/sqls.nvim'
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  "shows files, git-file in the current directory, Install bat for syntax highlighting 
 Plug 'junegunn/fzf.vim' 
 

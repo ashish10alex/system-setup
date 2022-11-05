@@ -91,14 +91,20 @@ require 'lspconfig'.sumneko_lua.setup{
       }
     }
 }
-require 'lspconfig'.sqlls.setup{}
--- require 'lspconfig'.csharp_ls.setup{}
+
+
+require('lspconfig').sqls.setup{
+    on_attach = function(client, bufnr)
+        require('sqls').on_attach(client, bufnr)
+    end
+}
+
 
 -- Add here to change telescope settings
 require('telescope').setup{
-    defaults = {
-        prompt_prefix = "> "
-    }
+ defaults = {
+    prompt_prefix = "> ",
+  },
 }
 
 
