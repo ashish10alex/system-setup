@@ -94,6 +94,10 @@ require 'lspconfig'.sumneko_lua.setup{
 require 'lspconfig'.sqlls.setup{}
 -- require 'lspconfig'.csharp_ls.setup{}
 
+<<<<<<< HEAD
+=======
+--
+>>>>>>> ba8ffd8531b6636b988298bb482343661f9a9aa3
 -- Add here to change telescope settings
 require('telescope').setup{
     defaults = {
@@ -118,7 +122,11 @@ vim.opt.completeopt={"menu", "menuone", "noselect"}
       -- documentation = cmp.config.window.bordered(),
     },
     completion = {
+<<<<<<< HEAD
               -- autocomplete = true,
+=======
+              autocomplete = false,
+>>>>>>> ba8ffd8531b6636b988298bb482343661f9a9aa3
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
