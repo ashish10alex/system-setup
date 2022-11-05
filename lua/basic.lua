@@ -118,11 +118,7 @@ vim.opt.completeopt={"menu", "menuone", "noselect"}
       -- documentation = cmp.config.window.bordered(),
     },
     completion = {
-<<<<<<< HEAD
               -- autocomplete = true,
-=======
-              autocomplete = false,
->>>>>>> ba8ffd8531b6636b988298bb482343661f9a9aa3
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
