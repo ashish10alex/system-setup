@@ -34,6 +34,8 @@ set nowritebackup
 " set cmdheight=2
 
 
+set mouse=
+
 " vnoremap <C-c><C-c> :<c-u>silent '<,'>write !xsel -b<cr>
 
 

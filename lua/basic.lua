@@ -12,6 +12,13 @@ require("noice").setup({
       ["cmp.entry.get_documentation"] = true,
     },
   },
+  messages = {
+      -- NOTE: If you enable messages, then the cmdline is enabled automatically.
+      -- This is a current Neovim limitation.
+      enabled = true, -- enables the Noice messages UI
+      view_history = "messages", -- view for :messages
+      view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
+    },
   views = {
     cmdline_popup = {
       position = {
@@ -111,7 +118,7 @@ vim.opt.completeopt={"menu", "menuone", "noselect"}
       -- documentation = cmp.config.window.bordered(),
     },
     completion = {
-              autocomplete = false,
+              -- autocomplete = true,
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
