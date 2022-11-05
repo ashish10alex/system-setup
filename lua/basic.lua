@@ -94,10 +94,6 @@ require 'lspconfig'.sumneko_lua.setup{
 require 'lspconfig'.sqlls.setup{}
 -- require 'lspconfig'.csharp_ls.setup{}
 
-<<<<<<< HEAD
-=======
---
->>>>>>> ba8ffd8531b6636b988298bb482343661f9a9aa3
 -- Add here to change telescope settings
 require('telescope').setup{
     defaults = {
