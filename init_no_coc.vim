@@ -100,7 +100,8 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  "shows files, git-file in the current directory, Install bat for syntax highlighting 
 Plug 'junegunn/fzf.vim' 
 
-
+Plug 'folke/noice.nvim'
+Plug 'MunifTanjim/nui.nvim'
 
 Plug 'yuttie/comfortable-motion.vim' " smooth scrolling 'C-d' or 'C-u'
 "Themes for vim editor
