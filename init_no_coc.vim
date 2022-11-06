@@ -99,6 +99,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
+" sql
 Plug 'nanotee/sqls.nvim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  "shows files, git-file in the current directory, Install bat for syntax highlighting 
@@ -391,3 +392,5 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 hi Pmenu ctermbg=234 ctermfg=145
 hi PmenuSel ctermbg=237  ctermfg=145
 
+" execute sql query under cursor 
+nnoremap <silent> <Leader>qe :<C-U>silent! '{,'}SqlsExecuteQuery<CR>
