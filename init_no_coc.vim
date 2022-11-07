@@ -72,11 +72,9 @@ Plug 'tpope/vim-surround'
 
 Plug 'ThePrimeagen/git-worktree.nvim'
 
-" Plug 'honza/vim-snippets'
-
-" Plug 'junegunn/vim-easy-align'
-
-" Plug 'lervag/vimtex' " Latex plugins
+"Treesitter plugins
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/playground'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
