@@ -33,6 +33,7 @@ set nowritebackup
 " set shortmess=a
 " set cmdheight=2
 
+set mouse=
 
 set mouse=
 
