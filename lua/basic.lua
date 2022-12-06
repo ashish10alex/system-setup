@@ -190,4 +190,5 @@ vim.opt.completeopt={"menu", "menuone", "noselect"}
   --  })
   --})
 
-
+vim.keymap.set('i', '<M-.>', '<Plug>(copilot-next)')
+vim.keymap.set('i', '<M-,>', '<Plug>(copilot-previous)')

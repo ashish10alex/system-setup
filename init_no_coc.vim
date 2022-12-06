@@ -86,6 +86,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " LSP 
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
+Plug 'github/copilot.vim'
 
 " Auto completion
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -139,7 +140,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
 
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 
 " lua requires should be after plug#end to avoid errors
@@ -218,6 +219,8 @@ else
   let g:airline_theme='onehalfdark'
 endif
 
+
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 
 " Press Space to turn off highlighting and clear any message already displayed.
 noremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
