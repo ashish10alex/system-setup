@@ -70,6 +70,8 @@ call plug#begin('~/.vim/plugged')
 " Colorscheme
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
+Plug 'nyoom-engineering/oxocarbon.nvim'
+
 Plug 'tpope/vim-surround'
 
 Plug 'ThePrimeagen/git-worktree.nvim'
@@ -207,16 +209,20 @@ let ostype = substitute(system('uname'), "\n", "", "")
 
 set cursorline
 set t_Co=256
-if ostype == "Darwin"
-  " colorscheme one
-  colorscheme catppuccin
-  set termguicolors
-else
-  set t_ut=
-  colorscheme onehalfdark
-  highlight Comment gui=none cterm=none
-  let g:airline_theme='onehalfdark'
-endif
+
+" Colorscheme settings
+ if ostype == "Darwin"
+   " colorscheme one
+   " colorscheme catppuccin
+   colorscheme oxocarbon
+   background dark
+   set termguicolors
+ else
+   set t_ut=
+   colorscheme onehalfdark
+   highlight Comment gui=none cterm=none
+   let g:airline_theme='onehalfdark'
+ endif
 
 
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
