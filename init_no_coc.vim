@@ -68,6 +68,7 @@ call plug#begin('~/.vim/plugged')
 " Colorscheme
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
+Plug 'dstein64/vim-startuptime'
 " Plug 'nyoom-engineering/oxocarbon.nvim'
 
 Plug 'tpope/vim-surround'
@@ -111,7 +112,7 @@ Plug 'MunifTanjim/nui.nvim'
 Plug 'yuttie/comfortable-motion.vim' " smooth scrolling 'C-d' or 'C-u'
 "Themes for vim editor
 Plug 'sonph/onehalf', { 'rtp': 'vim' } "preferred on linux server
-Plug 'rakr/vim-one' " For mac
+" Plug 'rakr/vim-one' " For mac
 Plug 'tpope/vim-commentary' "commenting - `gcc` for commenting and un-commenting 
 
 
@@ -120,7 +121,7 @@ Plug 'tpope/vim-rhubarb' "Git - to go to github link in the browser
 
 
 Plug 'vim-airline/vim-airline' "Shows status line - Fugitive status line depends on airline
-Plug 'sheerun/vim-polyglot' " Syntax highlighting
+" Plug 'sheerun/vim-polyglot' " Syntax highlighting
 
 Plug 'preservim/nerdtree' "nerd tree - shows files in folder in a vertical split
 
@@ -284,9 +285,6 @@ noremap <leader><Up> : resize -5<CR>
 map <leader>tv <C-w>t<C-w>H
 map <leader>th <C-w>t<C-w>K
 
- "Search and replace -> %s/<targetWord><replaceWith>/gI
- "To replace visual block do [Shift][:]s/<targetWord>/<replaceWith><CR>
-noremap <leader>sr :%s//gI<Left><Left><Left>
 
 " Disable arrow keys - hard mode
 noremap <Up> <Nop>
@@ -323,12 +321,11 @@ noremap <leader>gs :G <CR>
 "open github url on web browser
 noremap <leader>gb :GBrowse <CR> 
 
-" GoTo code navigation using coc
+" Code navigation 
 nmap <silent> gd <cmd>Telescope lsp_definitions <CR>
 nmap <silent> gl <cmd>Telescope lsp_references <CR>
 nmap <silent> gt <cmd>Telescope lsp_type_definitions <CR>
 nmap <silent> dl <cmd>Telescope diagnostics <CR>
-" nmap <silent> sgd <cmd>call CocAction('jumpDefinition', 'split')<CR>
 
 if ostype == "Linux"
    let python_highlight_all = 1
@@ -360,7 +357,7 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 
-"Correct colors for Coc Pmenus
+"Correct colors for Pmenus
 hi Pmenu ctermbg=234 ctermfg=145
 hi PmenuSel ctermbg=237  ctermfg=145
 
