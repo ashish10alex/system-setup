@@ -4,6 +4,62 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require("nvim-lsp-installer").setup {}
 
+require("noice").setup({
+  lsp = {
+    override = {
+      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+      ["vim.lsp.util.stylize_markdown"] = true,
+      ["cmp.entry.get_documentation"] = true,
+    },
+  },
+  messages = {
+      -- NOTE: If you enable messages, then the cmdline is enabled automatically.
+      -- This is a current Neovim limitation.
+      enabled = true, -- enables the Noice messages UI
+      view_history = "messages", -- view for :messages
+      view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
+    },
+  views = {
+    cmdline_popup = {
+      position = {
+        row = 5,
+        col = "50%",
+      },
+      size = {
+        width = 60,
+        height = "auto",
+      },
+    },
+    popupmenu = {
+      relative = "editor",
+      position = {
+        row = 8,
+        col = "50%",
+      },
+      size = {
+        width = 60,
+        height = 10,
+      },
+      border = {
+        style = "rounded",
+        padding = { 0, 1 },
+      },
+      win_options = {
+        winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+      },
+    },
+  },
+  cmdline = {
+        format = {
+          cmdline = { icon = ">" },
+          search_down = { icon = "🔍⌄" },
+          search_up = { icon = "🔍⌃" },
+          filter = { icon = "$" },
+          lua = { icon = "☾" },
+          help = { icon = "?" },
+        },
+      },
+})
 
 require 'lspconfig'.pyright.setup{
   capabilities = capabilities,
@@ -35,15 +91,20 @@ require 'lspconfig'.sumneko_lua.setup{
       }
     }
 }
-require 'lspconfig'.sqlls.setup{}
--- require 'lspconfig'.csharp_ls.setup{}
 
---
+
+require'lspconfig'.sqls.setup{
+    on_attach = function(client, bufnr)
+        require('sqls').on_attach(client, bufnr)
+    end,
+}
+
+
 -- Add here to change telescope settings
 require('telescope').setup{
-    defaults = {
-        prompt_prefix = "> "
-    }
+ defaults = {
+    prompt_prefix = "> ",
+  },
 }
 
 
@@ -63,7 +124,7 @@ vim.opt.completeopt={"menu", "menuone", "noselect"}
       -- documentation = cmp.config.window.bordered(),
     },
     completion = {
-              autocomplete = false,
+              -- autocomplete = true,
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -128,6 +189,9 @@ vim.opt.completeopt={"menu", "menuone", "noselect"}
   --    { name = 'cmdline' }
   --  })
   --})
+
+vim.keymap.set('i', '<M-.>', '<Plug>(copilot-next)')
+vim.keymap.set('i', '<M-,>', '<Plug>(copilot-previous)')
 
 require "nvim-treesitter.configs".setup {
   playground = {

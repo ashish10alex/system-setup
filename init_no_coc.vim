@@ -68,6 +68,8 @@ call plug#begin('~/.vim/plugged')
 " Colorscheme
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
+" Plug 'nyoom-engineering/oxocarbon.nvim'
+
 Plug 'tpope/vim-surround'
 
 Plug 'ThePrimeagen/git-worktree.nvim'
@@ -83,6 +85,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " LSP 
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
+Plug 'github/copilot.vim'
 
 " Auto completion
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -96,10 +99,14 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
+" sql
+Plug 'nanotee/sqls.nvim'
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  "shows files, git-file in the current directory, Install bat for syntax highlighting 
 Plug 'junegunn/fzf.vim' 
 
-
+Plug 'folke/noice.nvim'
+Plug 'MunifTanjim/nui.nvim'
 
 Plug 'yuttie/comfortable-motion.vim' " smooth scrolling 'C-d' or 'C-u'
 "Themes for vim editor
@@ -132,7 +139,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
 
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 
 " lua requires should be after plug#end to avoid errors
@@ -147,6 +154,7 @@ EOF
 " Change git worktrees using Telescope
 lua require("telescope").load_extension("git_worktree")
 nnoremap <leader>wt :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
+nnoremap <leader>cwt :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
 
 let g:firenvim_config = { 
     \ 'globalSettings': {
@@ -163,11 +171,6 @@ let g:firenvim_config = {
     \ }
 \ }
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
 
 "Comfortable motion scrolling params
 let g:comfortable_motion_friction = 80.0
@@ -204,17 +207,26 @@ let ostype = substitute(system('uname'), "\n", "", "")
 
 set cursorline
 set t_Co=256
-if ostype == "Darwin"
-  " colorscheme one
-  colorscheme catppuccin
-  set termguicolors
-else
-  set t_ut=
-  colorscheme onehalfdark
-  highlight Comment gui=none cterm=none
-  let g:airline_theme='onehalfdark'
-endif
 
+" Colorscheme settings
+ if ostype == "Darwin"
+   " colorscheme one
+   colorscheme catppuccin
+   " colorscheme oxocarbon
+   set termguicolors
+ else
+   set t_ut=
+   colorscheme onehalfdark
+   highlight Comment gui=none cterm=none
+   let g:airline_theme='onehalfdark'
+ endif
+
+ " make lines below lua 
+" lua << EOF
+"  vim.opt.background dark
+" EOF
+
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 
 " Press Space to turn off highlighting and clear any message already displayed.
 noremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
@@ -323,45 +335,10 @@ if ostype == "Linux"
    let python_highlight_space_errors = 0
 endif
 
-" Show documentation when you press K
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   elseif (coc#rpc#ready())
-"     call CocActionAsync('doHover')
-"   else
-"     execute '!' . &keywordprg . " " . expand('<cword>')
-"   endif
-" endfunction
-
-" Use K to show documentation in preview window.
-" noremap <silent> K :call <SID>show_documentation()<CR>
-
-" Highlight the symbol and its references when holding the cursor.
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Formatting selected code.
-" xmap <leader>F  <Plug>(coc-format-selected)
-" nmap <leader>F  <Plug>(coc-format-selected)
-" format sql code
-" noremap <leader>sql :CocCommand sql.Format <CR>
-
-" Symbol renaming.
-" nmap <leader>rn <Plug>(coc-rename)
-
-
-" Disable autocomplete for specific file types
-" autocmd FileType python let b:coc_suggest_disable = 1
-" autocmd FileType Markdown let b:coc_suggest_disable = 1
-" autocmd FileType vim let b:coc_suggest_disable = 1
-
 " For easy vertical navigation in markdown files
 autocmd FileType markdown map j gj
 autocmd FileType markdown map k gk
 
-" Add  path to your node binary here - requirement for coc plugin
-" Coc plugin also requires nmp for installing extension please refere to README on how to configure that 
-" let g:coc_node_path = '$HOME/node-from-source/bin/node'
 
 " Copy vim clipboard to system clipboard - https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim
 if ostype== "Darwin"
@@ -378,25 +355,14 @@ nnoremap <C-j> :m .+1<CR>==
 vnoremap <C-k> :m '<-2<CR>gv=gv
 vnoremap <C-j>  :m '>+1<CR>gv=gv
 
-" use <tab> for trigger completion and navigate to the next complete item
-" function! s:check_back_space() abort
-"       let col = col('.') - 1
-"         return !col || getline('.')[col - 1]  =~ '\s'
-"     endfunction
-
-"     inoremap <silent><expr> <Tab>
-"           \ pumvisible() ? "\<C-n>" :
-"           \ <SID>check_back_space() ? "\<Tab>" :
-"           \ coc#refresh()
-
 "Tab to navigate completion list
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" Trigger coc-autocomplete on pressing Enter
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "Correct colors for Coc Pmenus
 hi Pmenu ctermbg=234 ctermfg=145
 hi PmenuSel ctermbg=237  ctermfg=145
 
+" execute sql query under cursor 
+nnoremap <silent> <Leader>qe :<C-U>silent! '{,'}SqlsExecuteQuery<CR>
