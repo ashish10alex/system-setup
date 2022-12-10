@@ -70,7 +70,7 @@ call plug#begin('~/.vim/plugged')
 " Colorscheme
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
-Plug 'nyoom-engineering/oxocarbon.nvim'
+" Plug 'nyoom-engineering/oxocarbon.nvim'
 
 Plug 'tpope/vim-surround'
 
@@ -213,9 +213,8 @@ set t_Co=256
 " Colorscheme settings
  if ostype == "Darwin"
    " colorscheme one
-   " colorscheme catppuccin
-   colorscheme oxocarbon
-   background dark
+   colorscheme catppuccin
+   " colorscheme oxocarbon
    set termguicolors
  else
    set t_ut=
@@ -224,6 +223,10 @@ set t_Co=256
    let g:airline_theme='onehalfdark'
  endif
 
+ " make lines below lua 
+" lua << EOF
+"  vim.opt.background dark
+" EOF
 
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 
@@ -334,45 +337,10 @@ if ostype == "Linux"
    let python_highlight_space_errors = 0
 endif
 
-" Show documentation when you press K
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   elseif (coc#rpc#ready())
-"     call CocActionAsync('doHover')
-"   else
-"     execute '!' . &keywordprg . " " . expand('<cword>')
-"   endif
-" endfunction
-
-" Use K to show documentation in preview window.
-" noremap <silent> K :call <SID>show_documentation()<CR>
-
-" Highlight the symbol and its references when holding the cursor.
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Formatting selected code.
-" xmap <leader>F  <Plug>(coc-format-selected)
-" nmap <leader>F  <Plug>(coc-format-selected)
-" format sql code
-" noremap <leader>sql :CocCommand sql.Format <CR>
-
-" Symbol renaming.
-" nmap <leader>rn <Plug>(coc-rename)
-
-
-" Disable autocomplete for specific file types
-" autocmd FileType python let b:coc_suggest_disable = 1
-" autocmd FileType Markdown let b:coc_suggest_disable = 1
-" autocmd FileType vim let b:coc_suggest_disable = 1
-
 " For easy vertical navigation in markdown files
 autocmd FileType markdown map j gj
 autocmd FileType markdown map k gk
 
-" Add  path to your node binary here - requirement for coc plugin
-" Coc plugin also requires nmp for installing extension please refere to README on how to configure that 
-" let g:coc_node_path = '$HOME/node-from-source/bin/node'
 
 " Copy vim clipboard to system clipboard - https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim
 if ostype== "Darwin"
@@ -393,8 +361,6 @@ vnoremap <C-j>  :m '>+1<CR>gv=gv
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" Trigger coc-autocomplete on pressing Enter
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "Correct colors for Coc Pmenus
 hi Pmenu ctermbg=234 ctermfg=145
