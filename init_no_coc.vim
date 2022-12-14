@@ -77,6 +77,8 @@ Plug 'ThePrimeagen/git-worktree.nvim'
 
 "Treesitter plugins
 Plug 'nvim-treesitter/nvim-treesitter'
+" Enables sticky scroll, i.e shows function name at the top
+Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'nvim-treesitter/playground'
 
 Plug 'nvim-lua/plenary.nvim'
@@ -107,6 +109,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  "shows files, git-file in t
 Plug 'junegunn/fzf.vim' 
 
 Plug 'folke/noice.nvim'
+Plug 'rcarriga/nvim-notify'
 Plug 'MunifTanjim/nui.nvim'
 
 Plug 'yuttie/comfortable-motion.vim' " smooth scrolling 'C-d' or 'C-u'
@@ -142,7 +145,7 @@ Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
 
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
-" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 
 " lua requires should be after plug#end to avoid errors
@@ -214,9 +217,8 @@ set t_Co=256
 " Colorscheme settings
  if ostype == "Darwin"
    " colorscheme one
-   colorscheme catppuccin
+     colorscheme catppuccin
    " colorscheme oxocarbon
-   set termguicolors
  else
    set t_ut=
    colorscheme onehalfdark
@@ -224,11 +226,8 @@ set t_Co=256
    let g:airline_theme='onehalfdark'
  endif
 
- " make lines below lua 
-" lua << EOF
-"  vim.opt.background dark
-" EOF
 
+" Github copilot auto completion keymap
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 
 " Press Space to turn off highlighting and clear any message already displayed.
