@@ -162,6 +162,7 @@ require("catppuccin").setup {
 EOF
 
 " Change git worktrees using Telescope
+"
 lua require("telescope").load_extension("git_worktree")
 nnoremap <leader>wt :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
 nnoremap <leader>cwt :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
@@ -183,10 +184,12 @@ let g:firenvim_config = {
 
 
 "Comfortable motion scrolling params
+"
 let g:comfortable_motion_friction = 80.0
 let g:comfortable_motion_air_drag = 12.0
 
 " MarkdownPreview settings
+"
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 0
@@ -219,10 +222,9 @@ set cursorline
 set t_Co=256
 
 " Colorscheme settings
+"
  if ostype == "Darwin"
-   " colorscheme one
      colorscheme catppuccin
-   " colorscheme oxocarbon
  else
    set t_ut=
    colorscheme onehalfdark
@@ -232,13 +234,16 @@ set t_Co=256
 
 
 " Github copilot auto completion keymap
+"
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 
 " Press Space to turn off highlighting and clear any message already displayed.
+"
 noremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
 " https://stackoverflow.com/questions/6488683/how-do-i-change-the-cursor-between-normal-and-insert-modes-in-vim
 " Regular mode - block,  Insert mode - vertical line, Replace mode - _
+"
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -259,6 +264,7 @@ else
 endif
 
 " make the switch between insert and normal mode faster 
+"
 set ttimeout
 set ttimeoutlen=1
 set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
@@ -273,6 +279,7 @@ nmap <leader>] :bn!<CR>
 nmap <leader>x :bd<CR>
 
 " Move through quickfix list
+"
 nmap ]q <cmd>cnext<CR>
 nmap [q <cmd>cprev<CR>
 
@@ -281,52 +288,56 @@ let g:netrw_banner = 0
 noremap <leader>nt :NERDTree<CR>
 
 "reduce and increase the side of vertical split
+"
 noremap <leader><Left> :vertical resize +5<CR>
 noremap <leader><Right> :vertical resize -5<CR>
 noremap <leader><Down>  : resize +5<CR>
 noremap <leader><Up> : resize -5<CR>
 
 "Change split windows from vertical to horizontally
+"
 map <leader>tv <C-w>t<C-w>H
 map <leader>th <C-w>t<C-w>K
 
 
 " Disable arrow keys - hard mode
+"
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
-" Scrolling with keyboard
-" Move up/down lines with [CTRL + u][CTRL + d]
-" map <C-d> 5j
-" map <C-u> 5k
 
-"Telescope stuff
-"shows all files in the current directory 
+"Telescope stuff shows all files in the current directory 
+"
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 
 "shows all files store in buffer 
+"
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 "
 " Recurrsive grep, must need to install ripgrep
-" Mac - brew install ripgrep 
-" Linux - sudo apt-get install ripgrep
 nnoremap <leader>greb :lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>
 "greps the whole directory
+"
 nnoremap <leader>grep :lua require('telescope.builtin').live_grep()<CR>
 
 " Git  mappings (fugitive and Telescope)
+"
 noremap <leader>gl <cmd>Telescope git_commits<CR>
 noremap <leader>gd <cmd>Telescope git_status<CR>
 noremap <leader>gc :G commit<CR>
 noremap <leader>gp :G push<CR>
+
 " Equivalent to git status
+"
 noremap <leader>gs :G <CR>
 "open github url on web browser
+"
 noremap <leader>gb :GBrowse <CR> 
 
 " Code navigation 
+"
 nmap <silent> gd <cmd>Telescope lsp_definitions <CR>
 nmap <silent> gl <cmd>Telescope lsp_references <CR>
 nmap <silent> gt <cmd>Telescope lsp_type_definitions <CR>
@@ -338,11 +349,13 @@ if ostype == "Linux"
 endif
 
 " For easy vertical navigation in markdown files
+"
 autocmd FileType markdown map j gj
 autocmd FileType markdown map k gk
 
 
 " Copy vim clipboard to system clipboard - https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim
+"
 if ostype== "Darwin"
     noremap <silent>Y "*y
 else
@@ -352,12 +365,14 @@ set clipboard=unnamed " Does the something, might remove the one above
 
 
 " Move 1 more lines up or down in normal and visual selection modes.
+"
 nnoremap <C-k> :m .-2<CR>==
 nnoremap <C-j> :m .+1<CR>==
 vnoremap <C-k> :m '<-2<CR>gv=gv
 vnoremap <C-j>  :m '>+1<CR>gv=gv
 
 "Tab to navigate completion list
+"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
@@ -367,4 +382,5 @@ hi Pmenu ctermbg=234 ctermfg=145
 hi PmenuSel ctermbg=237  ctermfg=145
 
 " execute sql query under cursor 
+"
 nnoremap <silent> <Leader>qe :<C-U>silent! '{,'}SqlsExecuteQuery<CR>
