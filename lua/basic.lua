@@ -249,3 +249,8 @@ function _htop_toggle()
   htop:toggle()
 end
 
+
+require("chatgpt").setup({})
+
+
+require("zen-mode").setup({})

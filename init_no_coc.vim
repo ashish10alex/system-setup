@@ -68,8 +68,12 @@ call plug#begin('~/.vim/plugged')
 " Colorscheme
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
+Plug 'folke/zen-mode.nvim'
+
+
 Plug 'dstein64/vim-startuptime'
-" Plug 'nyoom-engineering/oxocarbon.nvim'
+
+Plug 'jackMort/ChatGPT.nvim'
 
 Plug 'tpope/vim-surround'
 
@@ -109,7 +113,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  "shows files, git-file in t
 Plug 'junegunn/fzf.vim' 
 
 Plug 'folke/noice.nvim'
-Plug 'rcarriga/nvim-notify'
+" Plug 'rcarriga/nvim-notify'
 Plug 'MunifTanjim/nui.nvim'
 
 Plug 'yuttie/comfortable-motion.vim' " smooth scrolling 'C-d' or 'C-u'
