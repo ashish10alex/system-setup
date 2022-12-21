@@ -98,6 +98,14 @@ gdiff() {
 git status -s | fzf --no-sort --reverse --preview 'git diff --color=always {+2} '
 }
 
+# Convert video to gif file.
+# Usage: video2gif video_file (scale) (fps)
+video2gif() {
+  ffmpeg -y -i "${1}" -vf fps=30,scale=1440:-1:flags=lanczos,palettegen "${1}.png"
+  ffmpeg -y -i "${1}" -i "${1}.png" -filter_complex "fps=30,scale=1440:-1:flags=lanczos[x];[x][1:v]paletteuse" "${1}".gif
+  rm "${1}.png"
+}
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
