@@ -150,6 +150,9 @@ Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
+Plug 'folke/neodev.nvim'
+
 call plug#end()
 
 " lua requires should be after plug#end to avoid errors
