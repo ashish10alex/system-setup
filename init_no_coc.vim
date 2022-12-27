@@ -287,6 +287,10 @@ nmap ]q <cmd>cnext<CR>
 nmap [q <cmd>cprev<CR>
 
 
+nmap n nzzzv
+nmap N Nzzzv
+
+
 let g:netrw_banner = 0
 noremap <leader>nt :NERDTree<CR>
 
@@ -314,6 +318,8 @@ noremap <Right> <Nop>
 "Telescope stuff shows all files in the current directory 
 "
 nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>gf <cmd>Telescope git_files<cr>
+
 
 "shows all files store in buffer 
 "
@@ -344,7 +350,7 @@ noremap <leader>gb :GBrowse <CR>
 nmap <silent> gd <cmd>Telescope lsp_definitions <CR>
 nmap <silent> gl <cmd>Telescope lsp_references <CR>
 nmap <silent> gt <cmd>Telescope lsp_type_definitions <CR>
-nmap <silent> dl <cmd>Telescope diagnostics <CR>
+nmap <silent> sd <cmd>Telescope diagnostics <CR>
 
 if ostype == "Linux"
    let python_highlight_all = 1
