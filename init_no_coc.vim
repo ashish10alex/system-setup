@@ -73,7 +73,6 @@ Plug 'folke/zen-mode.nvim'
 
 Plug 'dstein64/vim-startuptime'
 
-Plug 'jackMort/ChatGPT.nvim'
 
 Plug 'tpope/vim-surround'
 
@@ -92,7 +91,10 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " LSP 
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
+
+" AI Autocomplete plugins
 Plug 'github/copilot.vim'
+Plug 'jackMort/ChatGPT.nvim'
 
 " Auto completion
 Plug 'hrsh7th/cmp-nvim-lsp'

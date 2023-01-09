@@ -103,10 +103,30 @@ require'lspconfig'.sqls.setup{
 -- Add here to change telescope settings
 require('telescope').setup{
  defaults = {
-    prompt_prefix = "> ",
   },
 }
 
+local grep_args = { '--hidden' }
+require('telescope').setup {
+  defaults = {
+    prompt_prefix = "> ",
+  },
+  pickers = {
+    find_files = {
+      hidden = true
+    },
+    live_grep = {
+      additional_args = function(opts)
+        return grep_args
+      end
+    },
+    grep_string = {
+      additional_args = function(opts)
+        return grep_args
+      end
+    },
+  },
+}
 
 vim.opt.completeopt={"menu", "menuone", "noselect"}
 
