@@ -100,16 +100,12 @@ require'lspconfig'.sqls.setup{
 }
 
 
--- Add here to change telescope settings
-require('telescope').setup{
- defaults = {
-  },
-}
-
 local grep_args = { '--hidden' }
 require('telescope').setup {
   defaults = {
     prompt_prefix = "> ",
+    file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
+		"%.pdf", "%.mkv", "%.mp4", "%.zip"},
   },
   pickers = {
     find_files = {
