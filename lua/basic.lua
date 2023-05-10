@@ -1,8 +1,9 @@
+require("mason").setup()
+require("mason-lspconfig").setup()
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require("nvim-lsp-installer").setup {}
 
 require("noice").setup({
   lsp = {
@@ -75,7 +76,7 @@ require 'lspconfig'.pyright.setup{
 }
 
 require 'lspconfig'.bashls.setup{}
-require 'lspconfig'.sumneko_lua.setup{
+require 'lspconfig'.lua_ls.setup{
     capabilities = capabilities,
     settings = {
       Lua = {
@@ -90,13 +91,6 @@ require 'lspconfig'.sumneko_lua.setup{
         }
       }
     }
-}
-
-
-require'lspconfig'.sqls.setup{
-    on_attach = function(client, bufnr)
-        require('sqls').on_attach(client, bufnr)
-    end,
 }
 
 
@@ -264,9 +258,6 @@ local htop = Terminal:new({ cmd ="htop", hidden = true, direction='float'})
 function _htop_toggle()
   htop:toggle()
 end
-
-
-require("chatgpt").setup({})
 
 
 require("zen-mode").setup({

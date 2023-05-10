@@ -70,6 +70,8 @@ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 Plug 'folke/zen-mode.nvim'
 
+Plug 'andres-lowrie/vim-sqlx'
+
 
 Plug 'dstein64/vim-startuptime'
 
@@ -89,12 +91,13 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " LSP 
-Plug 'williamboman/nvim-lsp-installer'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 
 " AI Autocomplete plugins
 Plug 'github/copilot.vim'
-Plug 'jackMort/ChatGPT.nvim'
+" Plug 'jackMort/ChatGPT.nvim'
 
 " Auto completion
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -103,6 +106,8 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
+" If you have nodejs and yarn
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " For luasnip users.
 Plug 'L3MON4D3/LuaSnip'
@@ -144,8 +149,6 @@ Plug 'airblade/vim-gitgutter' "Git gutter
 " Action as usual is repeatable using "."
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
-
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview
 
 Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
 
