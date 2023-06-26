@@ -33,12 +33,19 @@ set nowritebackup
 " set shortmess=a
 " set cmdheight=2
 
+set mouse=
+
+" vnoremap <C-c><C-c> :<c-u>silent '<,'>write !xsel -b<cr>
+
+
 set relativenumber
 set textwidth=120
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
+set lazyredraw
 set updatetime=50
+set termguicolors
 
 " Don't pass messages to |ins-completion-menu|.
 " set shortmess+=c
@@ -60,75 +67,139 @@ set foldlevel=99
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
 
+" Colorscheme
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+
+Plug 'folke/zen-mode.nvim'
+
+Plug 'andres-lowrie/vim-sqlx'
+
+
+Plug 'dstein64/vim-startuptime'
+
+
 Plug 'tpope/vim-surround'
 
-Plug 'honza/vim-snippets'
+Plug 'ThePrimeagen/git-worktree.nvim'
 
-Plug 'junegunn/vim-easy-align'
+"Treesitter plugins
+Plug 'nvim-treesitter/nvim-treesitter'
+" Enables sticky scroll, i.e shows function name at the top
+Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'nvim-treesitter/playground'
 
-" Plug 'lervag/vimtex' " Latex plugins
-
-" Telescope stuff
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" native telescope sorter to significantly improve sorting performance
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'camgraff/telescope-tmux.nvim'
-Plug 'LinArcX/telescope-env.nvim'
-
 
 " LSP 
-Plug 'williamboman/nvim-lsp-installer'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
+
+" AI Autocomplete plugins
+Plug 'github/copilot.vim'
+" Plug 'jackMort/ChatGPT.nvim'
+
+" Auto completion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+" If you have nodejs and yarn
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+" For luasnip users.
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+
+" sql
+Plug 'nanotee/sqls.nvim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  "shows files, git-file in the current directory, Install bat for syntax highlighting 
 Plug 'junegunn/fzf.vim' 
 
+Plug 'folke/noice.nvim'
+" Plug 'rcarriga/nvim-notify'
+Plug 'MunifTanjim/nui.nvim'
 
 Plug 'yuttie/comfortable-motion.vim' " smooth scrolling 'C-d' or 'C-u'
-
 "Themes for vim editor
 Plug 'sonph/onehalf', { 'rtp': 'vim' } "preferred on linux server
-Plug 'rakr/vim-one' " For mac
-
+" Plug 'rakr/vim-one' " For mac
 Plug 'tpope/vim-commentary' "commenting - `gcc` for commenting and un-commenting 
 
-Plug 'tpope/vim-fugitive' "Git workflows
 
+Plug 'tpope/vim-fugitive' "Git workflows
 Plug 'tpope/vim-rhubarb' "Git - to go to github link in the browser
 
-Plug 'vim-airline/vim-airline' "Shows status line - Fugitive status line depends on airline
 
-Plug 'sheerun/vim-polyglot' " Syntax highlighting
+Plug 'vim-airline/vim-airline' "Shows status line - Fugitive status line depends on airline
+" Plug 'sheerun/vim-polyglot' " Syntax highlighting
 
 Plug 'preservim/nerdtree' "nerd tree - shows files in folder in a vertical split
 
 Plug 'Xuyuanp/nerdtree-git-plugin' " New nerd tree ?
 
-Plug 'airblade/vim-gitgutter' "Git gutter
 
+Plug 'airblade/vim-gitgutter' "Git gutter
 " Replace words with copied word
 " Copy the words using - "yiw" (yank inner word)
 " Go to the word which you want replaced and type "griw" (go replace inner word)
 " Action as usual is repeatable using "."
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Auto complete and very quick navigation between functions
-
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Markdown preview
 
 Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
+
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
+Plug 'folke/neodev.nvim'
+
 call plug#end()
 
 " lua requires should be after plug#end to avoid errors
 lua require('basic')
 
+lua << EOF
+require("catppuccin").setup {
+    flavour = "macchiato" -- mocha, macchiato, frappe, latte
+}
+EOF
+
+" Change git worktrees using Telescope
+"
+lua require("telescope").load_extension("git_worktree")
+nnoremap <leader>wt :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
+nnoremap <leader>cwt :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
+
+let g:firenvim_config = { 
+    \ 'globalSettings': {
+        \ 'alt': 'all',
+    \  },
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'cmdline': 'neovim',
+            \ 'content': 'text',
+            \ 'priority': 0,
+            \ 'selector': 'textarea',
+            \ 'takeover': 'never',
+        \ },
+    \ }
+\ }
+
+
 "Comfortable motion scrolling params
+"
 let g:comfortable_motion_friction = 80.0
 let g:comfortable_motion_air_drag = 12.0
 
 " MarkdownPreview settings
+"
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 0
@@ -159,32 +230,51 @@ let ostype = substitute(system('uname'), "\n", "", "")
 
 set cursorline
 set t_Co=256
-if ostype == "Darwin"
-  colorscheme one
-  set termguicolors
-else
-  set t_ut=
-  colorscheme onehalfdark
-  highlight Comment gui=none cterm=none
-  let g:airline_theme='onehalfdark'
-endif
+
+" Colorscheme settings
+"
+ if ostype == "Darwin"
+     colorscheme catppuccin
+ else
+   set t_ut=
+   colorscheme onehalfdark
+   highlight Comment gui=none cterm=none
+   let g:airline_theme='onehalfdark'
+ endif
+
+
+" Github copilot auto completion keymap
+"
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 
 " Press Space to turn off highlighting and clear any message already displayed.
+"
 noremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
 " https://stackoverflow.com/questions/6488683/how-do-i-change-the-cursor-between-normal-and-insert-modes-in-vim
 " Regular mode - block,  Insert mode - vertical line, Replace mode - _
+"
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-  else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-    let &t_SR =  "\<Esc>]50;CursorShape=2\x7"
+else
+    "this works for Centos
+    if $TERM == 'xterm-256color'
+        "echo "For Centos"
+        let &t_SI = "\<Esc>[6 q"
+        let &t_SR = "\<Esc>[4 q"
+        let &t_EI = "\<Esc>[2 q"
+    else
+        "echo "For other Linux distros"
+        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+        let &t_SR =  "\<Esc>]50;CursorShape=2\x7"
+    endif
 endif
 
 " make the switch between insert and normal mode faster 
+"
 set ttimeout
 set ttimeoutlen=1
 set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
@@ -199,114 +289,96 @@ nmap <leader>] :bn!<CR>
 nmap <leader>x :bd<CR>
 
 " Move through quickfix list
+"
 nmap ]q <cmd>cnext<CR>
 nmap [q <cmd>cprev<CR>
 
-" open terminal in split window and go to insert mode
-nnoremap <leader>te <cmd> split term://zsh<cr>i 
 
-"shows all files in the current directory 
-nnoremap <leader>f <cmd>Telescope find_files<cr>
+nmap n nzzzv
+nmap N Nzzzv
 
-"shows all files store in buffer 
-nnoremap <leader>b <cmd>Telescope buffers<cr>
-
-"list all tmux sessions
-nnoremap <leader>ts <cmd>Telescope tmux sessions<cr>
-"list all tmux windows
-nnoremap <leader>tw <cmd>Telescope tmux windows<cr>
-
-"
-" Recurrsive grep, must need to install ripgrep
-" Mac - brew install ripgrep 
-" Linux - sudo apt-get install ripgrep
-nnoremap <leader>greb :lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>
-nnoremap <leader>grep :lua require('telescope.builtin').live_grep()<CR>
 
 let g:netrw_banner = 0
 noremap <leader>nt :NERDTree<CR>
 
 "reduce and increase the side of vertical split
+"
 noremap <leader><Left> :vertical resize +5<CR>
 noremap <leader><Right> :vertical resize -5<CR>
 noremap <leader><Down>  : resize +5<CR>
 noremap <leader><Up> : resize -5<CR>
 
 "Change split windows from vertical to horizontally
+"
 map <leader>tv <C-w>t<C-w>H
 map <leader>th <C-w>t<C-w>K
 
- "Search and replace -> %s/<targetWord><replaceWith>/gI
- "To replace visual block do [Shift][:]s/<targetWord>/<replaceWith><CR>
-noremap <leader>sr :%s//gI<Left><Left><Left>
 
 " Disable arrow keys - hard mode
+"
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
 
-" Git mappings (fugitive and Telescope)
+"Telescope stuff shows all files in the current directory 
+"
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>gf <cmd>Telescope git_files<cr>
+
+
+"shows all files store in buffer 
+"
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+"
+" Recurrsive grep, must need to install ripgrep
+nnoremap <leader>greb :lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>
+"greps the whole directory
+"
+nnoremap <leader>grep :lua require('telescope.builtin').live_grep()<CR>
+
+" Git  mappings (fugitive and Telescope)
+"
 noremap <leader>gl <cmd>Telescope git_commits<CR>
 noremap <leader>gd <cmd>Telescope git_status<CR>
 noremap <leader>gc :G commit<CR>
 noremap <leader>gp :G push<CR>
+
+" Navigate through git hunks and preview them
+"
+nmap ]g <cmd>GitGutterNextHunk<CR>
+nmap [g <cmd>GitGutterPrevHunk<CR>
+nmap gp <cmd>GitGutterPreviewHunk<CR>
+
+
 " Equivalent to git status
+"
 noremap <leader>gs :G <CR>
 "open github url on web browser
+"
 noremap <leader>gb :GBrowse <CR> 
+
+" Code navigation 
+"
+nmap <silent> gd <cmd>Telescope lsp_definitions <CR>
+nmap <silent> gl <cmd>Telescope lsp_references <CR>
+nmap <silent> gt <cmd>Telescope lsp_type_definitions <CR>
+nmap <silent> sd <cmd>Telescope diagnostics <CR>
 
 if ostype == "Linux"
    let python_highlight_all = 1
    let python_highlight_space_errors = 0
 endif
 
-" Show documentation when you press K
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" Use K to show documentation in preview window.
-noremap <silent> K :call <SID>show_documentation()<CR>
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Formatting selected code.
-xmap <leader>F  <Plug>(coc-format-selected)
-" format sql code
-noremap <leader>sql :CocCommand sql.Format <CR>
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" GoTo code navigation using coc
-nmap <silent> gd <cmd>Telescope lsp_definitions <CR>
-nmap <silent> gl <cmd>Telescope lsp_references <CR>
-nmap <silent> td <cmd>Telescope lsp_type_definitions <CR>
-nmap <silent> sgd <cmd>call CocAction('jumpDefinition', 'split')<CR>
-
-" Disable autocomplete for specific file types
-autocmd FileType python let b:coc_suggest_disable = 1
-autocmd FileType Markdown let b:coc_suggest_disable = 1
-autocmd FileType vim let b:coc_suggest_disable = 1
-
 " For easy vertical navigation in markdown files
+"
 autocmd FileType markdown map j gj
 autocmd FileType markdown map k gk
 
-" Add  path to your node binary here - requirement for coc plugin
-" Coc plugin also requires nmp for installing extension please refere to README on how to configure that 
-" let g:coc_node_path = '$HOME/node-from-source/bin/node'
 
 " Copy vim clipboard to system clipboard - https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim
+"
 if ostype== "Darwin"
     noremap <silent>Y "*y
 else
@@ -314,31 +386,33 @@ else
 endif
 set clipboard=unnamed " Does the something, might remove the one above
 
+
 " Move 1 more lines up or down in normal and visual selection modes.
+"
 nnoremap <C-k> :m .-2<CR>==
 nnoremap <C-j> :m .+1<CR>==
 vnoremap <C-k> :m '<-2<CR>gv=gv
 vnoremap <C-j>  :m '>+1<CR>gv=gv
 
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-      let col = col('.') - 1
-        return !col || getline('.')[col - 1]  =~ '\s'
-    endfunction
-
-    inoremap <silent><expr> <Tab>
-          \ pumvisible() ? "\<C-n>" :
-          \ <SID>check_back_space() ? "\<Tab>" :
-          \ coc#refresh()
-
 "Tab to navigate completion list
+"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" Trigger coc-autocomplete on pressing Enter
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-"Correct colors for Coc Pmenus
+"Correct colors for Pmenus
 hi Pmenu ctermbg=234 ctermfg=145
 hi PmenuSel ctermbg=237  ctermfg=145
+
+" execute sql query under cursor 
+"
+nnoremap <silent> <Leader>qe :<C-U>silent! '{,'}SqlsExecuteQuery<CR>
+
+"
+"
+let g:noice_diagnostic_disable = 1
+
+" Disable Copilot by default
+"
+let g:copilot_enabled = v:false
 
