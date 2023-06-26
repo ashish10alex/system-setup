@@ -43,7 +43,9 @@ set textwidth=120
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
+set lazyredraw
 set updatetime=50
+set termguicolors
 
 " Don't pass messages to |ins-completion-menu|.
 " set shortmess+=c
@@ -343,6 +345,13 @@ noremap <leader>gd <cmd>Telescope git_status<CR>
 noremap <leader>gc :G commit<CR>
 noremap <leader>gp :G push<CR>
 
+" Navigate through git hunks and preview them
+"
+nmap ]g <cmd>GitGutterNextHunk<CR>
+nmap [g <cmd>GitGutterPrevHunk<CR>
+nmap gp <cmd>GitGutterPreviewHunk<CR>
+
+
 " Equivalent to git status
 "
 noremap <leader>gs :G <CR>
@@ -398,3 +407,12 @@ hi PmenuSel ctermbg=237  ctermfg=145
 " execute sql query under cursor 
 "
 nnoremap <silent> <Leader>qe :<C-U>silent! '{,'}SqlsExecuteQuery<CR>
+
+"
+"
+let g:noice_diagnostic_disable = 1
+
+" Disable Copilot by default
+"
+let g:copilot_enabled = v:false
+
