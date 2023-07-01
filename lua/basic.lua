@@ -12,7 +12,8 @@ local on_attach = function()
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {buffer=0})
     vim.keymap.set("n", "]e", vim.diagnostic.goto_next, {buffer=0})
     vim.keymap.set("n", "[e", vim.diagnostic.goto_prev, {buffer=0})
-    vim.keymap.set("n", "ca", vim.lsp.buf.code_action, {buffer=0})
+    vim.keymap.set("n", "qe", vim.diagnostic.setqflist, {buffer=0})
+    vim.keymap.set("n", "ga", vim.lsp.buf.code_action, {buffer=0})
 end
 
 
@@ -97,13 +98,20 @@ require 'lspconfig'.lua_ls.setup{
 }
 
 
+require 'lspconfig'.ocamllsp.setup{
+  filetypes = { "ocaml",  "ml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
+  root_dir = lspconfig.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace"),
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 
 local grep_args = { '--hidden' }
 require('telescope').setup {
   defaults = {
     prompt_prefix = "> ",
     file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
-		"%.pdf", "%.mkv", "%.mp4", "%.zip"},
+		"%rpdf", "%.mkv", "%.mp4", "%.zip", "node_modules"},
   },
   pickers = {
     find_files = {
@@ -186,24 +194,6 @@ vim.opt.completeopt={"menu", "menuone", "noselect"}
     })
   })
 
-  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-  --cmp.setup.cmdline({ '/', '?' }, {
-  --  mapping = cmp.mapping.preset.cmdline(),
-  --  sources = {
-  --    { name = 'buffer' }
-  --  }
-  --})
-
-  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-  --cmp.setup.cmdline(':', {
-  --  mapping = cmp.mapping.preset.cmdline(),
-  --  sources = cmp.config.sources({
-  --    { name = 'path' }
-  --  }, {
-  --    { name = 'cmdline' }
-  --  })
-  --})
-
 vim.keymap.set('i', '<M-.>', '<Plug>(copilot-next)')
 vim.keymap.set('i', '<M-,>', '<Plug>(copilot-previous)')
 
@@ -275,6 +265,5 @@ lspconfig.rust_analyzer.setup{
   capabilities = capabilities,
   on_attach = on_attach,
 }
-
 
 
