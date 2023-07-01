@@ -62,6 +62,7 @@ set hlsearch
 set ic " case insensitive search
 set foldmethod=indent
 set foldlevel=99
+highlight Comment cterm=italic
 
 " Install VimPlug from - https://github.com/junegunn/vim-plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -126,9 +127,6 @@ Plug 'folke/noice.nvim'
 Plug 'MunifTanjim/nui.nvim'
 
 Plug 'yuttie/comfortable-motion.vim' " smooth scrolling 'C-d' or 'C-u'
-"Themes for vim editor
-Plug 'sonph/onehalf', { 'rtp': 'vim' } "preferred on linux server
-" Plug 'rakr/vim-one' " For mac
 Plug 'tpope/vim-commentary' "commenting - `gcc` for commenting and un-commenting 
 
 
@@ -137,7 +135,6 @@ Plug 'tpope/vim-rhubarb' "Git - to go to github link in the browser
 
 
 Plug 'vim-airline/vim-airline' "Shows status line - Fugitive status line depends on airline
-" Plug 'sheerun/vim-polyglot' " Syntax highlighting
 
 Plug 'preservim/nerdtree' "nerd tree - shows files in folder in a vertical split
 
@@ -151,18 +148,18 @@ Plug 'airblade/vim-gitgutter' "Git gutter
 " Action as usual is repeatable using "."
 Plug 'inkarkat/vim-ReplaceWithRegister'
 
-
-Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
+" Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
 
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 Plug 'folke/neodev.nvim'
 
 call plug#end()
 
 " lua requires should be after plug#end to avoid errors
+" Sources basic.lua file
 lua require('basic')
 
 lua << EOF
@@ -177,20 +174,20 @@ lua require("telescope").load_extension("git_worktree")
 nnoremap <leader>wt :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
 nnoremap <leader>cwt :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
 
-let g:firenvim_config = { 
-    \ 'globalSettings': {
-        \ 'alt': 'all',
-    \  },
-    \ 'localSettings': {
-        \ '.*': {
-            \ 'cmdline': 'neovim',
-            \ 'content': 'text',
-            \ 'priority': 0,
-            \ 'selector': 'textarea',
-            \ 'takeover': 'never',
-        \ },
-    \ }
-\ }
+" let g:firenvim_config = { 
+"     \ 'globalSettings': {
+"         \ 'alt': 'all',
+"     \  },
+"     \ 'localSettings': {
+"         \ '.*': {
+"             \ 'cmdline': 'neovim',
+"             \ 'content': 'text',
+"             \ 'priority': 0,
+"             \ 'selector': 'textarea',
+"             \ 'takeover': 'never',
+"         \ },
+"     \ }
+" \ }
 
 
 "Comfortable motion scrolling params
@@ -233,14 +230,7 @@ set t_Co=256
 
 " Colorscheme settings
 "
- if ostype == "Darwin"
-     colorscheme catppuccin
- else
-   set t_ut=
-   colorscheme onehalfdark
-   highlight Comment gui=none cterm=none
-   let g:airline_theme='onehalfdark'
- endif
+colorscheme catppuccin
 
 
 " Github copilot auto completion keymap
@@ -251,27 +241,6 @@ imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 "
 noremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
-" https://stackoverflow.com/questions/6488683/how-do-i-change-the-cursor-between-normal-and-insert-modes-in-vim
-" Regular mode - block,  Insert mode - vertical line, Replace mode - _
-"
-if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-else
-    "this works for Centos
-    if $TERM == 'xterm-256color'
-        "echo "For Centos"
-        let &t_SI = "\<Esc>[6 q"
-        let &t_SR = "\<Esc>[4 q"
-        let &t_EI = "\<Esc>[2 q"
-    else
-        "echo "For other Linux distros"
-        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-        let &t_SR =  "\<Esc>]50;CursorShape=2\x7"
-    endif
-endif
 
 " make the switch between insert and normal mode faster 
 "
@@ -406,7 +375,7 @@ hi PmenuSel ctermbg=237  ctermfg=145
 
 " execute sql query under cursor 
 "
-nnoremap <silent> <Leader>qe :<C-U>silent! '{,'}SqlsExecuteQuery<CR>
+" nnoremap <silent> <Leader>qe :<C-U>silent! '{,'}SqlsExecuteQuery<CR>
 
 "
 "
