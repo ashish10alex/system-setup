@@ -43,8 +43,8 @@ set textwidth=120
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set lazyredraw
-set updatetime=50
+" set lazyredraw
+set updatetime=30
 set termguicolors
 
 " Don't pass messages to |ins-completion-menu|.
@@ -113,8 +113,8 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " For luasnip users.
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
+" Plug 'L3MON4D3/LuaSnip'
+" Plug 'saadparwaiz1/cmp_luasnip'
 
 " sql
 Plug 'nanotee/sqls.nvim'
@@ -122,9 +122,9 @@ Plug 'nanotee/sqls.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  "shows files, git-file in the current directory, Install bat for syntax highlighting 
 Plug 'junegunn/fzf.vim' 
 
-Plug 'folke/noice.nvim'
+" Plug 'folke/noice.nvim'
 " Plug 'rcarriga/nvim-notify'
-Plug 'MunifTanjim/nui.nvim'
+" Plug 'MunifTanjim/nui.nvim'
 
 Plug 'yuttie/comfortable-motion.vim' " smooth scrolling 'C-d' or 'C-u'
 Plug 'tpope/vim-commentary' "commenting - `gcc` for commenting and un-commenting 
@@ -155,6 +155,8 @@ Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 Plug 'folke/neodev.nvim'
+
+Plug 'michaelb/sniprun', {'do': 'sh install.sh'}
 
 call plug#end()
 
@@ -320,6 +322,10 @@ nmap ]g <cmd>GitGutterNextHunk<CR>
 nmap [g <cmd>GitGutterPrevHunk<CR>
 nmap gp <cmd>GitGutterPreviewHunk<CR>
 
+"
+"SnipRun tool
+nmap <leader>e <cmd>:'<,'>:SnipRun<CR>
+
 
 " Equivalent to git status
 "
@@ -335,10 +341,6 @@ nmap <silent> gl <cmd>Telescope lsp_references <CR>
 nmap <silent> gt <cmd>Telescope lsp_type_definitions <CR>
 nmap <silent> sd <cmd>Telescope diagnostics <CR>
 
-if ostype == "Linux"
-   let python_highlight_all = 1
-   let python_highlight_space_errors = 0
-endif
 
 " For easy vertical navigation in markdown files
 "
@@ -373,9 +375,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 hi Pmenu ctermbg=234 ctermfg=145
 hi PmenuSel ctermbg=237  ctermfg=145
 
-" execute sql query under cursor 
-"
-" nnoremap <silent> <Leader>qe :<C-U>silent! '{,'}SqlsExecuteQuery<CR>
 
 "
 "

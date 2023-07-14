@@ -17,62 +17,62 @@ local on_attach = function()
 end
 
 
-require("noice").setup({
-  lsp = {
-    override = {
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
-      ["cmp.entry.get_documentation"] = true,
-    },
-  },
-  messages = {
-      -- NOTE: If you enable messages, then the cmdline is enabled automatically.
-      -- This is a current Neovim limitation.
-      enabled = true, -- enables the Noice messages UI
-      view_history = "messages", -- view for :messages
-      view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
-    },
-  views = {
-    cmdline_popup = {
-      position = {
-        row = 5,
-        col = "50%",
-      },
-      size = {
-        width = "auto",
-        height = "auto",
-      },
-    },
-    popupmenu = {
-      relative = "editor",
-      position = {
-        row = 8,
-        col = "50%",
-      },
-      size = {
-        width = 60,
-        height = 10,
-      },
-      border = {
-        style = "rounded",
-        padding = { 0, 1 },
-      },
-      win_options = {
-        winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
-      },
-    },
-  },
-  cmdline = {
-        format = {
-          cmdline = { icon = ">" },
-          search_down = { icon = "🔍⌄" },
-          search_up = { icon = "🔍⌃" },
-          filter = { icon = "$" },
-          lua = { icon = "☾" },
-          help = { icon = "?" },
-        },
-      },
-})
+-- require("noice").setup({
+--   lsp = {
+--     override = {
+--       ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+--       ["vim.lsp.util.stylize_markdown"] = true,
+--       ["cmp.entry.get_documentation"] = true,
+--     },
+--   },
+--   messages = {
+--       -- NOTE: If you enable messages, then the cmdline is enabled automatically.
+--       -- This is a current Neovim limitation.
+--       enabled = true, -- enables the Noice messages UI
+--       view_history = "messages", -- view for :messages
+--       view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
+--     },
+--   views = {
+--     cmdline_popup = {
+--       position = {
+--         row = 5,
+--         col = "50%",
+--       },
+--       size = {
+--         width = "auto",
+--         height = "auto",
+--       },
+--     },
+--     popupmenu = {
+--       relative = "editor",
+--       position = {
+--         row = 8,
+--         col = "50%",
+--       },
+--       size = {
+--         width = 60,
+--         height = 10,
+--       },
+--       border = {
+--         style = "rounded",
+--         padding = { 0, 1 },
+--       },
+--       win_options = {
+--         winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+--       },
+--     },
+--   },
+--   cmdline = {
+--         format = {
+--           cmdline = { icon = ">" },
+--           search_down = { icon = "🔍⌄" },
+--           search_up = { icon = "🔍⌃" },
+--           filter = { icon = "$" },
+--           lua = { icon = "☾" },
+--           help = { icon = "?" },
+--         },
+--       },
+-- })
 
 require 'lspconfig'.pyright.setup{
   capabilities = capabilities,
@@ -136,11 +136,11 @@ vim.opt.completeopt={"menu", "menuone", "noselect"}
   local cmp = require'cmp'
 
   cmp.setup({
-    snippet = {
-      expand = function(args)
-         require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      end,
-    },
+    -- snippet = {
+    --   expand = function(args)
+    --      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+    --   end,
+    -- },
     window = {
       -- completion = cmp.config.window.bordered(),
       -- documentation = cmp.config.window.bordered(),
