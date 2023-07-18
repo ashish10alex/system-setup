@@ -163,6 +163,7 @@ call plug#end()
 " lua requires should be after plug#end to avoid errors
 " Sources basic.lua file
 lua require('basic')
+lua require('my_functions')
 
 lua << EOF
 require("catppuccin").setup {

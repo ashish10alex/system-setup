@@ -1,5 +1,9 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
+require("neodev").setup({
+  -- add any options here, or leave empty to use the default settings
+})
+
 
 -- Set up lspconfig.
 local lspconfig = require'lspconfig'
@@ -265,5 +269,19 @@ lspconfig.rust_analyzer.setup{
   capabilities = capabilities,
   on_attach = on_attach,
 }
+
+require'sniprun'.setup({
+  -- display = { "LongTempFloatingWindow" },
+  -- display = { "Classic"},
+  -- display = { "VirtualTextOk", "VirtualTextErr" },
+})
+
+-- then setup your lsp server as usual
+local lspconfig = require('lspconfig')
+-- example to setup lua_ls and enable call snippets
+lspconfig.lua_ls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
 
 
