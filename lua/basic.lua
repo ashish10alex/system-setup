@@ -285,3 +285,6 @@ lspconfig.lua_ls.setup({
 })
 
 
+-- Make sure exec_between_quoutes is sourced whhen opening a new window in neovim
+vim.cmd("autocmd BufEnter * luafile ~/.config/nvim/lua/execute_bigquery.lua")
+
