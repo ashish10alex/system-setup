@@ -5,8 +5,8 @@
   output
 
   TODO: 
-  1. Does not support multi line command.
-  2. Support for other file types
+  1. Does not support multiline command.
+  2. Support for other filetypes
 --]]
 local function npprint(output, type)
     require("notify")(output, type)
@@ -38,6 +38,16 @@ local function _add_comment_signature_to_output(output)
     output = output .. "\n*/"
     end
 
+    if vim.bo.filetype == 'javascript' then
+    output =  "/*\n" .. output
+    output = output .. "\n*/"
+    end
+
+    if vim.bo.filetype == 'python' then
+    output =  "'''\n" .. output
+    output = output .. "\n'''"
+    end
+
     return output
 end
 
@@ -52,7 +62,7 @@ local function execute_between_quotes()
     -- check if the command is executable, and if it is, run it
     local first_executable = string.match(command, "%S+")
     if check_if_executable(first_executable) then
-        npprint('running command: ' .. command)
+        -- npprint('running command: ' .. command)
         local output = vim.fn.system(command)
         output = _add_comment_signature_to_output(output)
 
@@ -70,6 +80,3 @@ end
 vim.keymap.set("n", "<leader>t", execute_between_quotes, {noremap = true})
 
 -- "lt -lr"
---
--- "ls -la"
-
