@@ -1,6 +1,11 @@
+-- local current_buffer_name = vim.fn.expand("%:t")
+-- print("sourcing " .. current_buffer_name .. " at " .. os.date("%X"))
+
+-- how to get the name of the file in current buffer in lua neovim?
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("neodev").setup({
+  library = { plugins = { "nvim-dap-ui" }, types = true },
   -- add any options here, or leave empty to use the default settings
 })
 
@@ -82,6 +87,9 @@ require 'lspconfig'.pyright.setup{
   capabilities = capabilities,
   on_attach = on_attach,
 }
+
+require'lspconfig'.terraformls.setup{}
+require 'lspconfig'.tflint.setup{}
 
 require 'lspconfig'.bashls.setup{}
 require 'lspconfig'.lua_ls.setup{
@@ -264,6 +272,7 @@ require("zen-mode").setup({
         }
 })
 
+require("notify").setup({})
 
 lspconfig.rust_analyzer.setup{
   capabilities = capabilities,
@@ -288,3 +297,46 @@ lspconfig.lua_ls.setup({
 -- Make sure exec_between_quoutes is sourced whhen opening a new window in neovim
 vim.cmd("autocmd BufEnter * luafile ~/.config/nvim/lua/execute_bigquery.lua")
 
+-- Rounded borders for signature help, hover and diagnostic
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+            vim.lsp.handlers.signature_help, {
+                border = 'rounded',
+                close_events = {"BufHidden", "InsertLeave"},
+    }
+)
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+            vim.lsp.handlers.hover, {
+                border = 'rounded',
+    }
+)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        underline    = false,
+        virtual_text = false,
+        float = { border = "rounded" }, 
+    }
+)
+
+--debugging using DAP
+vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
+vim.keymap.set("n", "<F1>", ":lua require'dap'.step_over()<CR>")
+vim.keymap.set("n", "<F2>", ":lua require'dap'.step_into()<CR>")
+vim.keymap.set("n", "<F3>", ":lua require'dap'.step_out()<CR>")
+vim.keymap.set("n", "<F6>", ":lua require'dap'.toggle_breakpoint()<CR>")
+vim.keymap.set("n", "<F7>", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+
+-- require("nvim-dap-virtual-text").setup()
+require('dap-python').setup('/Users/ashishalex/Documents/work/jlr/venvs/jlrenv/bin/python3')
+
+require('dapui').setup()
+
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end

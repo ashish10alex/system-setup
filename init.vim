@@ -33,7 +33,7 @@ set nowritebackup
 " set shortmess=a
 " set cmdheight=2
 
-set mouse=
+set mouse=a
 
 " vnoremap <C-c><C-c> :<c-u>silent '<,'>write !xsel -b<cr>
 
@@ -81,8 +81,6 @@ Plug 'dstein64/vim-startuptime'
 
 Plug 'tpope/vim-surround'
 
-Plug 'ThePrimeagen/git-worktree.nvim'
-
 "Treesitter plugins
 Plug 'nvim-treesitter/nvim-treesitter'
 " Enables sticky scroll, i.e shows function name at the top
@@ -123,7 +121,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  "shows files, git-file in t
 Plug 'junegunn/fzf.vim' 
 
 " Plug 'folke/noice.nvim'
-" Plug 'rcarriga/nvim-notify'
+Plug 'rcarriga/nvim-notify'
 " Plug 'MunifTanjim/nui.nvim'
 
 Plug 'yuttie/comfortable-motion.vim' " smooth scrolling 'C-d' or 'C-u'
@@ -158,12 +156,20 @@ Plug 'folke/neodev.nvim'
 
 Plug 'michaelb/sniprun', {'do': 'sh install.sh'}
 
+" Debugging
+Plug 'mfussenegger/nvim-dap'
+Plug 'Pocco81/DAPInstall.nvim' "like Mason ?
+Plug 'theHamsta/nvim-dap-virtual-text' "Prints out variables besides code
+Plug 'rcarriga/nvim-dap-ui' "Loads debugger UI
+Plug 'mfussenegger/nvim-dap-python' "Python debugger
+Plug 'nvim-telescope/telescope-dap.nvim' "Telescope help for dap ?
+
 call plug#end()
 
 " lua requires should be after plug#end to avoid errors
 " Sources basic.lua file
+" lua require('helpers')
 lua require('basic')
-lua require('my_functions')
 
 lua << EOF
 require("catppuccin").setup {
@@ -171,11 +177,6 @@ require("catppuccin").setup {
 }
 EOF
 
-" Change git worktrees using Telescope
-"
-lua require("telescope").load_extension("git_worktree")
-nnoremap <leader>wt :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
-nnoremap <leader>cwt :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
 
 " let g:firenvim_config = { 
 "     \ 'globalSettings': {
@@ -333,7 +334,7 @@ nmap <leader>e <cmd>:'<,'>:SnipRun<CR>
 noremap <leader>gs :G <CR>
 "open github url on web browser
 "
-noremap <leader>gb :GBrowse <CR> 
+" noremap <leader>gb :GBrowse <CR> 
 
 " Code navigation 
 "
