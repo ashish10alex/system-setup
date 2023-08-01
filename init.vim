@@ -130,6 +130,7 @@ Plug 'tpope/vim-commentary' "commenting - `gcc` for commenting and un-commenting
 
 Plug 'tpope/vim-fugitive' "Git workflows
 Plug 'tpope/vim-rhubarb' "Git - to go to github link in the browser
+Plug 'shumphrey/fugitive-gitlab.vim'
 
 
 Plug 'vim-airline/vim-airline' "Shows status line - Fugitive status line depends on airline
@@ -150,6 +151,7 @@ Plug 'inkarkat/vim-ReplaceWithRegister'
 
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
+" Allows you to use neovim in text box in browser
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 Plug 'folke/neodev.nvim'
@@ -324,6 +326,10 @@ nmap ]g <cmd>GitGutterNextHunk<CR>
 nmap [g <cmd>GitGutterPrevHunk<CR>
 nmap gp <cmd>GitGutterPreviewHunk<CR>
 
+"Gitlab settings for JLR
+"
+let g:fugitive_gitlab_domains = [$JLR_GITLAB_ADDRESS]
+
 "
 "SnipRun tool
 nmap <leader>e <cmd>:'<,'>:SnipRun<CR>
@@ -331,10 +337,10 @@ nmap <leader>e <cmd>:'<,'>:SnipRun<CR>
 
 " Equivalent to git status
 "
-noremap <leader>gs :G <CR>
+noremap <leader>gs :Git <CR>
 "open github url on web browser
 "
-" noremap <leader>gb :GBrowse <CR> 
+noremap <leader>gb :GBrowse <CR> 
 
 " Code navigation 
 "
