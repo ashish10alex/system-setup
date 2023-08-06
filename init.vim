@@ -71,6 +71,8 @@ call plug#begin('~/.vim/plugged')
 " Colorscheme
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
+Plug 'junegunn/vim-easy-align'
+
 Plug 'folke/zen-mode.nvim'
 
 Plug 'andres-lowrie/vim-sqlx'
@@ -89,6 +91,7 @@ Plug 'nvim-treesitter/playground'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'LinArcX/telescope-env.nvim' 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " LSP 
@@ -392,3 +395,10 @@ let g:noice_diagnostic_disable = 1
 "
 let g:copilot_enabled = v:false
 
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+"
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+"
+nmap ga <Plug>(EasyAlign)

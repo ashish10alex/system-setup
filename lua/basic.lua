@@ -142,6 +142,8 @@ require('telescope').setup {
   },
 }
 
+require('telescope').load_extension('env')
+
 vim.opt.completeopt={"menu", "menuone", "noselect"}
 
   -- Set up nvim-cmp.
@@ -340,3 +342,23 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
+
+function read_file(path)
+  local file = io.open(path, "rb") 
+  if not file then return nil end
+  local content = file:read "*a" -- *a or *all reads the whole file
+  file:close()
+  return content
+end
+
+local compile_dataform = function()
+    local dataform_compile_cmd_path = os.getenv("HOME") .. "/.config/nvim/lua/dataform_compile_cmd.txt"
+    local dataform_compile_cmd = read_file(dataform_compile_cmd_path)
+    local output = vim.fn.system(dataform_compile_cmd)
+    print("Compiled dataform output to /tmp/temp.sqlx")
+end
+
+
+vim.api.nvim_create_user_command("CompileDataform", compile_dataform, {})
+
+
