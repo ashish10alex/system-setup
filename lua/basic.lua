@@ -314,7 +314,7 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
         underline    = false,
-        virtual_text = false,
+        virtual_text = true,
         float = { border = "rounded" }, 
     }
 )
@@ -362,3 +362,35 @@ end
 vim.api.nvim_create_user_command("CompileDataform", compile_dataform, {})
 
 
+require("git-worktree").setup({})
+
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+
+-- empty setup using defaults
+require("nvim-tree").setup()
+
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 50,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+  actions = {
+    open_file = {
+      quit_on_open = true,
+    },
+  },
+})

@@ -33,7 +33,7 @@ set nowritebackup
 " set shortmess=a
 " set cmdheight=2
 
-set mouse=a
+set syntax=on
 
 " vnoremap <C-c><C-c> :<c-u>silent '<,'>write !xsel -b<cr>
 
@@ -64,6 +64,8 @@ set foldmethod=indent
 set foldlevel=99
 highlight Comment cterm=italic
 
+" Mouse support
+
 " Install VimPlug from - https://github.com/junegunn/vim-plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
@@ -80,6 +82,7 @@ Plug 'andres-lowrie/vim-sqlx'
 
 Plug 'dstein64/vim-startuptime'
 
+Plug 'sheerun/vim-polyglot'
 
 Plug 'tpope/vim-surround'
 
@@ -138,11 +141,11 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 
 Plug 'vim-airline/vim-airline' "Shows status line - Fugitive status line depends on airline
 
-Plug 'preservim/nerdtree' "nerd tree - shows files in folder in a vertical split
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons'
 
-Plug 'Xuyuanp/nerdtree-git-plugin' " New nerd tree ?
 
-
+Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'airblade/vim-gitgutter' "Git gutter
 " Replace words with copied word
 " Copy the words using - "yiw" (yank inner word)
@@ -237,6 +240,14 @@ let ostype = substitute(system('uname'), "\n", "", "")
 set cursorline
 set t_Co=256
 
+" 
+" Donot remove the yanked data once pasted
+vnoremap <leader>y "+y
+"
+nnoremap <leader>p "+p
+
+
+
 " Colorscheme settings
 "
 colorscheme catppuccin
@@ -262,6 +273,7 @@ set ttyfast
 let mapleader = " "
 
 " move through buffers - Leader key is currently mapped to space bar
+"
 nmap <leader>[ :bp!<CR>
 nmap <leader>] :bn!<CR>
 nmap <leader>x :bd<CR>
@@ -277,7 +289,10 @@ nmap N Nzzzv
 
 
 let g:netrw_banner = 0
-noremap <leader>nt :NERDTree<CR>
+
+noremap <leader>nt :NvimTreeOpen<CR>
+
+
 
 "reduce and increase the side of vertical split
 "
@@ -402,3 +417,10 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 "
 nmap ga <Plug>(EasyAlign)
+
+
+lua require("telescope").load_extension("git_worktree")
+nmap <leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
+nmap <leader>gcw :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
+
+
