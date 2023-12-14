@@ -360,6 +360,14 @@ noremap <leader>gs :Git <CR>
 "
 noremap <leader>gb :GBrowse <CR> 
 
+" Get filename or full path of file
+"
+noremap <leader>P :let @+ = expand("%:p") <CR>
+noremap <leader>p :let @+ = expand("%:t") <CR>
+
+
+
+
 " Code navigation 
 "
 nmap <silent> gd <cmd>Telescope lsp_definitions <CR>
