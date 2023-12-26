@@ -72,6 +72,10 @@ call plug#begin('~/.vim/plugged')
 
 " Colorscheme
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+" Plug 'rose-pine/neovim', {'as' : 'rose-pine' }
+"
+"Log highlighting
+Plug 'fei6409/log-highlight.nvim'
 
 Plug 'junegunn/vim-easy-align'
 
@@ -87,10 +91,11 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 
 "Treesitter plugins
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Enables sticky scroll, i.e shows function name at the top
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'nvim-treesitter/playground'
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -137,6 +142,7 @@ Plug 'tpope/vim-commentary' "commenting - `gcc` for commenting and un-commenting
 Plug 'tpope/vim-fugitive' "Git workflows
 Plug 'tpope/vim-rhubarb' "Git - to go to github link in the browser
 Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'akinsho/git-conflict.nvim', {'tag': '*'}
 
 
 Plug 'vim-airline/vim-airline' "Shows status line - Fugitive status line depends on airline
@@ -172,6 +178,8 @@ Plug 'rcarriga/nvim-dap-ui' "Loads debugger UI
 Plug 'mfussenegger/nvim-dap-python' "Python debugger
 Plug 'nvim-telescope/telescope-dap.nvim' "Telescope help for dap ?
 
+Plug 'ray-x/lsp_signature.nvim'
+
 call plug#end()
 
 " lua requires should be after plug#end to avoid errors
@@ -179,11 +187,11 @@ call plug#end()
 " lua require('helpers')
 lua require('basic')
 
-lua << EOF
-require("catppuccin").setup {
-    flavour = "macchiato" -- mocha, macchiato, frappe, latte
-}
-EOF
+" lua << EOF
+" require("catppuccin").setup {
+"     flavour = "macchiato" -- mocha, macchiato, frappe, latte
+" }
+" EOF
 
 
 " let g:firenvim_config = { 
