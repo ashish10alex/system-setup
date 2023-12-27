@@ -456,7 +456,10 @@ require("nvim-tree").setup({
   },
 })
 
--- require('git-conflict').setup({})
+-- override the following default highlight groups for ease of viewing of merge conflicts
+vim.cmd("highlight DiffAdd guibg = '#405d7e'")
+vim.cmd("highlight DiffText guibg = '#314753'")
+
 require'git-conflict'.setup {
   {
   default_mappings = true, -- disable buffer local mapping created by this plugin
@@ -465,9 +468,8 @@ require'git-conflict'.setup {
   list_opener = 'copen', -- command or function to open the conflicts list
   highlights = { -- They must have background color, otherwise the default color will be used
     incoming = 'DiffAdd',
-    current = 'DiffText',
+    current  = 'DiffText',
   },
-  default_colors = false,
   }
 }
 
@@ -475,10 +477,9 @@ vim.api.nvim_create_autocmd('User', {
   pattern = 'GitConflictDetected',
   callback = function()
     vim.notify('Conflict detected in file '..vim.api.nvim_buf_get_name(0))
-    -- stop the lsp sever from running
     vim.lsp.stop_client(vim.lsp.get_active_clients())
-    vim.keymap.set('n', 'cww', function()
-    end)
+    -- vim.keymap.set('n', 'cww', function()
+    -- end)
   end
 })
 

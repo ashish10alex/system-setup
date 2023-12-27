@@ -143,8 +143,6 @@ Plug 'tpope/vim-fugitive' "Git workflows
 Plug 'tpope/vim-rhubarb' "Git - to go to github link in the browser
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'akinsho/git-conflict.nvim', {'tag': '*'}
-
-
 Plug 'vim-airline/vim-airline' "Shows status line - Fugitive status line depends on airline
 
 Plug 'nvim-tree/nvim-tree.lua'
