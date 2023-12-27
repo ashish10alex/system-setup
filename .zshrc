@@ -95,7 +95,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 gdiff() {
-git status -s | fzf --no-sort --reverse --preview 'git diff --color=always {+2} '
+  git status -s | fzf --no-sort --reverse --preview 'git diff {+2} | delta' --preview-window 'top' --preview-window '75%'
 }
 
 # Convert video to gif file.
