@@ -339,7 +339,7 @@ nnoremap <leader>grep :lua require('telescope.builtin').live_grep()<CR>
 
 " Git  mappings (fugitive and Telescope)
 "
-noremap <leader>gl <cmd>Telescope git_commits<CR>
+nnoremap <Leader>gl :lua require'telescope.builtin'.git_commits({git_command={"git", "log", "--pretty=oneline", "--abbrev-commit", "--all", "."}})<cr>
 noremap <leader>gd <cmd>Telescope git_status<CR>
 noremap <leader>gc :G commit<CR>
 noremap <leader>gp :G push<CR>
@@ -349,6 +349,9 @@ noremap <leader>gp :G push<CR>
 nmap ]g <cmd>GitGutterNextHunk<CR>
 nmap [g <cmd>GitGutterPrevHunk<CR>
 nmap gp <cmd>GitGutterPreviewHunk<CR>
+
+noremap <leader>gr :GitConflictRefresh <CR> 
+noremap <leader>gq :GitConflictListQf <CR> 
 
 "Gitlab settings for JLR
 "
