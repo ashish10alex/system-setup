@@ -37,64 +37,6 @@ local on_attach = function()
   --   )
 end
 
-
--- require("noice").setup({
---   lsp = {
---     override = {
---       ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
---       ["vim.lsp.util.stylize_markdown"] = true,
---       ["cmp.entry.get_documentation"] = true,
---     },
---   },
---   messages = {
---       -- NOTE: If you enable messages, then the cmdline is enabled automatically.
---       -- This is a current Neovim limitation.
---       enabled = true, -- enables the Noice messages UI
---       view_history = "messages", -- view for :messages
---       view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
---     },
---   views = {
---     cmdline_popup = {
---       position = {
---         row = 5,
---         col = "50%",
---       },
---       size = {
---         width = "auto",
---         height = "auto",
---       },
---     },
---     popupmenu = {
---       relative = "editor",
---       position = {
---         row = 8,
---         col = "50%",
---       },
---       size = {
---         width = 60,
---         height = 10,
---       },
---       border = {
---         style = "rounded",
---         padding = { 0, 1 },
---       },
---       win_options = {
---         winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
---       },
---     },
---   },
---   cmdline = {
---         format = {
---           cmdline = { icon = ">" },
---           search_down = { icon = "🔍⌄" },
---           search_up = { icon = "🔍⌃" },
---           filter = { icon = "$" },
---           lua = { icon = "☾" },
---           help = { icon = "?" },
---         },
---       },
--- })
-
 require 'lspconfig'.pyright.setup{
   capabilities = capabilities,
   on_attach = on_attach,
@@ -114,18 +56,31 @@ require 'lspconfig'.pyright.setup{
 --     }
 --   }
 -- }
---
+
+
 require'lspconfig'.tsserver.setup {
   capabilities = capabilities,
   on_attach = on_attach,
 }
 
 require'lspconfig'.terraformls.setup{}
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  pattern = {"*.tf", "*.tfvars"},
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
+
 require 'lspconfig'.tflint.setup{}
 
-require 'lspconfig'.bashls.setup{}
+require 'lspconfig'.bashls.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
 require 'lspconfig'.lua_ls.setup{
     capabilities = capabilities,
+    on_attach = on_attach,
     settings = {
       Lua = {
         diagnostics = {
@@ -477,11 +432,17 @@ vim.api.nvim_create_autocmd('User', {
   pattern = 'GitConflictDetected',
   callback = function()
     vim.notify('Conflict detected in file '..vim.api.nvim_buf_get_name(0))
-    vim.lsp.stop_client(vim.lsp.get_active_clients())
-    -- vim.keymap.set('n', 'cww', function()
-    -- end)
+    vim.cmd('LspStop')
   end
 })
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'GitConflictResolved',
+  callback = function()
+    vim.cmd('LspRestart')
+  end
+})
+
 
 
 -- require('rose-pine').setup({})
@@ -503,3 +464,5 @@ vim.api.nvim_create_autocmd('User', {
 require('log-highlight').setup({
     pattern = '*.txt'
   })
+
+
