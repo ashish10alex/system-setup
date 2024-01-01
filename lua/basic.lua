@@ -110,11 +110,12 @@ require('telescope').setup {
   defaults = {
     prompt_prefix = "> ",
     file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
-		"%rpdf", "%.mkv", "%.mp4", "%.zip", "node_modules"},
+		"%rpdf", "%.mkv", "%.mp4", "%.zip", "node_modules", "yarn.lock"},
   },
   pickers = {
     find_files = {
-      hidden = true
+      hidden = true,
+      git_ignore = false,
     },
     live_grep = {
       additional_args = function(opts)
@@ -138,9 +139,19 @@ require('telescope').setup {
       }
     },
   },
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
+  },
 }
 
 require('telescope').load_extension('env')
+require('telescope').load_extension('fzf')
 
 vim.opt.completeopt={"menu", "menuone", "noselect"}
 
@@ -154,8 +165,8 @@ vim.opt.completeopt={"menu", "menuone", "noselect"}
     --   end,
     -- },
     window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     completion = {
               -- autocomplete = true,
@@ -451,14 +462,14 @@ vim.api.nvim_create_autocmd('User', {
 --
 
   -- require'lspconfig'.gopls.setup()
-  require "lsp_signature".setup({
-    bind = true, -- This is mandatory, otherwise border config won't get registered.
-    hint_prefix="",
-    hint_enable=false,
-    handler_opts = {
-      border = "rounded",
-    }
-  })
+  -- require "lsp_signature".setup({
+  --   bind = true, -- This is mandatory, otherwise border config won't get registered.
+  --   hint_prefix="",
+  --   hint_enable=false,
+  --   handler_opts = {
+  --     border = "rounded",
+  --   }
+  -- })
 
 
 require('log-highlight').setup({

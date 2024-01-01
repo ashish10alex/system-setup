@@ -99,6 +99,7 @@ Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'LinArcX/telescope-env.nvim' 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -349,6 +350,7 @@ noremap <leader>gp :G push<CR>
 nmap ]g <cmd>GitGutterNextHunk<CR>
 nmap [g <cmd>GitGutterPrevHunk<CR>
 nmap gp <cmd>GitGutterPreviewHunk<CR>
+nmap guh <cmd>GitGutterUndoHunk<CR>
 
 noremap <leader>gr :GitConflictRefresh <CR> 
 noremap <leader>gq :GitConflictListQf <CR> 
