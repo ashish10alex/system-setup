@@ -10,7 +10,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- copies to system clipboard in normal, visual modes
 vim.keymap.set({"n", "v"}, "Y", [["+y]])
--- copies to system clipboard in normal, visual modes from current cursor to end of line
+-- copies current line to system clipboard in normal & visual modes 
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 
@@ -22,4 +22,9 @@ vim.keymap.set("n", "<leader><Left>", ":vertical resize +5<CR>")
 vim.keymap.set("n", "<leader><Right>", ":vertical resize -5<CR>")
 vim.keymap.set("n", "<leader><Down>", ":resize +5<CR>")
 vim.keymap.set("n", "<leader><Up>", ":resize -5<CR>")
+
+
+vim.keymap.set('n', '<leader>P', ':let @+ = expand("%:p") <CR>')
+vim.keymap.set('n', '<leader>p', ':let @+ = expand("%:t") <CR>')
+
 

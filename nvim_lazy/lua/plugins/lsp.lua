@@ -12,11 +12,11 @@ return {
 
     config = function()
 
-        local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-        for type, icon in pairs(signs) do
-				local hl = "DiagnosticSign" .. type
-				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-        end
+        -- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+        -- for type, icon in pairs(signs) do
+				-- local hl = "DiagnosticSign" .. type
+				-- vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+        -- end
 
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
         local on_attach = function()
@@ -46,7 +46,6 @@ return {
                 "pyright",
                 "tsserver",
                 "bashls",
-                "terraformls",
           },
           handlers = {
 
