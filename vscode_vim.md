@@ -1,7 +1,6 @@
 {
     "vscode-dataform-tools.showCompiledQueryInVerticalSplitOnSave": false,
         "vim.normalModeKeyBindings": [
-
         {
             "before": ["shift+k"],
             "commands": ["editor.action.showHover"]
@@ -21,6 +20,10 @@
         {
             "before": ["[", "e"],
             "commands": ["editor.action.marker.prev"]
+        },
+        {
+            "before": ["g", "u", "h"],
+            "commands": ["git.revertSelectedRanges"]
         }
         ],
         "workbench.iconTheme": "material-icon-theme",
