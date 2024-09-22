@@ -31,10 +31,16 @@
             "commands": ["editor.action.dirtydiff.next"]
         }
         ],
+        "vim.useSystemClipboard": true,
         "workbench.iconTheme": "material-icon-theme",
         "git.openRepositoryInParentFolders": "always",
         "editor.minimap.enabled": false,
         "window.confirmSaveUntitledWorkspace": false,
         "vscode-dataform-tools.compileAndDryRunBeforeFormatting": false,
-        "diffEditor.experimental.useTrueInlineView": true
+        "diffEditor.experimental.useTrueInlineView": true,
+        "typescript.updateImportsOnFileMove.enabled": "always",
+        "vim.normalModeKeyBindingsNonRecursive": [
+
+
+        ]
 }
