@@ -41,6 +41,10 @@
         "typescript.updateImportsOnFileMove.enabled": "always",
         "vim.normalModeKeyBindingsNonRecursive": [
 
-
+        ],
+        "python.defaultInterpreterPath": "/Users/ashishalex/Documents/work/jlr/venvs/jlrenv/bin/python3",
+        "workbench.startupEditor": "none",
+        "yaml.customTags": [
+            "!reference sequence"
         ]
 }
