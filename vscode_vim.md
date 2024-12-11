@@ -1,6 +1,8 @@
+Add the following to `settings.json` of VSCode. this help me to use my vim key bindings to navigate errors and git hunks
+
+```json
 {
-    "vscode-dataform-tools.showCompiledQueryInVerticalSplitOnSave": false,
-        "vim.normalModeKeyBindings": [
+    "vim.normalModeKeyBindings": [
 
         {
             "before": ["shift+k"],
@@ -46,5 +48,42 @@
         "workbench.startupEditor": "none",
         "yaml.customTags": [
             "!reference sequence"
-        ]
+        ],
+        "workbench.editorAssociations": {
+            "*.msg": "default"
+        },
+        "dataform.compilerOptions": [
+            "--vars=someKey=someValue,a=b",
+            "--vars=c=d"
+        ],
+        "explorer.confirmDragAndDrop": false,
+        "go.toolsManagement.autoUpdate": true,
+        "vscode-dataform-tools.compilerOptions": "--vars=someKey=whatever",
+        "files.associations": {
+            "*.json": "jsonc"
+        },
+        "[css]": {
+            "editor.defaultFormatter": "vscode.css-language-features"
+        },
+        "files.autoSave": "afterDelay",
+        "[yaml]": {
+            "editor.defaultFormatter": "redhat.vscode-yaml"
+        },
+        "workbench.editor.editorActionsLocation": "titleBar",
+        "betterAlign.surroundSpace": {
+            "colon": [
+                -1,
+                4
+            ],
+            "assignment": [
+                1,
+                1
+            ],
+            "arrow": [
+                1,
+                1
+            ],
+            "comment": 2
+        },
 }
+```
