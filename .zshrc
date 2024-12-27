@@ -1,157 +1,94 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+eval "$(starship init zsh)"
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
-# ZSH_THEME="robbyrussell"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-
-plugins=(
-  git
-  bundler
-  dotenv
-  macos
-  rake
-  rbenv
-  ruby
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
-
-
-source $ZSH/oh-my-zsh.sh
+fpath=(~/.zsh/completion $fpath)
+autoload -U compinit
+compinit
+source ~/.zsh/completion/dj
+source ~/.zsh/completion/cobra-cli
 
 gdiff() {
-  git status -s | fzf --no-sort --reverse --preview 'git diff {+2} | delta' --preview-window 'top' --preview-window '75%'
+  git status -s | fzf --no-sort --reverse --preview 'git diff --ignore-space-at-eol {+2} | delta' --preview-window 'top' --preview-window '75%'
 }
 
-# Convert video to gif file.
-# Usage: video2gif video_file (scale) (fps)
-video2gif() {
-  ffmpeg -y -i "${1}" -vf fps=30,scale=1440:-1:flags=lanczos,palettegen "${1}.png"
-  ffmpeg -y -i "${1}" -i "${1}.png" -filter_complex "fps=30,scale=1440:-1:flags=lanczos[x];[x][1:v]paletteuse" "${1}".gif
-  rm "${1}.png"
+gitlog() {
+    git log --graph --pretty=format:'%C(auto)%h%d (%cr) %cn <%aE> %s'
+
 }
 
-# User configuration
+# creates a new directory and cds into it
+mkcd() {
+    mkdir -p -- "$1" && cd "$1"
+}
 
-# export MANPATH="/usr/local/man:$MANPATH"
+cdataform() {
+    dataform compile --json | jq -r '.[]?| values[]?| "\n -- " + .fileName? + "\n  " +.query?' > /tmp/temp.sqlx
+}
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+#bring dune
+eval $(opam config env)
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-#
 alias lg="ls | grep"
-alias grep='batgrep'
 alias ta='tmux attach'
 alias tls='tmux ls'
 alias vi='nvim'
 alias tattach='tmux attach -t'
 alias tnew='tmux new-session -s'
-alias pwd=' pwd | pbcopy'
 alias rotageek_env='source $HOME/Documents/virtual_envs/rotageek_env/bin/activate'
-alias airflow_env='source $HOME/Documents/virtual_envs/airflow_env/bin/activate'
-alias qmul_env='source $HOME/Documents/QMUL/qmul_virtual_env/bin/activate'
-alias jupy='jupyter notebook --NotebookApp.kernel_manager_class=notebook.services.kernels.kernelmanager.AsyncMappingKernelManager'
+alias personal='cd /Users/ashishalex/Documents/personal/repos'
+alias prepos='cd /Users/ashishalex/Documents/personal/repos/'
+# alias jupy='jupyter notebook --NotebookApp.kernel_manager_class=notebook.services.kernels.kernelmanager.AsyncMappingKernelManager'
 alias lg='ls | grep'
-alias alexmac='ssh alexmac.local -L 8800:127.0.0.1:8800'
-alias alextensorboard='ssh alexmac.local -L 8443:127.0.0.1:8443'
-alias jade="ssh -t alexmac.local -L 8800:127.0.0.1:8800 'ssh -l aaa18-txk47 jade2.hartree.stfc.ac.uk'"
+alias findcommitbyid='git log | batgrep -C10'
 
+# alias alexmac='ssh alexmac.local -L 8800:127.0.0.1:8800'
+# alias alextensorboard='ssh alexmac.local -L 8443:127.0.0.1:8443'
+# alias jade="ssh -t alexmac.local -L 8800:127.0.0.1:8800 'ssh -l aaa18-txk47 jade2.hartree.stfc.ac.uk'"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export CLICOLOR=1
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export CGO_ENABLED=1
+export CXX=clang++
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# export GOOGLE_CLOUD_PROJECT_ID=$(gcloud config get-value core/project)
+alias ls='ls -lGH'
+alias ll="ls -lG"
+
+
+#my custom scripts are in here
+export PATH=$PATH:~/bin
+
+
+#add golang to path
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/Users/ashishalex/go/bin
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ashishalex/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ashishalex/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ashishalex/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ashishalex/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+autoload -U select-word-style
+select-word-style bash
+
+ZSH_AUTOSUGGEST_HISTORY_IGNORE=*
+
+# opam configuration
+# [[ ! -r /Users/ashishalex/.opam/opam-init/init.zsh ]] || source /Users/ashishalex/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
+
+# Created by `pipx` on 2024-10-16 09:57:38
+export PATH="$PATH:/Users/ashishalex/.local/bin"
+. "/Users/ashishalex/.deno/env"
