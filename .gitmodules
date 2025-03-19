@@ -1,3 +1,4 @@
 [submodule "pnvim"]
 	path = pnvim
 	url = git@github.com:ashish10alex/pnvim.git
+	branch = main
