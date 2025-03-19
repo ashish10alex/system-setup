@@ -2,6 +2,11 @@ Add the following to `settings.json` of VSCode. this help me to use my vim key b
 
 ```json
 {
+    "vim.handleKeys": {
+        "<C-n>": false,
+        "<C-p>": false,
+        "<C-b>": false,
+    },
     "vim.normalModeKeyBindings": [
 
         {
