@@ -2,7 +2,7 @@
 
 ```
 sudo apt-get update
-sudo apt-get upgrade  -y 
+sudo apt-get upgrade  -y
 sudo apt install python3-pip -y
 sudo apt-get install python3-venv
 sudo apt-get install libsndfile1
@@ -19,8 +19,8 @@ ssh-keygen
 * Firewall
 
 View status of the firewall
-<b>Note</b>: on AWS you have to add rules in the security group option of the instance to allow particular trafic to and from the ports. 
-Following commands only if you have your own sever where firewall option needs to be managed via terminal 
+<b>Note</b>: on AWS you have to add rules in the security group option of the instance to allow particular trafic to and from the ports.
+Following commands only if you have your own sever where firewall option needs to be managed via terminal
 
 ```
 #to check open ports
@@ -56,7 +56,7 @@ To                         Action      From
 #nginx handles static files
 sudo apt-get install nginx -y
 #gunicorn handles python part
-pip3 install gunicorn 
+pip3 install gunicorn
 
 
 #Remove the default nginx file
@@ -70,13 +70,13 @@ systemctl restart nginx
 * Gunicorn
 ```
 pip3 install gunicorn
-#To run the app go to the root directory of your flask project and 
+#To run the app go to the root directory of your flask project and
 gunicorn -w 2 <file-name-w/o-.py-extension>:<name-of-app-object-in-code>
 ```
 
 * Make website run as a systemd service (runs the web app in the background)
 ```
-Add your systemd file in 
+Add your systemd file in
 /lib/systemd/system/
 ```
 
@@ -95,14 +95,14 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
-  
+
   ```
  systemctl start <service-name>
- #check status of the service 
+ #check status of the service
  systemctl status  <service-name>
  systemctl enable  <service-name>
- 
+
   systemctl stop  <service-name>
   ```
-  
- 
+
+

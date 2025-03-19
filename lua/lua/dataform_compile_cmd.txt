@@ -1,2 +1,0 @@
-dataform compile --json | {echo "-- $(date)" ; jq -r '.[]?| values[]?| "\n -- " + .fileName? + "\n  " +.query?'} > /tmp/temp.sqlx 
-
