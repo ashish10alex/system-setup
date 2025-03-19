@@ -1,12 +1,4 @@
-Add the following to `settings.json` of VSCode. this help me to use my vim key bindings to navigate errors and git hunks
-
-```json
 {
-    "vim.handleKeys": {
-        "<C-n>": false,
-        "<C-p>": false,
-        "<C-b>": false,
-    },
     "vim.normalModeKeyBindings": [
 
         {
@@ -91,4 +83,3 @@ Add the following to `settings.json` of VSCode. this help me to use my vim key b
             "comment": 2
         },
 }
-```
