@@ -1,0 +1,4 @@
+theme = tokyonight
+font-size = 16
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
