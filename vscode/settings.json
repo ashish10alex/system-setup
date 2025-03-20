@@ -1,4 +1,10 @@
 {
+    "vim.handleKeys": {
+        "<C-n>": false,
+        "<C-p>": false,
+        "<C-b>": false,
+        "<C-j>": false
+    },
     "vim.normalModeKeyBindings": [
 
         {
