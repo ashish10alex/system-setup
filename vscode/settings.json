@@ -3,7 +3,8 @@
         "<C-n>": false,
         "<C-p>": false,
         "<C-b>": false,
-        "<C-j>": false
+        "<C-j>": false,
+        "<C-w>": false
     },
     "vim.normalModeKeyBindings": [
 
