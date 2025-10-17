@@ -1,4 +1,13 @@
 {
+    "extensions.autoUpdate": false,
+    "extensions.autoCheckUpdates": false,
+    "update.mode": "none",
+    "update.enableWindowsBackgroundUpdates": false,
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "update.showReleaseNotes": false,
+    "vim.visualModeKeyBindings": [],
+    "editor.minimap.enabled": false,
     "vim.handleKeys": {
         "<C-n>": false,
         "<C-p>": false,
@@ -6,8 +15,9 @@
         "<C-j>": false,
         "<C-w>": false
     },
-    "vim.normalModeKeyBindings": [
-
+    "vim.commandLineModeKeyBindings": [],
+        "vim.normalModeKeyBindings": [
+ 
         {
             "before": ["shift+k"],
             "commands": ["editor.action.showHover"]
@@ -38,55 +48,57 @@
         }
         ],
         "vim.useSystemClipboard": true,
-        "workbench.iconTheme": "material-icon-theme",
         "git.openRepositoryInParentFolders": "always",
-        "editor.minimap.enabled": false,
         "window.confirmSaveUntitledWorkspace": false,
         "vscode-dataform-tools.compileAndDryRunBeforeFormatting": false,
         "diffEditor.experimental.useTrueInlineView": true,
         "typescript.updateImportsOnFileMove.enabled": "always",
         "vim.normalModeKeyBindingsNonRecursive": [
-
+ 
         ],
-        "python.defaultInterpreterPath": "/Users/ashishalex/Documents/work/jlr/venvs/jlrenv/bin/python3",
         "workbench.startupEditor": "none",
         "yaml.customTags": [
             "!reference sequence"
         ],
-        "workbench.editorAssociations": {
-            "*.msg": "default"
-        },
-        "dataform.compilerOptions": [
-            "--vars=someKey=someValue,a=b",
-            "--vars=c=d"
-        ],
-        "explorer.confirmDragAndDrop": false,
-        "go.toolsManagement.autoUpdate": true,
-        "vscode-dataform-tools.compilerOptions": "--vars=someKey=whatever",
-        "files.associations": {
-            "*.json": "jsonc"
-        },
-        "[css]": {
-            "editor.defaultFormatter": "vscode.css-language-features"
-        },
+        "git.enableSmartCommit": true,
+        "git.autofetch": true,
         "files.autoSave": "afterDelay",
-        "[yaml]": {
-            "editor.defaultFormatter": "redhat.vscode-yaml"
+        "remote.autoForwardPortsSource": "hybrid",
+        "todo-tree.general.tags": [
+            "TODO",
+            "FIXME",
+            "NOTE"
+        ],
+        "todo-tree.highlights.customHighlight": {
+            "NOTE": {
+                "icon": "note",
+                "foreground": "#FFFFFF",
+                "background": "#6495ED",
+                "iconColour": "#6495ED"
+            },
+            "FIXME": {
+                    "icon": "alert",
+                    "foreground": "#FFFFFF",
+                    "background": "#FF4500", 
+                    "iconColour": "#FF4500"
+            },
+            "TODO": {
+                    "icon": "check",
+                    "foreground": "#000000",
+                    "background": "#FFD700",  // Gold
+                    "iconColour": "#FFD700"
+                },
+ 
         },
-        "workbench.editor.editorActionsLocation": "titleBar",
-        "betterAlign.surroundSpace": {
-            "colon": [
-                -1,
-                4
-            ],
-            "assignment": [
-                1,
-                1
-            ],
-            "arrow": [
-                1,
-                1
-            ],
-            "comment": 2
-        },
+        "git.confirmSync": false,
+        "multiCommand.commands": [
+        {
+            "command": "multiCommand.dtoolsRestart",
+            "sequence": [
+            "workbench.action.terminal.killAll",
+            "workbench.action.debug.restart"
+            ]
+        }
+        ]
+ 
 }
