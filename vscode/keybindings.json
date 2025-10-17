@@ -1,12 +1,44 @@
 [
-    {
-        "key": "ctrl+n",
-        "command": "workbench.action.quickOpenSelectNext",
-        "when": "inQuickOpen"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "workbench.action.quickOpenSelectPrevious",
-        "when": "inQuickOpen"
-    }
+  {
+      "key": "ctrl+n",
+      "command": "workbench.action.quickOpenSelectNext",
+      "when": "inQuickOpen"
+  },
+  {
+      "key": "ctrl+p",
+      "command": "workbench.action.quickOpenSelectPrevious",
+      "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen",
+    "when": "!terminalFocus && !inQuickOpen"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "vscode-dataform-tools.runCurrentFile"
+  },
+  {
+    "key": "alt+enter",
+    "command": "vscode-dataform-tools.runQuery"
+  },
+
+  {
+  "key": "ctrl+n",
+  "command": "selectNextSuggestion",
+  "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+  "key": "ctrl+p",
+  "command": "selectPrevSuggestion",
+  "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+  "key": "ctrl+alt+d",
+  "command": "multiCommand.dtoolsRestart"
+  }
 ]
