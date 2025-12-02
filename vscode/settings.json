@@ -91,6 +91,9 @@
  
         },
         "git.confirmSync": false,
+        "workbench.colorCustomizations": {
+            "editorHoverWidget.border": "#0096FF"
+        },
         "multiCommand.commands": [
         {
             "command": "multiCommand.dtoolsRestart",
